@@ -21,10 +21,6 @@ const info = new mongoose.Schema({
     type: String,
     required: true,
   },
-  likes: {
-    type: String,
-    required: true,
-  },
   kms: {
     type: String,
     required: true,
@@ -33,7 +29,15 @@ const info = new mongoose.Schema({
     type: String,
     required: true,
   },
+  ridingsince: {
+    type: String,
+    required: true,
+  },
   coverpic: {
+    type: String,
+    required: true,
+  },
+  location: {
     type: String,
     required: true,
   },

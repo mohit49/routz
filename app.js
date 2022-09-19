@@ -36,6 +36,9 @@ const users = require("./modules/users/users");
 app.get("/users", users);
 const editprofile = require("./modules/editprofile/editprofile");
 app.post("/editprofile", editprofile);
+
+const followers = require("./modules/follow/follow");
+app.post("/follow", followers);
 http.listen(3001, function () {
   console.log("listening on *:4000");
 });

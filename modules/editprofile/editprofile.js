@@ -8,12 +8,13 @@ const authenticateJWT = require("../../middleware/auth");
 router.post("/editprofile", authenticateJWT, async (req, res) => {
   console.log(req.userId);
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
+  console.log("nm" + username);
   const userExist = await Profileinfo.findOne(
     { username: username.username },
     { username: 1 }
   );
 
-  if (userExist.username.length > 0) {
+  if (userExist !== null) {
     const dataUpdate = await Profileinfo.updateMany(
       { username: userExist.username },
       {
@@ -22,13 +23,15 @@ router.post("/editprofile", authenticateJWT, async (req, res) => {
           companyinfo: req.body.companyinfo,
           about: req.body.about,
           followers: req.body.followers,
-          likes: req.body.likes,
           kms: req.body.kms,
           profilepic: req.body.profilepic,
           coverpic: req.body.coverpic,
+          ridingsince: req.body.ridingsince,
+          location: req.body.location,
         },
       }
     );
+
     const userUpdates = await Profileinfo.findOne(
       { username: username.username },
       { password: 0 }
@@ -39,14 +42,16 @@ router.post("/editprofile", authenticateJWT, async (req, res) => {
     });
   } else {
     const ProfileinfoUsers = new Profileinfo({
+      username: username.username,
       bikeinfo: req.body.bikeinfo,
       companyinfo: req.body.companyinfo,
       about: req.body.about,
       followers: req.body.followers,
-      likes: req.body.likes,
       kms: req.body.kms,
       profilepic: req.body.profilepic,
       coverpic: req.body.coverpic,
+      ridingsince: req.body.ridingsince,
+      location: req.body.location,
     });
     const userData = await ProfileinfoUsers.save();
     res.status(200).json({
@@ -54,8 +59,6 @@ router.post("/editprofile", authenticateJWT, async (req, res) => {
       data: userData,
     });
   }
-
-  console.log(userExist.username);
 });
 
 module.exports = router;
