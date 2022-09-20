@@ -39,6 +39,8 @@ app.post("/editprofile", editprofile);
 
 const followers = require("./modules/follow/follow");
 app.post("/follow", followers);
+const unfollow = require("./modules/follow/unfollow");
+app.post("/unfollow", unfollow);
 http.listen(3001, function () {
   console.log("listening on *:4000");
 });

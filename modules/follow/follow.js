@@ -34,12 +34,10 @@ router.post("/follow", authenticateJWT, async (req, res) => {
       } else {
         const fetchList = fetchFollowList["followersnames"];
         fetchList.push(followingUserName);
-        console.log(fetchList);
         const getData = await FollowList.updateOne({
           username: usernameFetch.username,
           followersnames: fetchList,
         });
-        console.log(getData);
         res.status(200).json({
           sucessStatus: true,
           data: `You Followed ${followingUserName}`,

@@ -6,9 +6,7 @@ const Profileinfo = require("../../scemas/profileinfo");
 const authenticateJWT = require("../../middleware/auth");
 
 router.post("/editprofile", authenticateJWT, async (req, res) => {
-  console.log(req.userId);
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
-  console.log("nm" + username);
   const userExist = await Profileinfo.findOne(
     { username: username.username },
     { username: 1 }
