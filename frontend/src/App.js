@@ -1,8 +1,9 @@
 import React from "react";
+import Header from "./includes/Header/Header";
 export function App() {
-    return(
-        <div>
-            <h1>hi</h1>
-        </div>
-    )
+  return (
+    <>
+      <Header></Header>
+    </>
+  );
 }
