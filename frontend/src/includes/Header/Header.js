@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
-import "./Header.scss";
 function Header() {
   return (
     <>
@@ -18,7 +17,7 @@ function Header() {
               <Nav.Link m="5" href="#link">
                 Sing Up
               </Nav.Link>
-              <Button m="5" href="#" variant="primary">
+              <Button m="5" href="/login" variant="primary">
                 Login
               </Button>
             </Nav>

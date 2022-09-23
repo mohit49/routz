@@ -30,7 +30,7 @@ const registerPage = require("./modules/registration/registration");
 app.post("/register", registerPage);
 
 const loginPage = require("./modules/login/login");
-app.get("/login", loginPage);
+app.post("/login", loginPage);
 
 const users = require("./modules/users/users");
 app.get("/users", users);

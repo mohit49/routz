@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken");
 const Register = require("../../scemas/registration");
 
 const accessTokenSecret = "NOTESAPI";
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
+  console.log( req.body.username )
   try {
     let data;
     const getEmail = await Register.findOne(
@@ -52,6 +53,9 @@ router.get("/login", async (req, res) => {
         res.cookie("token", accessToken, {
           maxAge: 2 * 60 * 60 * 1000,
           httpOnly: false,
+          path: '',
+          sameSite: 'None',
+          secure: false,
         }); // maxAge: 2 hours
         res.status(200).json({
           sucessStatus: true,
