@@ -4,6 +4,8 @@ const router = express.Router();
 // DB Import
 const Register = require("../../scemas/registration");
 
+const UpdateprofileData = require("../../scemas/profileinfo");
+
 router.post("/register", async (req, res) => {
   try {
     const emailRegex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
@@ -77,6 +79,11 @@ router.post("/register", async (req, res) => {
           companyname: req.body.companyname,
           password: req.body.password,
         });
+        const updateprofileData = new UpdateprofileData({
+          username: req.body.username.toLowerCase(),
+          companyinfo: req.body.companyname,
+        });
+        const pdata = await updateprofileData.save();
         const userData = await registerUsers.save();
 
         res.status(200).json({

@@ -7,39 +7,30 @@ const info = new mongoose.Schema({
   },
   bikeinfo: {
     type: String,
-    required: true,
   },
   companyinfo: {
     type: String,
-    required: true,
   },
   about: {
     type: String,
-    required: true,
   },
   followers: {
     type: String,
-    required: true,
   },
   kms: {
     type: String,
-    required: true,
   },
   profilepic: {
     type: String,
-    required: true,
   },
   ridingsince: {
     type: String,
-    required: true,
   },
   coverpic: {
     type: String,
-    required: true,
   },
   location: {
     type: String,
-    required: true,
   },
 });
 

@@ -6,7 +6,6 @@ const Register = require("../../scemas/registration");
 
 const accessTokenSecret = "NOTESAPI";
 router.post("/login", async (req, res) => {
-  console.log( req.body.username )
   try {
     let data;
     const getEmail = await Register.findOne(
@@ -51,12 +50,18 @@ router.post("/login", async (req, res) => {
           }
         );
         res.cookie("token", accessToken, {
-          maxAge: 2 * 60 * 60 * 1000,
-          httpOnly: false,
-          path: '',
-          sameSite: 'None',
+          maxAge: 1 * 3600 * 1000,
+          httpOnly: true,
+          path: "",
+          sameSite: "none",
           secure: false,
         }); // maxAge: 2 hours
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Credentials", true);
+        res.header(
+          "Access-Control-Allow-Headers",
+          "Origin, X-Requested-With, Content-Type, Accept"
+        );
         res.status(200).json({
           sucessStatus: true,
           data: userdata,

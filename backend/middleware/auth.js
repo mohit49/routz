@@ -8,7 +8,7 @@ const authenticateJWT = (req, res, next) => {
       res.clearCookie("token");
       res.status(200).json({
         sucessStatus: false,
-        data: `Login expired please login again`,
+        data: `loginError`,
       });
     } else {
       console.log(decoded);
