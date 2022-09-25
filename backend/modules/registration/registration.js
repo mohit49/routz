@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const jwt = require("jsonwebtoken");
 
 // DB Import
 const Register = require("../../scemas/registration");
 
 const UpdateprofileData = require("../../scemas/profileinfo");
-
+const accessTokenSecret = "NOTESAPI";
 router.post("/register", async (req, res) => {
   try {
     const emailRegex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
@@ -80,12 +81,33 @@ router.post("/register", async (req, res) => {
           password: req.body.password,
         });
         const updateprofileData = new UpdateprofileData({
+          name: req.body.name,
           username: req.body.username.toLowerCase(),
           companyinfo: req.body.companyname,
         });
         const pdata = await updateprofileData.save();
         const userData = await registerUsers.save();
 
+        const accessToken = jwt.sign(
+          { username: userData.username, id: userData._id },
+          accessTokenSecret,
+          {
+            expiresIn: "5m", // expires in 24 hours
+          }
+        );
+        res.cookie("token", accessToken, {
+          maxAge: 1 * 3600 * 1000,
+          httpOnly: true,
+          path: "",
+          sameSite: "none",
+          secure: false,
+        }); // maxAge: 2 hours
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        res.header("Access-Control-Allow-Credentials", true);
+        res.header(
+          "Access-Control-Allow-Headers",
+          "Origin, X-Requested-With, Content-Type, Accept"
+        );
         res.status(200).json({
           sucessStatus: true,
           data: `Hi! ${userData.name} Sucessfully Registerd`,
