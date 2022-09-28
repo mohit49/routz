@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import axios from "axios";
 import "../Profile/Profile.scss";
 import { Spinner } from "react-bootstrap";
@@ -12,10 +12,16 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import { ModalBox } from "../../uiElements/modal/modal";
 import ProfileData from "../../includes/ProfileData/ProfileData";
+import EditInfo from "../../Middleware/Forms/EditInfo";
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Profile() {
+  const [show,setShow] = useState(false);
+ 
+  const handleClose = () => setShow(false)
+  
   let navigate = useNavigate();
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
@@ -39,8 +45,14 @@ function Profile() {
         console.log(error);
       });
   }, []);
+
+  const openModal = (()=>{
+    setShow(true)
+   
+  })
   return (
     <>
+   
       <Coverpic />
       <Container className="p-0 mtop">
         <Row>
@@ -59,7 +71,9 @@ function Profile() {
                   <p>
                     <strong>Bike Info :</strong> {profileData.bikeinfo}
                   </p>
-                  <p>
+             
+                </Card.Text>
+                     <p>
                     <strong>Distance Covered :</strong> {profileData.kms}
                   </p>
                   <p>
@@ -68,8 +82,7 @@ function Profile() {
                   <p>
                     <strong>Company :</strong> {profileData.companyinfo}
                   </p>
-                </Card.Text>
-                <Button variant="primary">Edit Info</Button>
+                <Button variant="primary" onClick={openModal} >Edit Info</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -92,6 +105,7 @@ function Profile() {
           </Col>
         </Row>
       </Container>
+      <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo/>} modalHeading="Update Profile Informations"/>
     </>
   );
 }
