@@ -6,7 +6,7 @@ require("./db/db");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const cors = require("cors");
-const https = require("https");
+const http = require("http");
 http.createServer(onRequest).listen(8800);
 const path = require("path");
 //const bodyParser = require('body-parser');
@@ -14,7 +14,7 @@ const path = require("path");
 
 app.use(
   cors({
-    origin: "http://localhost:8080",
+    origin: "http://localhost:8800",
     credentials: true,
   })
 );
