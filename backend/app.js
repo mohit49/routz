@@ -7,10 +7,10 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const cors = require("cors");
 const https = require("https");
-
+http.createServer(onRequest).listen(8800);
 const path = require("path");
 //const bodyParser = require('body-parser');
-const http = require("http").Server(app);
+
 
 app.use(
   cors({
@@ -50,6 +50,27 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
-http.listen(8800, function () {
-  console.log("listening on *:8800");
-});
+
+const http = require("http").Server(app);
+function onRequest(client_req, client_res) {
+  console.log('serve: ' + client_req.url);
+
+  var options = {
+    hostname: '82.180.137.231',
+    port: 80,
+    path: client_req.url,
+    method: client_req.method,
+    headers: client_req.headers
+  };
+
+  var proxy = http.request(options, function (res) {
+    client_res.writeHead(res.statusCode, res.headers)
+    res.pipe(client_res, {
+      end: true
+    });
+  });
+
+  client_req.pipe(proxy, {
+    end: true
+  });
+}
