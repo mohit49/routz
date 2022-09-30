@@ -50,6 +50,6 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
-http.listen(8800, function () {
+http.listen(3001, function () {
   console.log("listening on *:4000");
 });
