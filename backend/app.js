@@ -4,17 +4,19 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 require("./db/db");
 const { createProxyMiddleware } = require("http-proxy-middleware");
-
+const http = require("http");
 const cors = require("cors");
 const https = require("https");
 
 const path = require("path");
 //const bodyParser = require('body-parser');
-const http = require('http');
 
+const httpProxy = require('http-proxy');
+
+httpProxy.createProxyServer({target:'http://82.180.137.231:8080'}).listen(8000);
 app.use(
   cors({
-    origin: "http://localhost:8800",
+    origin: "http://localhost:8080",
     credentials: true,
   })
 );
@@ -50,27 +52,8 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
-
-http.createServer(onRequest).listen(3000);
-function onRequest(client_req, client_res) {
-  console.log('serve: ' + client_req.url);
-
-  var options = {
-    hostname: '82.180.137.231',
-    port: 80,
-    path: client_req.url,
-    method: client_req.method,
-    headers: client_req.headers
-  };
-
-  var proxy = http.request(options, function (res) {
-    client_res.writeHead(res.statusCode, res.headers)
-    res.pipe(client_res, {
-      end: true
-    });
-  });
-
-  client_req.pipe(proxy, {
-    end: true
-  });
-}
+http.createServer(function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('request successfully proxied!' + '\n' + JSON.stringify(req.headers, true, 2));
+  res.end();
+}).listen(3001);
