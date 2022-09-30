@@ -10,7 +10,7 @@ const https = require("https");
 
 const path = require("path");
 //const bodyParser = require('body-parser');
-
+const http = require('http');
 
 app.use(
   cors({
@@ -51,8 +51,7 @@ app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
 
-const http = require("http").Server(app);
-http.createServer(onRequest).listen(8800);
+http.createServer(onRequest).listen(3000);
 function onRequest(client_req, client_res) {
   console.log('serve: ' + client_req.url);
 
