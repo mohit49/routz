@@ -6,8 +6,8 @@ require("./db/db");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const cors = require("cors");
-const http = require("http");
-http.createServer(onRequest).listen(8800);
+const https = require("https");
+
 const path = require("path");
 //const bodyParser = require('body-parser');
 
@@ -52,6 +52,7 @@ const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
 
 const http = require("http").Server(app);
+http.createServer(onRequest).listen(8800);
 function onRequest(client_req, client_res) {
   console.log('serve: ' + client_req.url);
 
