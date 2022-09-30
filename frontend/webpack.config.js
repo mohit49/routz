@@ -1,7 +1,9 @@
 const path = require("path");
+
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
 module.exports = {
+  target: ["web", 'es5'],
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index.bundle.js",
@@ -12,12 +14,11 @@ module.exports = {
   },
   module: {
     rules: [
+      
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        loader: "babel-loader",
       },
       {
         test: /\.scss$/,

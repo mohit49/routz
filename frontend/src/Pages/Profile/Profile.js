@@ -19,24 +19,28 @@ const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Profile() {
   const [show,setShow] = useState(false);
- 
+ const [loading, setLoading] = useState();
   const handleClose = () => setShow(false)
   
   let navigate = useNavigate();
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
   useEffect(() => {
+    setLoading(true);
     axios
       .get(profileFetch, { withCredentials: true })
       .then(function (response) {
         if (!response.data.sucessStatus) {
+          setLoading(false);
           console.log(response.data.data);
         }
         if (response.data.data == "loginError") {
           console.log(response.data.data);
+          setLoading(false);
           setLoginState(false);
           navigate("/login");
         } else {
+          setLoading(false);
           setLoginState(true);
           setProfileData(response.data.data);
         }
@@ -51,10 +55,18 @@ function Profile() {
    
   })
   return (
+    
     <>
-   
-      <Coverpic />
-      <Container className="p-0 mtop">
+    
+    {loading  && <div className="loading-con"><Spinner style={{color: "#0d6efd"}}
+                  as="span"
+                  animation="grow"
+                  size="lg"
+                  role="status"
+                  aria-hidden="true"
+                /></div> }
+     {!loading && <Coverpic /> }
+     {!loading &&  <Container className="p-0 mtop">
         <Row>
           <Col md={3}>
             <Card
@@ -104,7 +116,7 @@ function Profile() {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container> }
       <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo/>} modalHeading="Update Profile Informations"/>
     </>
   );

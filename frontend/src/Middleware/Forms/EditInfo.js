@@ -2,31 +2,39 @@ import React, {useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { Spinner } from 'react-bootstrap';
+import { InputGroup } from 'react-bootstrap';
+import GetLocation from '../GetLocation';
 function EditInfo() {
+    const getLocation = GetLocation()
+    const [loading, setLoading] = useState();
     const [authToken, setAuthToken] = useState();
-    useEffect(()=>{
+    const [geolocation, setGeolocation] = useState(true);
+    const [position, setPosition] = useState();
+const checkGeolocation =  () =>{
+     if(!geolocation) {
+       
+    setGeolocation(true)
+    } else {
+        setLoading(true)
+        getLocation()
+        .then((position) => {
+            setLoading(false)
+            setPosition(position)
+        })
+        .catch((err) => {
+          
+        });
+        setGeolocation(false)
+    }
 
-    axios.get('https://www.universal-tutorial.com/api/getaccesstoken', {
-        headers: {
-            "Accept": "application/json",
-      "api-token": "AuXnFjES43NqbdODZoc1anLtpO9op_9HsA7hqU56HJoxlbbNrMsUAzmsp6cqoZ0HhWQ",
-      "user-email": "mohitanim@gmail.com"
-        }
-       }).then((response) => {
-        setAuthToken(response.data.auth_token)
-      });
-},[]);
+}
 
-useEffect(()=>{
-    axios.get('https://www.universal-tutorial.com/api/states/India', {
-        headers: {
-            "Authorization": `Bearer ${authToken}`,
-            "Accept": "application/json"
-        }
-       }).then((response) => {
-        setAuthToken(response.data.auth_token)
-      });
-})
+   
+
+
+
+
 
   return (
     <Form>
@@ -39,13 +47,33 @@ useEffect(()=>{
       <Form.Label>Distance Covered</Form.Label>
         <Form.Control type="text" placeholder="Distance Coverd" />
       </Form.Group>
-     
-
+      <Form.Group className="mb-3" controlId="formBasicCity">
+      <Form.Check 
+        type="switch"
+        id="custom-switch"
+        label="Use Current Location"
+        onChange={checkGeolocation}
+      />
+</Form.Group>
+      {geolocation && 
       <Form.Group className="mb-3" controlId="formBasicCity">
       <Form.Label>Location</Form.Label>
         <Form.Control type="text" placeholder="State" />
       </Form.Group>
-   
+   }
+     {!geolocation && 
+    
+     <Form.Group className="mb-3" controlId="formBikeName">
+        <Form.Label>Current Location  {loading && <Spinner style={{color: "#0d6efd"}} as="span"
+                  animation="grow"
+                  size="sm"
+                  role="status"
+                  aria-hidden="true"/> }</Form.Label>
+       
+        {!loading && <Form.Control type="text" value={`${position?.city} , ${position?.state}, ${position?.country}`} placeholder="Fetching Location..." /> }
+      </Form.Group>
+}
+
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>

@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import ReactDOM from 'react-dom';
 import { Routes, Route, Link } from "react-router-dom";
 
 import Header from "./includes/Header/Header";

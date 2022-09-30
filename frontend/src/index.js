@@ -2,12 +2,15 @@ require("file-loader?name=[name].[ext]!./index.html");
 import React from "react";
 import { App } from "./App";
 import "./App.scss";
-import * as ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-const appElement = document.getElementById("app");
 
-ReactDOM.render(
-    <BrowserRouter>
+import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+      <BrowserRouter>
     <App />
   </BrowserRouter>
-, appElement);
+  </React.StrictMode>
+);
+
