@@ -5,7 +5,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const app = express();
   
 // Configuration
-const PORT = 3001;
+const PORT = 3003;
 const HOST = "localhost";
 
   
@@ -13,12 +13,12 @@ const HOST = "localhost";
   
 // Proxy Logic :  Proxy endpoints
 app.use(
-    "/weather",
+    "/api",
     createProxyMiddleware({
-        target: "http://82.180.137.231:8080/api",
+        target: "http://82.180.137.231:8080",
         changeOrigin: true,
         pathRewrite: {
-            "^/weather": "",
+            "^/api": "",
         },
     })
 );
