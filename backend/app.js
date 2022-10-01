@@ -13,7 +13,7 @@ const path = require("path");
 
 const httpProxy = require('http-proxy');
 
-httpProxy.createProxyServer({target:'http://82.180.137.231:3001'}).listen(443);
+httpProxy.createProxyServer({target:'http://82.180.137.231:3003'}).listen(443);
 app.use(
   cors({
     origin: "http://localhost:8080",
@@ -56,4 +56,4 @@ http.createServer(function (req, res) {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.write('request successfully proxied!' + '\n' + JSON.stringify(req.headers, true, 2));
   res.end();
-}).listen(3001);
+}).listen(3003);
