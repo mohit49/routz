@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
 module.exports = {
+  entry: './src/index.js',
   target: ["web", 'es5'],
   output: {
     path: path.join(__dirname, "/dist"),
