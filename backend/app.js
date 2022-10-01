@@ -1,21 +1,55 @@
-var http = require('http');
+const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+const jwt = require("jsonwebtoken");
+require("./db/db");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
-http.createServer(function(request, response) {
-  var proxy = http.createClient(80, request.headers['host'])
-  var proxy_request = proxy.request(request.method, request.url, request.headers);
-  proxy_request.addListener('response', function (proxy_response) {
-    proxy_response.addListener('data', function(chunk) {
-      response.write(chunk, 'binary');
-    });
-    proxy_response.addListener('end', function() {
-      response.end();
-    });
-    response.writeHead(proxy_response.statusCode, proxy_response.headers);
-  });
-  request.addListener('data', function(chunk) {
-    proxy_request.write(chunk, 'binary');
-  });
-  request.addListener('end', function() {
-    proxy_request.end();
-  });
-}).listen(8080);
+const cors = require("cors");
+const https = require("https");
+
+const path = require("path");
+//const bodyParser = require('body-parser');
+const http = require("http").Server(app);
+
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
+app.use(express.json({ limit: "50mb" }));
+//app.use(express.urlencoded({limit: '50mb'}));
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  console.log(req.method + req.url);
+  next();
+});
+
+/**
+ * Api require Modules Name
+ * @type {string}
+ */
+
+const registerPage = require("./modules/registration/registration");
+app.post("/register", registerPage);
+
+const loginPage = require("./modules/login/login");
+app.post("/login", loginPage);
+
+const users = require("./modules/users/users");
+app.get("/users", users);
+const editprofile = require("./modules/editprofile/editprofile");
+app.post("/editprofile", editprofile);
+
+const followers = require("./modules/follow/follow");
+app.post("/follow", followers);
+const unfollow = require("./modules/follow/unfollow");
+app.post("/unfollow", unfollow);
+const getProfile = require("./modules/editprofile/fetchprofile");
+app.get("/profile", getProfile);
+http.listen(3001, function () {
+  console.log("listening on *:4000");
+});
