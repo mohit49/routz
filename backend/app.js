@@ -1,26 +1,21 @@
 var http = require('http');
 
-http.createServer(onRequest).listen(80);
-
-function onRequest(client_req, client_res) {
-  console.log('serve: ' + client_req.url);
-
-  var options = {
-    hostname: '82.180.137.231',
-    port: 3005,
-    path: client_req.url,
-    method: client_req.method,
-    headers: client_req.headers
-  };
-
-  var proxy = http.request(options, function (res) {
-    client_res.writeHead(res.statusCode, res.headers)
-    res.pipe(client_res, {
-      end: true
+http.createServer(function(request, response) {
+  var proxy = http.createClient(80, request.headers['host'])
+  var proxy_request = proxy.request(request.method, request.url, request.headers);
+  proxy_request.addListener('response', function (proxy_response) {
+    proxy_response.addListener('data', function(chunk) {
+      response.write(chunk, 'binary');
     });
+    proxy_response.addListener('end', function() {
+      response.end();
+    });
+    response.writeHead(proxy_response.statusCode, proxy_response.headers);
   });
-
-  client_req.pipe(proxy, {
-    end: true
+  request.addListener('data', function(chunk) {
+    proxy_request.write(chunk, 'binary');
   });
-}
+  request.addListener('end', function() {
+    proxy_request.end();
+  });
+}).listen(8080);
