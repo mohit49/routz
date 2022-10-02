@@ -21,7 +21,7 @@ export function App() {
       {loginState && <Header />}
       <div>{process.env.ENVIROMENT}</div>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
       </Routes>
