@@ -28,4 +28,9 @@ module.exports = {
     ],
   },
   plugins: [new MiniCssExtractPlugin(), new Dotenv()],
+   performance: {
+        hints: false,
+        maxEntrypointSize: 512000,
+        maxAssetSize: 512000
+    }
 };

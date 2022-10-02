@@ -7,7 +7,11 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "serve:local": "webpack serve --config webpack.config.local.js",
+    "serve:prod": "webpack serve --config webpack.config.prod.js",
+    "build": "webpack --mode development",
+    "build:prod": "webpack --mode production --config webpack.config.prod.js",
+    "build:local": "webpack --mode production --config webpack.config.local.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,7 +26,8 @@
     "react-dom": "^18.2.0",
     "react-facebook-login": "^4.1.1",
     "react-geocode": "^0.2.3",
-    "react-router-dom": "^6.4.1"
+    "react-router-dom": "^6.4.1",
+    "webpack-merge": "^5.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
