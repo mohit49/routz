@@ -71,6 +71,7 @@ router.post("/register", async (req, res) => {
           return false;
         }
       } else {
+        console.log('here')
         const registerUsers = new Register({
           name: req.body.name,
           username: req.body.username.toLowerCase(),
