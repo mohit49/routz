@@ -8,6 +8,7 @@ const Register = require("../../scemas/registration");
 const UpdateprofileData = require("../../scemas/profileinfo");
 const accessTokenSecret = "NOTESAPI";
 router.post("/register", async (req, res) => {
+  console.log('post')
   try {
     const emailRegex = /[a-z0-9]+@[a-z]+.[a-z]{2,3}/;
     const phoneNumRegex =
