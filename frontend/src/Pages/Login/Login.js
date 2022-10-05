@@ -49,7 +49,7 @@ function Login() {
   return (
     <div className="login_con shadow-lg  bg-white">
       <Col md={7} className="login_banner">
-        <h1>Meet on Road</h1>
+        <h1>Meet on Road w</h1>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
