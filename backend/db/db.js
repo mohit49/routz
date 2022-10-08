@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://mohit:mohit9313@mongodb://127.0.0.1:27017/routz?retryWrites=true&w=majority',{
+mongoose.connect('mongodb://mohit:mohit9313@127.0.0.1:27017/routz?retryWrites=true&w=majority',{
     useNewUrlParser:true,
     useUnifiedTopology:true,
    
