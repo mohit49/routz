@@ -8,10 +8,6 @@ app.post('/register',function(req,res){
 });
 
 
-const server = http.createServer(function(req, res) {
-
-    
-});
 
 http.listen(3004, function() {
   console.log("listening on *:4000");
