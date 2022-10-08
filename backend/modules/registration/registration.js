@@ -19,11 +19,7 @@ router.post("/register", async (req, res) => {
       companyname: req.body.companyname,
       password: req.body.password,
     });
-    const updateprofileData = new UpdateprofileData({
-      name: req.body.name,
-      username: req.body.username.toLowerCase(),
-      companyinfo: req.body.companyname,
-    });
+
     console.log(registerUsers);
     const userData = await registerUsers.save();
     const pdata = await updateprofileData.save();
