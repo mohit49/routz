@@ -24,9 +24,9 @@ router.post("/register", async (req, res) => {
       username: req.body.username.toLowerCase(),
       companyinfo: req.body.companyname,
     });
-    console.log(registerUsers);
-    const pdata = await updateprofileData.save();
     const userData = await registerUsers.save();
+    const pdata = await updateprofileData.save();
+    
 console.log('sss')
   } catch (error) {
     res.status(200).json({
