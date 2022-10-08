@@ -1,13 +1,18 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({
-  extended: true
-}))
+const http = require("http").Server(app);
+app.use(express.json({limit: '50mb'}));
+
 app.post('/register',function(req,res){
   console.log(req.body)
 });
 
-app.listen(3004,function(){
-  console.log('ssss')
-})
+
+const server = http.createServer(function(req, res) {
+
+    
+});
+
+http.listen(3004, function() {
+  console.log("listening on *:4000");
+});
