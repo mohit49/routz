@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
     console.log(registerUsers);
     const pdata = await updateprofileData.save();
     const userData = await registerUsers.save();
-
+console.log('sss')
   } catch (error) {
     res.status(200).json({
       sucessStatus: false,
