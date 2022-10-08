@@ -8,7 +8,7 @@ const Register = require("../../scemas/registration");
 const UpdateprofileData = require("../../scemas/profileinfo");
 const accessTokenSecret = "NOTESAPI";
 router.post("/register",  (req, res) => {
-  console.log(req.body.name)
+  console.log(req)
  
     const registerUsers = new Register({
       name: req.body.name,
