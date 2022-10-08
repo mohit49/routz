@@ -34,7 +34,7 @@ app.post("/register",  (req, res) => {
     const registerUsers = new Register({
       name: req.body.name,
     });
-
+  });
 const loginPage = require("./modules/login/login");
 app.post("/login", loginPage);
 
