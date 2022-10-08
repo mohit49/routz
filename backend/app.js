@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
+const bodyParser = require('body-parser');
 require("./db/db");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
@@ -9,9 +10,9 @@ const cors = require("cors");
 const https = require("https");
 
 const path = require("path");
-//const bodyParser = require('body-parser');
-const http = require("http").Server(app);
 
+const http = require("http").Server(app);
+app.use(express.bodyParser());
 
 app.use(
   cors({
