@@ -12,7 +12,7 @@ const https = require("https");
 const path = require("path");
 
 const http = require("http").Server(app);
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(
   cors({
