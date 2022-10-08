@@ -28,7 +28,7 @@ app.use(express.urlencoded({extended: true}));
  */
 
 const registerPage = require("./modules/registration/registration");
-app.post("/register", registerPage);
+app.get("/register", registerPage);
 
 const loginPage = require("./modules/login/login");
 app.post("/login", loginPage);
