@@ -8,6 +8,6 @@ mongoose.connect('mongodb+srv://mohit:mohit9313@mongodb://127.0.0.1:27017/routz?
 }).catch((e)=>{
     console.log(e)
 })
-mongodb://127.0.0.1:27017/routz
+//mongodb://127.0.0.1:27017/routz
 
 
