@@ -12,7 +12,7 @@ const https = require("https");
 const path = require("path");
 
 const http = require("http").Server(app);
-app.use(bodyParser.urlencoded({extended: true}));
+
 
 app.use(
   cors({
@@ -20,9 +20,9 @@ app.use(
     credentials: true,
   })
 );
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({ limit: "50mb" }));
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
