@@ -12,6 +12,7 @@ const path = require("path");
 //const bodyParser = require('body-parser');
 const http = require("http").Server(app);
 
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -20,7 +21,7 @@ app.use(
 );
 
 app.use(express.json({ limit: "50mb" }));
-//app.use(express.urlencoded({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
 app.use(cookieParser());
 
 app.use((req, res, next) => {
