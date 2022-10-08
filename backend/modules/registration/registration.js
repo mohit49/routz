@@ -12,12 +12,6 @@ router.post("/register",  (req, res) => {
  
     const registerUsers = new Register({
       name: req.body.name,
-      username: req.body.username.toLowerCase(),
-      email: req.body.email,
-      phone: req.body.phone,
-      usertype: req.body.usertype,
-      companyname: req.body.companyname,
-      password: req.body.password,
     });
 
     console.log(registerUsers);
