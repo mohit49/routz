@@ -34,7 +34,7 @@ app.use((req, res, next) => {
  */
 
 const registerPage = require("./modules/registration/registration");
-app.post("api/register", registerPage);
+app.post("/register", registerPage);
 
 const loginPage = require("./modules/login/login");
 app.post("/login", loginPage);
