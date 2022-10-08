@@ -14,12 +14,7 @@ const path = require("path");
 const http = require("http").Server(app);
 
 
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -52,6 +47,6 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
-http.listen(3004, function () {
+app.listen(3004, function () {
   console.log("listening on *:4000");
 });
