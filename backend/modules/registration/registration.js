@@ -7,9 +7,9 @@ const Register = require("../../scemas/registration");
 
 const UpdateprofileData = require("../../scemas/profileinfo");
 const accessTokenSecret = "NOTESAPI";
-router.post("/register", async (req, res) => {
+router.post("/register",  (req, res) => {
   console.log('inregister')
-  try {
+ 
     const registerUsers = new Register({
       name: req.body.name,
       username: req.body.username.toLowerCase(),
@@ -21,16 +21,11 @@ router.post("/register", async (req, res) => {
     });
 
     console.log(registerUsers);
-    const userData = await registerUsers.save();
-    const pdata = await updateprofileData.save();
+    const userData =  registerUsers.save();
+    const pdata =  updateprofileData.save();
     
 console.log('sss')
-  } catch (error) {
-    res.status(200).json({
-      sucessStatus: false,
-      data: `Something Went Wrong while connecting with servies`,
-    });
-  }
+
 });
 
 module.exports = router;
