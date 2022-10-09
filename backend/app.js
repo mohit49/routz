@@ -14,7 +14,7 @@ const http = require("http").Server(app);
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://82.180.137.231/",
     credentials: true,
   })
 );
