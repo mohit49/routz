@@ -45,7 +45,7 @@ function Register() {
           setLoading(false);
           if (!response.data.sucessStatus) {
             setError(true);
-            setMessage(response.data.data);
+            setMessage(response.data.error);
           } else {
             setError(false);
             setMessage("");
