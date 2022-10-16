@@ -65,7 +65,7 @@ function Profile() {
   })
   return (
     
-    <>
+    <Container>
     
     {loading  && <div className="loading-con"><Spinner style={{color: "#0d6efd"}}
                   as="span"
@@ -141,7 +141,7 @@ function Profile() {
         </Row>
       </Container> }
       <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo  handleCloseModal={handleClose} setUpdateProfileStatus={setUpdateProfileStatus} distance={profileData?.kms} location={city +","+ state + "," + country} bikeInfo={profileData?.bikeinfo}/>} modalHeading="Update Profile Informations"/>
-    </>
+    </Container>
   );
 }
 

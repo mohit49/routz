@@ -19,7 +19,7 @@ export function App() {
   return (
     <Data.Provider value={webStore}>
       {loginState && <Header />}
-      <div>{process.env.ENVIROMENT}</div>
+     
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
