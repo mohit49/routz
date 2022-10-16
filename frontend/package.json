@@ -8,7 +8,7 @@
   "start_url": ".",
   "scripts": {
     "serve": "webpack serve --mode development",
-    "serve:local": "webpack serve --config webpack.config.local.js",
+    "serve:local": "webpack serve  --mode development --config webpack.config.local.js",
     "serve:prod": "webpack serve --config webpack.config.prod.js",
     "build": "webpack --mode development",
     "build:prod": "webpack --mode production --config webpack.config.prod.js",

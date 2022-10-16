@@ -5,12 +5,16 @@ import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 import GetLocation from '../GetLocation';
-function EditInfo() {
+const EditProfileApi = process.env.REACT_BASE_API_URL + process.env.REACT_APP_EDIT_PROFILE
+function EditInfo({distance,location,bikeInfo,setUpdateProfileStatus, handleCloseModal}) {
     const getLocation = GetLocation()
     const [loading, setLoading] = useState();
     const [authToken, setAuthToken] = useState();
     const [geolocation, setGeolocation] = useState(true);
     const [position, setPosition] = useState();
+    const [bikeName, setBikeName] = useState();
+    const [profilesucess, setProfilesucess] = useState(false);
+    const [distanceCoverd, setdistanceCoverd] = useState();
 const checkGeolocation =  () =>{
      if(!geolocation) {
        
@@ -30,6 +34,28 @@ const checkGeolocation =  () =>{
 
 }
 
+const updateProfile = (e)  =>{
+ e.preventDefault();
+ setProfilesucess(true);
+const city = position?.city;
+const state = position?.state;
+const country = position?.country;
+console.log(bikeName, distanceCoverd)
+
+axios.post(EditProfileApi, {
+  bikeinfo: bikeName,
+  kms: distanceCoverd,
+  location: position
+},
+  { withCredentials: true })
+        .then(function (response) {
+          setUpdateProfileStatus(true);
+          handleCloseModal();
+          setProfilesucess(false);
+        });
+
+}
+
    
 
 
@@ -38,14 +64,16 @@ const checkGeolocation =  () =>{
 
   return (
     <Form>
+      {profilesucess && <Spinner style={{color: "#0d6efd"}} as="span" animation="grow" size="lg" role="status" aria-hidden="true"/>}
+      {!profilesucess && <>
       <Form.Group className="mb-3" controlId="formBikeName">
         <Form.Label>Bike Name</Form.Label>
-        <Form.Control type="text" placeholder="Bike Name" />
+        <Form.Control type="text" placeholder="Bike Name" value={bikeName ? bikeName : bikeInfo } onChange={(e)=>setBikeName(e.target.value)}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formDistabceCoverd">
       <Form.Label>Distance Covered</Form.Label>
-        <Form.Control type="text" placeholder="Distance Coverd" />
+        <Form.Control type="text" placeholder="Distance Coverd" value={distanceCoverd ? distanceCoverd : distance}  onChange={(e)=>setdistanceCoverd(e.target.value)}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCity">
       <Form.Check 
@@ -77,9 +105,12 @@ const checkGeolocation =  () =>{
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" onClick={updateProfile}>
         Submit
       </Button>
+      </>
+      }
+     
     </Form>
   )
 }

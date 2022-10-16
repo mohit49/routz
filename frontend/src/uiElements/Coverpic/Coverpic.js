@@ -4,7 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import { Data } from "../../App";
 import Container from "react-bootstrap/Container";
-function Coverpic() {
+function Coverpic({city,state,country}) {
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
 
@@ -19,9 +19,9 @@ function Coverpic() {
             </div>
             <div className="profile-name">
               <h4>
-                {profileData.name} ({profileData.username})
+                {profileData.name} ({profileData.username}) <p style={{fontSize: 14 + 'px'}}> {city}</p>
               </h4>
-              <p>{profileData.location}</p>
+              <p></p>
             </div>
           </div>
           <div className="user-info">

@@ -21,7 +21,10 @@ function Profile() {
   const [show,setShow] = useState(false);
  const [loading, setLoading] = useState();
   const handleClose = () => setShow(false)
-  
+  const [city, setCity] = useState();
+    const [country, setCountry] = useState();
+    const [profileStatus, setUpdateProfileStatus] = useState(false);
+    const [state, setState] = useState();
   let navigate = useNavigate();
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
@@ -36,19 +39,25 @@ function Profile() {
         }
         if (response.data.data == "loginError") {
           console.log(response.data.data);
+         
           setLoading(false);
           setLoginState(false);
           navigate("/login");
         } else {
+          console.log(response.data.data)
+       
           setLoading(false);
           setLoginState(true);
+          setCountry(response?.data?.data?.location?.country);
+          setCity(response?.data?.data?.location?.city);
+          setState(response?.data?.data?.location?.state);
           setProfileData(response.data.data);
         }
       })
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [loginState, profileStatus]);
 
   const openModal = (()=>{
     setShow(true)
@@ -65,7 +74,7 @@ function Profile() {
                   role="status"
                   aria-hidden="true"
                 /></div> }
-     {!loading && <Coverpic /> }
+     {!loading && <Coverpic city={city} state={state}  country={country} /> }
      {!loading &&  <Container className="p-0 mtop">
         <Row>
           <Col md={3}>
@@ -74,32 +83,46 @@ function Profile() {
               border="light"
               style={{ width: "100%" }}
             >
+              {profileData &&
               <Card.Body>
+               
                 <Card.Title>About</Card.Title>
-                <Card.Text
-                  dangerouslySetInnerHTML={{ __html: profileData.about }}
-                ></Card.Text>
-                <Card.Text>
+              
+                  <Card.Text
+                  dangerouslySetInnerHTML={{ __html: profileData?.about }}
+                  ></Card.Text>
+                  <Card.Text>
                   <p>
-                    <strong>Bike Info :</strong> {profileData.bikeinfo}
+                  <strong>Bike Info :</strong> {profileData?.bikeinfo}
                   </p>
-             
-                </Card.Text>
-                     <p>
-                    <strong>Distance Covered :</strong> {profileData.kms}
-                  </p>
+
+                  </Card.Text>
                   <p>
-                    <strong>Location :</strong> {profileData.ridingsince}
+                  <strong>Distance Covered :</strong> {profileData?.kms}
                   </p>
                   <p>
-                    <strong>Company :</strong> {profileData.companyinfo}
+                  
+                  <strong>Location :</strong> {`${city} , ${state}, ${country}`}
                   </p>
+                
+
+                  <p>
+                  <strong>Company :</strong> {profileData?.companyinfo}
+                  </p>
+                 
+                
+              
+                
+              
                 <Button variant="primary" onClick={openModal} >Edit Info</Button>
+                
               </Card.Body>
+              }
             </Card>
           </Col>
           <Col md={7}>
-            <ProfileData />
+            {//<ProfileData />
+            }
           </Col>
           <Col>
             <Card className="shadow-sm  mb-2 bg-white rounded" border="light">
@@ -117,7 +140,7 @@ function Profile() {
           </Col>
         </Row>
       </Container> }
-      <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo/>} modalHeading="Update Profile Informations"/>
+      <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo  handleCloseModal={handleClose} setUpdateProfileStatus={setUpdateProfileStatus} distance={profileData?.kms} location={city +","+ state + "," + country} bikeInfo={profileData?.bikeinfo}/>} modalHeading="Update Profile Informations"/>
     </>
   );
 }
