@@ -31,7 +31,7 @@ const info = new mongoose.Schema({
     type: String,
   },
   coverpic: {
-    type: String,
+    type: Object,
   },
   location: {
     type: Object,
