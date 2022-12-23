@@ -10,7 +10,7 @@
     border-radius: 15px;
     overflow: hidden;
     margin-top: 30px;
-    background-position: center;
+    background-position: center top;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
@@ -71,6 +71,24 @@ padding: 20px;
 flex-direction: row;
 align-items: end;
 justify-content: space-between;
+@media only screen and (max-width: 600px) {
+    & {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+             .userProfile {
+            width: 100%;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+    
+    }
+  }
 
     }
     .userProfile {
@@ -88,8 +106,8 @@ justify-content: space-between;
         position: absolute;
         width: 35px;
     height: 35px;
-    top: 20px;
-    left: 25px;
+    top: 90px;
+    left: 50px;
         border-radius: 50%;
         display: flex;
         justify-content: space-around;
@@ -116,6 +134,8 @@ justify-content: space-between;
     }
     }
     .profile-image {
+        border: 6px #ffffff solid;
+
         width: 150px;
         height: 150px;
         border-radius: 50%;

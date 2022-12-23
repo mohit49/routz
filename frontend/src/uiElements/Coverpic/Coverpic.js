@@ -127,7 +127,7 @@ function Coverpic({ city, state, country }) {
             shape='rect'
             aspect={16 / 9}
             rotate
-            quality={0.8}
+            quality={1}
             grid={true}>
             <Upload fileList={fileListCoverPic} onChange={onChangeCoverPic}>
               <label class='iconEdit'>
@@ -138,7 +138,9 @@ function Coverpic({ city, state, country }) {
         </div>
         <div className='coverContent'>
           <div className='userProfile'>
-            <ImgCrop rotate quality={0.8} grid={true}>
+  
+            <div className='profile-image'>
+            <ImgCrop rotate quality={1} grid={true}>
               <Upload
                 fileList={fileListProfilePic}
                 onChange={onChangeProfilePic}>
@@ -147,7 +149,6 @@ function Coverpic({ city, state, country }) {
                 </label>
               </Upload>
             </ImgCrop>
-            <div className='profile-image'>
               {profileData?.profilepic && (
                 <img
                   src={
