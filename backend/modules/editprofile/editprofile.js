@@ -8,7 +8,7 @@ var multer  = require('multer')
 var fs = require('fs');
 const fileStorageEngine = multer.diskStorage({
   destination:(req,file,cb) =>{
-console.log(file.originalname + 'file-name')
+
   const path = `./images/profile_pic/${file.originalname.split('.')[0]}`
       fs.mkdirSync(path, { recursive: true })
       return cb(null, path)
@@ -23,7 +23,7 @@ router.post("/editprofile", authenticateJWT, upload.single('image'), async (req,
 
 
 
-  console.log(req.file.filename)
+
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
   const userExist = await Profileinfo.findOne(
     { username: username.username },
