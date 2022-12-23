@@ -8,7 +8,8 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const cors = require("cors");
 const https = require("https");
 
-const path = require("path");
+const path = require('path')
+app.use('/images', express.static(path.join(__dirname, 'images')))
 //const bodyParser = require('body-parser');
 const http = require("http").Server(app);
 
@@ -32,7 +33,7 @@ app.use((req, res, next) => {
  * Api require Modules Name
  * @type {string}
  */
-
+app.use(express.static(__dirname + '/images'));
 const registerPage = require("./modules/registration/registration");
 app.post("/register", registerPage);
 

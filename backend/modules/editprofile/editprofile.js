@@ -4,9 +4,26 @@ const router = express.Router();
 const Register = require("../../scemas/registration");
 const Profileinfo = require("../../scemas/profileinfo");
 const authenticateJWT = require("../../middleware/auth");
+var multer  = require('multer')
+var fs = require('fs');
+const fileStorageEngine = multer.diskStorage({
+  destination:(req,file,cb) =>{
+console.log(file.originalname + 'file-name')
+  const path = `./images/profile_pic/${file.originalname.split('.')[0]}`
+      fs.mkdirSync(path, { recursive: true })
+      return cb(null, path)
+  },
+  filename:(req,file,cb) =>{
+      cb(null,Date.now() + '_' + file.originalname)
+  }
 
-router.post("/editprofile", authenticateJWT, async (req, res) => {
+})
+const upload = multer({storage: fileStorageEngine});
+router.post("/editprofile", authenticateJWT, upload.single('image'), async (req, res, next) => {
 
+
+
+  console.log(req.file.filename)
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
   const userExist = await Profileinfo.findOne(
     { username: username.username },
@@ -23,10 +40,11 @@ router.post("/editprofile", authenticateJWT, async (req, res) => {
           about: req.body.about,
           followers: req.body.followers,
           kms: req.body.kms,
-          profilepic: req.body.profilepic,
+          profilepic: req.file,
           coverpic: req.body.coverpic,
           ridingsince: req.body.ridingsince,
           location: req.body.location,
+          intro: req.body.intro,
         },
       }
     );

@@ -25,7 +25,7 @@ const info = new mongoose.Schema({
     type: String,
   },
   profilepic: {
-    type: String,
+    type: Object,
   },
   ridingsince: {
     type: String,
@@ -35,6 +35,9 @@ const info = new mongoose.Schema({
   },
   location: {
     type: Object,
+  },
+  intro: {
+    type: String,
   },
 });
 

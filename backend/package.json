@@ -13,6 +13,7 @@
     "mongodb": "^4.9.1",
     "mongoose": "^6.6.1",
     "morgan": "^1.10.0",
+    "multer": "*",
     "nodemon": "^2.0.20"
   },
   "name": "backend",
