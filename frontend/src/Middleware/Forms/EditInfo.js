@@ -6,7 +6,7 @@ import { Spinner } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
 import GetLocation from '../GetLocation';
 const EditProfileApi = process.env.REACT_BASE_API_URL + process.env.REACT_APP_EDIT_PROFILE
-function EditInfo({distance,location,bikeInfo,setUpdateProfileStatus, handleCloseModal}) {
+function EditInfo({distance,location,bikeInfo,setUpdateProfileStatus, resIntro, handleCloseModal}) {
     const getLocation = GetLocation()
     const [loading, setLoading] = useState();
     const [authToken, setAuthToken] = useState();
@@ -15,6 +15,7 @@ function EditInfo({distance,location,bikeInfo,setUpdateProfileStatus, handleClos
     const [bikeName, setBikeName] = useState();
     const [profilesucess, setProfilesucess] = useState(false);
     const [distanceCoverd, setdistanceCoverd] = useState();
+    const [intro, setIntro] = useState();
 const checkGeolocation =  () =>{
      if(!geolocation) {
        
@@ -45,7 +46,8 @@ console.log(bikeName, distanceCoverd)
 axios.post(EditProfileApi, {
   bikeinfo: bikeName,
   kms: distanceCoverd,
-  location: position
+  location: position,
+  intro: intro
 },
   { withCredentials: true })
         .then(function (response) {
@@ -66,6 +68,10 @@ axios.post(EditProfileApi, {
     <Form>
       {profilesucess && <Spinner style={{color: "#0d6efd"}} as="span" animation="grow" size="lg" role="status" aria-hidden="true"/>}
       {!profilesucess && <>
+        <Form.Group className="mb-3" controlId="formBikeName">
+        <Form.Label>Your introduction</Form.Label>
+        <Form.Control as="textarea" rows={3}  value={intro } defaultValue={resIntro}  onChange={(e)=>setIntro(e.target.value)}/>
+      </Form.Group>
       <Form.Group className="mb-3" controlId="formBikeName">
         <Form.Label>Bike Name</Form.Label>
         <Form.Control type="text" placeholder="Bike Name" value={bikeName ? bikeName : bikeInfo } onChange={(e)=>setBikeName(e.target.value)}/>
@@ -102,9 +108,7 @@ axios.post(EditProfileApi, {
       </Form.Group>
 }
 
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+      
       <Button variant="primary" type="submit" onClick={updateProfile}>
         Submit
       </Button>

@@ -52,6 +52,8 @@ function Profile() {
           setCity(response?.data?.data?.location?.city);
           setState(response?.data?.data?.location?.state);
           setProfileData(response.data.data);
+         
+          
         }
       })
       .catch(function (error) {
@@ -89,8 +91,9 @@ function Profile() {
                 <Card.Title>About</Card.Title>
               
                   <Card.Text
-                  dangerouslySetInnerHTML={{ __html: profileData?.about }}
+                  dangerouslySetInnerHTML={{ __html: profileData?.intro }}
                   ></Card.Text>
+                  <hr/>
                   <Card.Text>
                   <p>
                   <strong>Bike Info :</strong> {profileData?.bikeinfo}
@@ -140,7 +143,7 @@ function Profile() {
           </Col>
         </Row>
       </Container> }
-      <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo  handleCloseModal={handleClose} setUpdateProfileStatus={setUpdateProfileStatus} distance={profileData?.kms} location={city +","+ state + "," + country} bikeInfo={profileData?.bikeinfo}/>} modalHeading="Update Profile Informations"/>
+      <ModalBox  show={show}  handleCloseModal={handleClose} content={<EditInfo  handleCloseModal={handleClose} setUpdateProfileStatus={setUpdateProfileStatus} distance={profileData?.kms} location={city +","+ state + "," + country} resIntro={profileData?.intro} bikeInfo={profileData?.bikeinfo}/>} modalHeading="Update Profile Informations"/>
     </Container>
   );
 }
