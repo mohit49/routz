@@ -1,0 +1,46 @@
+.ant-carousel {
+.slider-home {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  align-items: center;
+  padding: 8px;
+  
+.slider-con-inner {
+    display: flex !important;
+    align-items: center ;
+    .contentContainer {
+        position: absolute;
+        width: 100%;
+        margin: 0px 0px 0px 30px;
+        h2 {
+            color: #ffffff;
+            font-size: 50px;
+        }
+        p {
+            font-size: 16px;
+            color: #ffffff;
+            width: 600px;
+        }
+       
+      }
+}
+
+  .imageSlider {
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+    .slick-dots {
+      margin-bottom: 10px;
+    }
+  
+}
+}
