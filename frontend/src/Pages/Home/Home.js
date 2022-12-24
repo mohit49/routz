@@ -7,6 +7,7 @@ import { Data } from "../../App";
 import "../Home/Home.scss";
 import Container from "react-bootstrap/Container";
 import Slider from "../../uiElements/Slider/Slider";
+import LatestEvents from "../../Component/LatestEvents/LatestEvents";
 import Banner1  from "../../assets/images/banner1.jpg";
 import Banner2  from "../../assets/images/banner2.jpg";
 import Banner3  from "../../assets/images/banner3.jpg";
@@ -57,9 +58,16 @@ const sliderItem = {
     },
 }
   return (
+    <>
     <Container>
       <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
+
     </Container>
+     <Container className="bgChange" fluid>
+   <LatestEvents/>
+     
+   </Container>
+   </>
   );
 }
 

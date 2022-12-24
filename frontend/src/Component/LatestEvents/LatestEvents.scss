@@ -1,0 +1,38 @@
+.content-area-latest-ride {
+    h3 {
+        font-size: 22px;
+        color: #6C8098;
+        font-weight: lighter;
+    }
+    .card-contaner {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: row;
+        .ant-card {
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            overflow: hidden;
+            border-radius: 8px;
+            margin: 10px;
+            .duration {
+                margin: 0;
+                
+
+            }
+            .organizer {
+                margin: 0;
+                font-weight: bold;
+            }
+            h4 {
+                margin: 0;
+                font-size: 18px;
+            }
+            .buttonCard {
+                margin-top: 10px;
+            }
+        }
+        .sliderAdd {
+            width: 240px;
+            margin: 10px;
+        }
+    }
+}
