@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/index.js',
   target: ["web", 'es5'],
   output: {
-    path: path.join(__dirname, "/src"),
+    path: path.join(__dirname, "/dist"),
     filename: "index.bundle.js",
     publicPath: '/'
   },
@@ -17,17 +17,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(jpe?g|gif|png|svg)$/i,
-        use: [
-        {
-          loader: 'url-loader',
-          options: {
-            limit: 10000
-          }
-        }
-      ]
-    },
+      
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -53,6 +43,34 @@ module.exports = {
             }
           }
       }]
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              query: {
+                name:'assets/images/[name].[ext]'
+              }
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              query: {
+                mozjpeg: {
+                  progressive: true,
+                },
+                gifsicle: {
+                  interlaced: true,
+                },
+                optipng: {
+                  optimizationLevel: 7,
+                }
+              }
+            }
+          }]
       }
     ],
   },
