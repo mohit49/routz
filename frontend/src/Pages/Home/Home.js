@@ -59,7 +59,7 @@ const sliderItem = {
 }
   return (
     <>
-    <Container>
+    <Container className="simpleSection">
       <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
 
     </Container>

@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import Slider from '../../uiElements/Slider/Slider';
 import cardCover from '../../assets/images/cardcover.jpg'
+import cardCover2 from '../../assets/images/cardcover2.jpg'
+import cardCover3 from '../../assets/images/cardcover3.jpg'
 import cardCoverAdd from '../../assets/images/add.jpg'
 import cardCoverAdd2 from '../../assets/images/add2.jpg'
 import cardCoverAdd3 from '../../assets/images/add3.jpg'
@@ -68,7 +70,7 @@ function LatestEvents() {
   <Card
     
     style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover} />}
+    cover={<img alt="example" src={cardCover3} />}
   >
     <h4>Ride To ladhak</h4>
     <p className='duration'>one week</p>
@@ -79,7 +81,7 @@ function LatestEvents() {
   <Card
     
     style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover} />}
+    cover={<img alt="example" src={cardCover2} />}
   >
     <h4>Ride To ladhak</h4>
     <p className='duration'>one week</p>
@@ -90,7 +92,7 @@ function LatestEvents() {
   <Card
     
     style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover} />}
+    cover={<img alt="example" src={cardCover3} />}
   >
     <h4>Ride To ladhak</h4>
     <p className='duration'>one week</p>
