@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Carousel } from 'antd';
 import Button from 'react-bootstrap/Button';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 function Slider({effect,items, autoPlay, dotPosition , className}) {
-    
+
+  
+  
   return (
     <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}>
    {Object.values(items).map((itemsVal, index)=>{
@@ -16,7 +19,13 @@ function Slider({effect,items, autoPlay, dotPosition , className}) {
       </Button>}
         </div>
        <div className='imageSlider'>
-        <img src={itemsVal.image}/>
+       <BrowserView>
+       <img src={itemsVal.image}/>
+       </BrowserView>
+     <MobileView>
+     <img src={itemsVal.img_mob}/>
+     </MobileView>
+       
        </div>
     </div>
    })}

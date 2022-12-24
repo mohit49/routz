@@ -10,6 +10,9 @@ import Slider from "../../uiElements/Slider/Slider";
 import Banner1  from "../../assets/images/banner1.jpg";
 import Banner2  from "../../assets/images/banner2.jpg";
 import Banner3  from "../../assets/images/banner3.jpg";
+import Banner1_mob  from "../../assets/images/banner1_mob.jpg";
+import Banner2_mob  from "../../assets/images/banner2_mob.jpg";
+import Banner3_mob  from "../../assets/images/banner3_mob.jpg";
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Home() {
@@ -18,6 +21,7 @@ function Home() {
 const sliderItem = {
     slide1:{
         'image': Banner1,
+        'img_mob':Banner1_mob,
         'cta': true,
         'ctaLink':'#',
         'ctaText':'Find Now',
@@ -29,6 +33,7 @@ const sliderItem = {
     },
     slide2:{
         'image':Banner2,
+        'img_mob':Banner2_mob,
         'cta': true,
         'ctaLink':'#',
         'ctaText':'Search Now',
@@ -40,6 +45,7 @@ const sliderItem = {
     },
     slide3:{
         'image':Banner3,
+        'img_mob':Banner3_mob,
         'cta': true,
         'ctaLink':'www.google.com',
         'ctaText':'Search Now',
