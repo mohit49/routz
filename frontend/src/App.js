@@ -6,6 +6,7 @@ import Header from "./includes/Header/Header";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
 import Profile from "./Pages/Profile/Profile";
+import CreateEvent from "./Pages/CreateEvent/CreateEvent";
 import Home from "./Pages/Home/Home";
 export const Data = createContext();
 export function App() {
@@ -26,6 +27,7 @@ export function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/create-events" element={<CreateEvent />} />
       </Routes>
     </Data.Provider>
   );

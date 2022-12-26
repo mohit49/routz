@@ -45,6 +45,9 @@ app.get("/users", users);
 const editprofile = require("./modules/editprofile/editprofile");
 app.post("/editprofile", editprofile);
 
+const createevent = require("./modules/createevent/createevent");
+app.post("/createevent", createevent);
+
 const followers = require("./modules/follow/follow");
 app.post("/follow", followers);
 const unfollow = require("./modules/follow/unfollow");

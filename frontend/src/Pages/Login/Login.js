@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,6 +20,9 @@ function Login() {
   const [loginName, setLoginName] = useState();
   const [password, setPassword] = useState();
   const { loginState, setLoginState } = useContext(Data);
+
+
+
   const submitForm = async (e) => {
     e.preventDefault();
     setLoading(!loading);

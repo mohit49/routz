@@ -18,6 +18,9 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@ckeditor/ckeditor5-build-classic": "^35.4.0",
+    "@ckeditor/ckeditor5-image": "^35.4.0",
+    "@ckeditor/ckeditor5-react": "^5.0.5",
     "@heroicons/react": "^2.0.13",
     "antd": "^4.24.1",
     "antd-img-crop": "^4.2.8",
@@ -29,6 +32,7 @@
     "less-loader": "^11.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
+    "react-bootstrap-editor": "*",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-facebook-login": "^4.1.1",
