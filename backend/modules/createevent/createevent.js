@@ -27,11 +27,10 @@ const upload = multer({storage: fileStorageEngine});
 router.post("/createevent", authenticateJWT, upload.single('image'),  async (req, res, next) => {
   console.log('requested')
   const createEventData = {
-    title: req.body.title,
-    eventduration: req.body.eventduration,
-    eventDiscription : req.body.eventDiscription
+   title: req.body.title,
+  eventduration: req.body.eventduration ,
+  eventDiscription : req.body.eventDiscription
   }
- 
 
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
   console.log(username)

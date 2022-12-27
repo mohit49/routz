@@ -4,6 +4,9 @@ import axios from "axios";
 import "../ViewEvent/ViewEvent.scss";
 import { Spinner } from "react-bootstrap";
 import { Routes, Route, useParams } from "react-router-dom";
+import { BuildingOfficeIcon , UserIcon , CheckIcon , CalendarIcon} from "@heroicons/react/24/solid";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
 function ViewEvent() {
   const [loading, setLoading] = useState(false);
@@ -50,9 +53,34 @@ function ViewEvent() {
       {!loading && (
         <div className='event-container'>
          <div className="event-cover-pic">
-          <img src={ process.env.REACT_BASE_API_URL + eventData?.eventcoverpic?.destination.split('.')[1] + '/' + eventData?.eventcoverpic?.filename}/>
+          <img src={ process.env.REACT_BASE_API_URL + eventData?.eventcoverpic?.destination.split('./')[1] + '/' + eventData?.eventcoverpic?.filename}/>
          </div>
+         <Row className="middleBadge">
+        <Col>
+        <div className="box-badge">  <span>  <BuildingOfficeIcon class='h-6 w-6 text-blue-500' /></span><span><p>Company</p>
+        <h4>{eventData?.creatorcompany}</h4></span>
         </div>
+        </Col>
+       
+        <Col> <div className="box-badge"> <span>  <UserIcon class='h-6 w-6 text-blue-500' /></span><span><p>Creator</p>
+        <h4> {eventData?.creatorname}</h4></span>
+        </div></Col>
+        <Col> <div className="box-badge"><span>  <CheckIcon class='h-6 w-6 text-blue-500' /></span><span><p>Registations Done</p>
+        <h4> 45</h4></span>
+        </div></Col>
+        <Col> <div className="box-badge"><span>  <CalendarIcon class='h-6 w-6 text-blue-500' /></span><span><p>Start Date</p>
+        <h4> 45</h4></span>
+        </div></Col>
+      </Row>
+      <Row className="middleBadge">
+      <Col>
+        <div className="box-badge textContent"   dangerouslySetInnerHTML={{__html: eventData.eventdiscription}}> 
+        </div>
+        </Col>
+       
+          </Row>
+        </div>
+       
       )}
     </Container>
   );
