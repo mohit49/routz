@@ -48,6 +48,9 @@ app.post("/editprofile", editprofile);
 const createevent = require("./modules/createevent/createevent");
 app.post("/createevent", createevent);
 
+const viewevent = require("./modules/createevent/fetchEvent");
+app.get("/viewevent/:eventName", viewevent);
+
 const followers = require("./modules/follow/follow");
 app.post("/follow", followers);
 const unfollow = require("./modules/follow/unfollow");

@@ -7,8 +7,8 @@ module.exports = {
   entry: './src/index.js',
   target: ["web", 'es5'],
   output: {
-    path: path.resolve('web'),
-    filename: 'index.bundle.js',
+    path: path.join(__dirname, "/dist"),
+    filename: "index.bundle.js",
     publicPath: '/'
   },
   devServer: {

@@ -1,0 +1,61 @@
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import axios from "axios";
+import "../ViewEvent/ViewEvent.scss";
+import { Spinner } from "react-bootstrap";
+import { Routes, Route, useParams } from "react-router-dom";
+import { Container } from "react-bootstrap";
+function ViewEvent() {
+  const [loading, setLoading] = useState(false);
+  const [eventData, setEventData] = useState(false);
+  const ViewEventApi =
+    process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
+  // We can call useParams() here to get the params,
+  // or in any child element as well!
+  let { eventName } = useParams();
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(
+        ViewEventApi + "/" + eventName,
+        { withCredentials: true },
+        {
+          eventId: eventName,
+        }
+      )
+      .then(function (response) {
+        setLoading(false);
+        setEventData(response.data.data);
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
+
+  return (
+    <Container>
+      {loading && (
+        <div className='loading-con'>
+          <Spinner
+            style={{ color: "#0d6efd" }}
+            as='span'
+            animation='grow'
+            size='lg'
+            role='status'
+            aria-hidden='true'
+          />
+        </div>
+      )}
+      {!loading && (
+        <div className='event-container'>
+         <div className="event-cover-pic">
+          <img src={ process.env.REACT_BASE_API_URL + eventData?.eventcoverpic?.destination.split('.')[1] + '/' + eventData?.eventcoverpic?.filename}/>
+         </div>
+        </div>
+      )}
+    </Container>
+  );
+}
+
+export default ViewEvent;
