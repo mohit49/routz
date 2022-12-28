@@ -102,7 +102,7 @@ function CreateEvent() {
       formData.append("userName", profileData._id);
       formData.append("eventCoverPic", true);
       formData.append("title",  reqData.title);
-      formData.append("eventduration",  reqData.eventduration);
+      formData.append("eventduration",  JSON.stringify(eventDuration));
       formData.append("eventDiscription",  reqData.eventDiscription);
       let imageNames = [];
       if (eventCoverPic) {
@@ -226,7 +226,7 @@ function CreateEvent() {
               <Form.Label>Upload Event Cover Picture</Form.Label>
               <ImgCrop
                 shape='rect'
-                aspect={21 / 9}
+                aspect={21 / 6}
                 rotate
                 quality={1}
                 grid={true}>

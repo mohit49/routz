@@ -31,7 +31,7 @@ router.post("/createevent", authenticateJWT, upload.single('image'),  async (req
   eventduration: req.body.eventduration ,
   eventDiscription : req.body.eventDiscription
   }
-
+console.log(req.body.eventduration)
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
   console.log(username)
   const CreateEvent = new CreateEvents({

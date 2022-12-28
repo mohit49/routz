@@ -1,53 +1,143 @@
+
+
 .event-container {
+   .event-cover-pic {
     width: 100%;
-    .event-cover-pic {
+    img {
         width: 100%;
-        border-radius: 10px;
-        overflow: hidden;
-        min-height:300px;
-        background: #ffffff;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        img {
-            width: 100%;
+    }
+   }
+   .bannerInfo {
+    padding: 15px;
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    p{
+        margin-bottom: 3px;
+    }
+    h1 {
+        color: #ffffff;
+        font-weight: bold;
+        margin: 10px 0px;
+        font-size: 30px;
+    }
+    a {
+        margin-top: 5px;
+    }
+   }
+   .middleBadge {
+    width: 100%;
+    padding: 20px;
+    background: #0d6efd;
+    display: flex;
+    flex-wrap: wrap;
+    .m-b-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .box-badge {
+        padding: 20px 0px;
+        
+    }
+    .items {
+        text-align: center;
+        width: 50%;
+        svg {
+            color: #ffffff;
+            width: 50px;
         }
     }
-    .middleBadge {
-        margin-top: 20px;
-        .box-badge {
-            background: #ffffff;
-            padding: 10px 30px;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            border-radius: 10px;
+    span {
+        p{
+            color: #ffffff;
+            font-size: 15px;
+        }
+        h4 {
+            font-weight: bold;
+            color: #ffffff;
+        }
+    }
+   }
+   .bottomeText {
+    padding: 15px;
+    background: #ffffff;
+   }
+   @media (min-width:1366px) {
+    .top-container {
+        position: relative;
+       height: 400px;
+       overflow: hidden;
+        background: #ffffff;
+        .bannerInfo{
+            position: absolute;
+            padding: 70px;
             display: flex;
-            flex-direction: row;
-            span {
-                padding: 10px;
-
-                color: #0d6efd;
+            top: 0;
+            background: no-repeat;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            z-index: 2;
+            h1 {
+                font-size: 50px;
             }
-            svg {
-                width: 38px;
-                color: #0d6efd;
-            }
-            p {
-                margin-bottom: 5px;
-                color: #0d6efd;
-            
-            }
-            h4 {
-                font-size: 18px;
-                margin-bottom: 0;
-                color: #0d6efd;
-            }
-            &.textContent {
-                display: inline-block;
-                color: #333333;
-                padding:30px;
-                 p{
-                    color: #333333;
-                    font-size: 16px;
-                 }
+            p{
+                text-align: left;
             }
         }
+    }
+    .event-cover-pic {
+        position: relative;
+        .overlay {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.6);
+            position: absolute;
+            z-index: 1;
+        }
+    }
+    .m-b-container {
+        margin: 0 auto;
+        width: 1280px;
+    }
+    .textContent {
+        width: 1280px;
+        margin: 0 auto;
+        padding: 50px 0px;
+    }
+    .bannerInfo {
+        padding:30px 0px;
+    }
+    .middleBadge { 
+        justify-content: space-around;
+        .items  {
+            width: 25%;
+            .box-badge {
+                display: flex;
+                flex-direction: row;
+                justify-content:center;
+                align-items: center;
+                span {
+                    margin: 5px;
+                    text-align: left;
+                    h4 {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        span {
+            p{
+             
+                font-size: 15px;
+                margin-bottom: 0;
+            }
+        }
+    }
     }
 }

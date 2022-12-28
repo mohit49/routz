@@ -5,7 +5,7 @@ const Createevent = require("../../scemas/createevent");
 
 const authenticateJWT = require("../../middleware/auth");
 
-router.get("/viewevent/:eventName", authenticateJWT, async (req, res) => {
+router.get("/viewevent/:eventName", async (req, res) => {
     
   const getEvent = await Createevent.findOne({ _id: req.params.eventName });
 
