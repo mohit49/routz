@@ -82,10 +82,23 @@
             align-items: flex-start;
             z-index: 2;
             h1 {
-                font-size: 50px;
+                font-size: 45px;
+                width: 600px;
+                text-align: left;
             }
             p{
                 text-align: left;
+                width: 600px;
+            }
+            a {
+                margin-top: 10px;
+            }
+            .banner-con {
+                width: 1280px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     }
@@ -120,7 +133,7 @@
             .box-badge {
                 display: flex;
                 flex-direction: row;
-                justify-content:center;
+                justify-content:flex-start;
                 align-items: center;
                 span {
                     margin: 5px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import { Result } from 'antd';
-function ResultGrid({status,title,subTitle}) {
+function ResultGrid({status,title,subTitle, href1, href2}) {
 
   return (
     <Result
@@ -9,8 +9,8 @@ function ResultGrid({status,title,subTitle}) {
     title={title}
     subTitle={subTitle}
     extra={[
-      <Button type="primary" key="console">
-        Go Console
+      <Button href={href1} type="primary" key="console">
+        View Event
       </Button>,
       <Button key="buy">Buy Again</Button>,
     ]}

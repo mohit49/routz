@@ -12,6 +12,7 @@ function ViewEvent() {
   const [oneApiCall , setOneApiCall] = useState(true) 
   const [loading, setLoading] = useState(true);
   const [eventData, setEventData] = useState(false);
+
   const [eventDuration, setEventDuration] = useState();
   const ViewEventApi =
     process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
@@ -48,7 +49,7 @@ function ViewEvent() {
         setOneApiCall(false)
         setLoading(false);
         setEventData(response.data.data);
-        
+     
         if(typeof(response.data.data.eventduration) == 'string') {
           var setDateFrom = JSON.parse(response.data.data.eventduration).From;
           var setDateTo = JSON.parse(response.data.data.eventduration).to;
@@ -101,9 +102,12 @@ function ViewEvent() {
           <img src={ process.env.REACT_BASE_API_URL + eventData?.eventcoverpic?.destination.split('./')[1] + '/' + eventData?.eventcoverpic?.filename}/>
          </div>
          <div className="bannerInfo">
+          <div className="banner-con">
           <p>Register Now</p>
           <h1>{eventData?.eventtitle}</h1>
+          <p>{eventData?.eventSubheading}</p>
           <Button href="#">Apply Now</Button>
+          </div>
          </div>
          </div>
          <div className="middleBadge">
@@ -115,7 +119,7 @@ function ViewEvent() {
         </div>
        
         <div className='items'> <div className="box-badge"> <span>  <UserIcon class='h-6 w-6 text-blue-500' /></span><span><p>City</p>
-        <h4> Delhi</h4></span>
+        <h4> {eventData?.city ? eventData.city.name : 'unknown'}</h4></span>
         </div></div>
         <div className='items'>  <div className="box-badge"><span>  <CalendarIcon class='h-6 w-6 text-blue-500' /></span><span><p>Start Date</p>
         <h4> {eventDuration?.from}</h4></span>

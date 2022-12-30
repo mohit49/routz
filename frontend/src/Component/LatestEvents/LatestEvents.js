@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../LatestEvents/LatestEvents.scss";
 import Button from 'react-bootstrap/Button';
 import Container from "react-bootstrap/Container";
@@ -11,7 +11,43 @@ import cardCoverAdd from '../../assets/images/add.jpg'
 import cardCoverAdd2 from '../../assets/images/add2.jpg'
 import cardCoverAdd3 from '../../assets/images/add3.jpg'
 import { Avatar, Card } from 'antd';
-function LatestEvents() {
+import GetLocation from '../../Middleware/GetLocation';
+import axios from 'axios';
+const viewEventApi = process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
+function LatestEvents () {
+const [userPosition, setUserPosition] = useState();
+const [eventduration, seteventduration] = useState();
+const [filter, setFilterDate] = useState();
+  const getLocation = GetLocation();
+
+
+  const getDay = (data) =>{
+    var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+    var d = new Date(data);
+    return days[d.getDay()];
+  } 
+  const getMonth =(data) =>{
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+  
+  const d = new Date(data);
+  return monthNames[d.getMonth()]; 
+  }
+
+
+
+  useEffect(()=>{
+    getLocation()
+    .then((position) => {
+     setUserPosition(position?.city)
+    })
+    .catch((err) => {
+     return err
+    });
+  },[])
+
+      
     const { Meta } = Card;
     const sliderItem = {
         slide1:{
@@ -51,55 +87,44 @@ function LatestEvents() {
             'btnSize':'md'
         },
     }
+
+    useEffect(()=>{
+      if(userPosition?.length > 0) {
+      axios
+      .get(
+        viewEventApi  + "/" + `search?city=${userPosition}&limit=4` 
+      )
+      .then(function (response) {
+        setFilterDate(response.data.data)
+
+      })
+    }
+    },[userPosition])
+
   return (
+
     <Container className='content-area-latest-ride'>
     
     <h3>View Latest Bike Riding Event in you area</h3>
     <div className='card-contaner'>
-    <Card
+   { filter && filter.map((ele,index)=>{
+    return  <Card
     
     style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover} />}
+    cover={<img alt="example" src={ process.env.REACT_BASE_API_URL + ele.eventcoverpic.destination +'/'+ ele.eventcoverpic.filename} />}
   >
-    <h4>Ride To ladhak</h4>
-    <p className='duration'>one week</p>
-    <p className='duration'>1st dec to 10 dec</p>
-    <p className='organizer'>JMD automobiles</p>
-    <Button href='#' variant='primary' size='md' className='buttonCard'>Book Now</Button>
+    <h4>{ele.eventtitle}</h4>
+ 
+    <p className='city'>{ele.city.name}</p>
+    <p className='organizer'>{ele.creatorcompany}</p>
+ <hr/>
+    <p className='duration'><b>From</b> {getDay(JSON.parse(ele.eventduration)?.From) + ' ' + new Date(JSON.parse(ele.eventduration)?.From).getDate() + ' ' + getMonth(JSON.parse(ele.eventduration)?.From) + ' ' + new Date(JSON.parse(ele.eventduration)?.From).getFullYear()} <b>to</b>  {getDay(JSON.parse(ele.eventduration)?.to) + ' ' + new Date(JSON.parse(ele.eventduration)?.to).getDate() + ' ' + getMonth(JSON.parse(ele.eventduration)?.to) + ' ' + new Date(JSON.parse(ele.eventduration)?.to).getFullYear()}</p>
+    <Button href={`event/${ele._id}`} variant='primary' size='md' className='buttonCard'>View Now</Button>
   </Card>
-  <Card
-    
-    style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover3} />}
-  >
-    <h4>Ride To ladhak</h4>
-    <p className='duration'>one week</p>
-    <p className='duration'>1st dec to 10 dec</p>
-    <p className='organizer'>JMD automobiles</p>
-    <Button href='#' variant='primary' size='md' className='buttonCard'>Book Now</Button>
-  </Card>
-  <Card
-    
-    style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover2} />}
-  >
-    <h4>Ride To ladhak</h4>
-    <p className='duration'>one week</p>
-    <p className='duration'>1st dec to 10 dec</p>
-    <p className='organizer'>JMD automobiles</p>
-    <Button href='#' variant='primary' size='md' className='buttonCard'>Book Now</Button>
-  </Card>
-  <Card
-    
-    style={{ width: 240 }}
-    cover={<img alt="example" src={cardCover3} />}
-  >
-    <h4>Ride To ladhak</h4>
-    <p className='duration'>one week</p>
-    <p className='duration'>1st dec to 10 dec</p>
-    <p className='organizer'>JMD automobiles</p>
-    <Button href='#' variant='primary' size='md' className='buttonCard'>Book Now</Button>
-  </Card>
+   })
+   
+}
+
 <div className='sliderAdd'>
   <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
   </div>
@@ -107,5 +132,6 @@ function LatestEvents() {
     </Container>
   )
 }
+
 
 export default LatestEvents

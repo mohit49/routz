@@ -25,11 +25,15 @@ filename:(req,file,cb) =>{
 });
 const upload = multer({storage: fileStorageEngine});
 router.post("/createevent", authenticateJWT, upload.single('image'),  async (req, res, next) => {
-  console.log('requested')
+  console.log(req)
+
   const createEventData = {
    title: req.body.title,
   eventduration: req.body.eventduration ,
-  eventDiscription : req.body.eventDiscription
+  eventDiscription : req.body.eventDiscription,
+  eventSubheading: req.body.eventSubheading,
+  city : JSON.parse(req.body.city),
+  state : JSON.parse(req.body.state)
   }
 console.log(req.body.eventduration)
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
@@ -42,7 +46,10 @@ console.log(req.body.eventduration)
     creatorcompany:username.companyname,
     eventdiscription: createEventData.eventDiscription,
     eventduration: createEventData.eventduration,
-    eventcoverpic:req.file
+    eventcoverpic:req.file,
+    city: JSON.parse(req.body.city),
+    state:JSON.parse(req.body.state),
+    eventSubheading: createEventData.eventSubheading
    
    
   });

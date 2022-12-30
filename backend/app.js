@@ -49,7 +49,11 @@ const createevent = require("./modules/createevent/createevent");
 app.post("/createevent", createevent);
 
 const viewevent = require("./modules/createevent/fetchEvent");
+const searchEvent = require("./modules/createevent/viewEvents");
+app.get("/viewevent/search", searchEvent);
 app.get("/viewevent/:eventName", viewevent);
+
+
 
 const followers = require("./modules/follow/follow");
 app.post("/follow", followers);
@@ -57,6 +61,8 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
+const uploadpostImage = require("./modules/uploadImage/uploadImage");
+app.post("/uploadpostImage", uploadpostImage);
 http.listen(3004, function () {
   console.log("listening on *:4000");
 });

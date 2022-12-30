@@ -31,7 +31,7 @@ useEffect(() => {
        
         setLoading(false);
         setLoginState(false);
-        navigate("/login");
+        //navigate("/login");
       } else {
         console.log(response.data.data)
      
@@ -51,7 +51,7 @@ useEffect(() => {
     <>
    
       {['sm'].map((expand) => (
-        <Navbar key={expand}  expand={expand} className="mb-3" bg="dark" variant="dark" sticky="top">
+        <Navbar key={expand}  expand={expand}  bg="dark" variant="dark" sticky="top">
           <Container >
             <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

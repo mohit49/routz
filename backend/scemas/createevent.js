@@ -23,12 +23,22 @@ const info = new mongoose.Schema({
   eventdiscription: {
     type: String,
   },
+  eventSubheading:{
+    type: String,
+  },
   eventduration: {
+    type: Object,
+  },
+  city: {
+    type: Object,
+  },
+  state: {
     type: Object,
   },
   eventcoverpic: {
     type: Object,
   }
+ 
 });
 
 const createeventInfo = new mongoose.model("Createevent", info);

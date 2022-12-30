@@ -15,15 +15,26 @@ import { PhotoIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import Banner3 from "../../assets/images/headingbanner.jpg";
 import dayjs from "dayjs";
+import { Select } from 'antd';
 import ResultGrid from "../../Component/ResultGrid/ResultGrid";
+import CountryStateCity from "../../Middleware/CountryStateCity/CountryStateCity";
+
 const createEventAPI =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_EVENT_API;
+  const imageUpload =
+  process.env.REACT_BASE_API_URL + process.env.REACT_APP_IMAGE_UPLOAD;
+
 function CreateEvent() {
   const [eventTitle, setEventTitle] = useState();
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
+  const [refetchcity, SetRefetchcity] = useState(false);
+  const [eventSubheading, setEventSubheading] = useState();
   const [eventDuration, setEventDuration] = useState({});
   const [loading, setLoading] = useState(false);
   const [eventDiscription, setEventDiscription] = useState(true);
   const [eventStatus, setEventStatus] = useState(false);
+  const [eventLink, setEventLink] = useState();
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
   const { RangePicker } = DatePicker;
@@ -97,13 +108,18 @@ function CreateEvent() {
         title: eventTitle,
         eventduration: eventDuration,
         eventDiscription: eventDiscription,
+        eventSubheading : eventSubheading
+      
       };
       var formData = new FormData();
       formData.append("userName", profileData._id);
       formData.append("eventCoverPic", true);
       formData.append("title",  reqData.title);
       formData.append("eventduration",  JSON.stringify(eventDuration));
+      formData.append("eventsubheading",  eventSubheading);
       formData.append("eventDiscription",  reqData.eventDiscription);
+      formData.append("state",  JSON.stringify(state));
+      formData.append("city",  JSON.stringify(city));
       let imageNames = [];
       if (eventCoverPic) {
         eventCoverPic.forEach((ele, index) => {
@@ -128,6 +144,8 @@ function CreateEvent() {
               title: eventTitle,
               eventduration: eventDuration,
               eventDiscription: eventDiscription,
+              state:  JSON.stringify(state),
+              city:  JSON.stringify(city),
             },
         { withCredentials: true }
       )
@@ -136,6 +154,7 @@ function CreateEvent() {
         if (!response.data.sucessStatus) {
 
         } else {
+          setEventLink(`event/${response.data.data._id}`)
           setLoading(false);
           setEventStatus(true)
         }
@@ -144,41 +163,57 @@ function CreateEvent() {
         console.log(error);
       });
   };
+  const onchangeState = (value) =>{
+    SetRefetchcity(true)
+    setState(value)
+
+  }
+  const onchangeCity =(value) =>{
+    setCity(value)
+  }
+  
+
 
   return (
     <>
   
   
-  <Container className="create-event-page">
+  <div className="create-event-page">
 
-      <div className='mainBanner'>
-        <div className='innerContent'>
+      <div className='mainBanner'  style={{background: `url(${Banner3})`}}>
+     <div className='innerContent'>
           <h2>Create Events</h2>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy
           </p>
         </div>
-        <img src={Banner3} />
+    
       </div>
-
+      <div className="creator-info" >
+       <p>
+          Event Creator <b>{profileData?.name}</b> from{" "}
+          <b>{profileData?.companyinfo}</b>
+        </p>
+       </div>
 
   {(loading && !eventStatus) && (
+     <div className='event-form'>
+     <div className='mn-continer'>
           <Spinner
             as='span'
             animation='grow'
-            size='sm'
+            size='xs'
             role='status'
             aria-hidden='true'
           />
+          </div></div>
         )}
   {(!loading && !eventStatus) && (
       <div className='event-form'>
-        <p>
-          Evant Creator <b>{profileData?.name}</b> from{" "}
-          <b>{profileData?.companyinfo}</b>
-        </p>
-        <hr />
+        <div className='mn-continer'>
+      
+        
         <br />
     
        
@@ -195,16 +230,47 @@ function CreateEvent() {
                 placeholder='Enter Title Of the Event'
               />
             </Form.Group>
+            <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Label>Enter Sub Heading : </Form.Label>
+              <Input
+                value={eventSubheading}
+                onChange={(e) => setEventSubheading(e.target.value)}
+                placeholder='Enter Event Sub Heading'
+              />
+            </Form.Group>
             <Form.Group className='mb-3' controlId='evenbtDuration'>
               <Form.Label>Enter Event Duration : </Form.Label>
               <RangePicker presets={rangePresets} onChange={onRangeChange} />
             </Form.Group>
+            <Form.Group className='mb-3' controlId='evenbtDuration'>
+              <Form.Label>Enter  State : </Form.Label>
+              <CountryStateCity type='state' query='IN'  setValues={onchangeState}/>
+              </Form.Group>
+              {refetchcity &&   <Form.Group className='mb-3' controlId='evenbtDuration'>
+              <Form.Label>Enter City : </Form.Label>
+              <CountryStateCity type='city' query='IN' query2={state?.isoCode} setValues={onchangeCity}/>
+            </Form.Group>}
+
+
+          
 
             <Form.Group className='mb-3' controlId='evenbtDiscription'>
-              <Form.Label>Enter Event Discription</Form.Label>
-              <CKEditor
+              <Form.Label>Enter Event Description</Form.Label>
+           <CKEditor
                 editor={ClassicEditor}
                 data='<p>Add event discription here</p>'
+                config={{
+                  ckfinder: {
+                    // Upload the images to the server using the CKFinder QuickUpload command
+                    // You have to change this address to your server that has the ckfinder php connector
+                    uploadUrl:
+                      `${imageUpload}?command=QuickUpload&type=Images&responseType=json`
+                  },
+                  headers: {
+                    "X-CSRF-TOKEN": "CSRF-Token",
+                    Authorization: "Bearer <JSON Web Token>"
+                  }
+                }}
                 onReady={(editor) => {
                   // You can store the "editor" and use when it is needed.
                   console.log("Editor is ready to use!", editor);
@@ -226,7 +292,7 @@ function CreateEvent() {
               <Form.Label>Upload Event Cover Picture</Form.Label>
               <ImgCrop
                 shape='rect'
-                aspect={21 / 6}
+                aspect={21 / 8}
                 rotate
                 quality={1}
                 grid={true}>
@@ -249,15 +315,17 @@ function CreateEvent() {
               </Button>
             </Form.Group>
           </Form>
-     
+     </div>
 
       </div>
   )}
 
             {(!loading && eventStatus) && (
-      <ResultGrid status='success' title={`Your Event ${eventTitle} is Sucessfully Created`} subTitle={`Clikc On Blow Link to visit you event`}/>
+               <div className='mn-continer'>
+      <ResultGrid status='success' href1={eventLink} title={`Your Event ${eventTitle} is Sucessfully Created`} subTitle={`Click On Blow Link to visit you event`}/>
+      </div>
          )}
-</Container>
+</div>
        
        
 
