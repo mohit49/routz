@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "http://82.180.137.231",
+  "proxy": "https://dev-bikers.space",
   "changeOrigin": true,
   "version": "1.0.0",
   "description": "",
