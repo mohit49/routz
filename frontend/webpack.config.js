@@ -2,14 +2,13 @@ const path = require("path");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Dotenv = require("dotenv-webpack");
-const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   target: ["web", 'es5'],
   output: {
-    path: path.resolve('dist'),
-    filename: 'index.bundle.js',
+    path: path.join(__dirname, "/dist"),
+    filename: "index.bundle.js",
     publicPath: '/'
   },
   devServer: {
@@ -72,37 +71,7 @@ module.exports = {
               }
             }
           }]
-      },
-      {
-        test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-        use: [ 'raw-loader' ]
-    },
-    {
-      test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-      use: [
-          {
-              loader: 'style-loader',
-              options: {
-                  injectType: 'singletonStyleTag',
-                  attributes: {
-                      'data-cke': true
-                  }
-              }
-          },
-          'css-loader',
-          {
-              loader: 'postcss-loader',
-              options: {
-                  postcssOptions: styles.getPostCssConfig( {
-                      themeImporter: {
-                          themePath: require.resolve( '@ckeditor/ckeditor5-theme-lark' )
-                      },
-                      minify: true
-                  } )
-              }
-          }
-      ]
-  }
+      }
     ],
   },
   plugins: [new MiniCssExtractPlugin(), new Dotenv() ],

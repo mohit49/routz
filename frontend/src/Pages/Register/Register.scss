@@ -11,16 +11,38 @@
     overflow: hidden;
     
 }
+.bottom-button {
+    margin: 10px auto;
+    text-align: left;
+    width: 100%;
+    button {
+        width: 200px;
+    }
+}
 .login_banner {
- background-image: url('../../assets/images/login_banner.jpg');
- background-size: cover;
+ background-size: cover !important;
  height: 100%;
 }
 .login-form {
     padding: 20px 30px;
+  
 }
 .form-con {
     padding:10px 0px;
+   
+}
+.ant-select-single {
+    width: 100%;
+    .ant-select-selector {
+        height: 40px !important;
+        border-radius: 5px !important;
+        display: flex;
+        align-items: center;
+        .ant-select-selection-item {
+            text-transform: capitalize;
+        }
+        
+    }
 }
 .form-con p{
     text-align: center;
@@ -90,6 +112,9 @@
     .login-form {
        width: 100%;
        margin: 0 auto;
+       .ant-select-single {
+        width: 100%;
+    }
        
     }
   }
