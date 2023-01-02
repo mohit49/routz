@@ -14,6 +14,8 @@ import Banner3  from "../../assets/images/banner3.jpg";
 import Banner1_mob  from "../../assets/images/banner1_mob.jpg";
 import Banner2_mob  from "../../assets/images/banner2_mob.jpg";
 import Banner3_mob  from "../../assets/images/banner3_mob.jpg";
+import SearchBar from "../../Component/SearchBar/SearchBar";
+
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Home() {
@@ -61,7 +63,7 @@ const sliderItem = {
     <>
     <Container className="simpleSection">
       <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
-
+<SearchBar/>
     </Container>
      <Container className="bgChange" fluid>
    <LatestEvents/>

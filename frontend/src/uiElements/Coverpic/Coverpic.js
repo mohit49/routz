@@ -162,7 +162,7 @@ function Coverpic({ city, state, country }) {
             </div>
             <div className='profile-name'>
               <h4>
-                {profileData.name} ({profileData.username}){" "}
+                {profileData?.name} ({profileData?.username}){" "}
                 <p style={{ fontSize: 14 + "px" }}> {city}</p>
               </h4>
               <p></p>

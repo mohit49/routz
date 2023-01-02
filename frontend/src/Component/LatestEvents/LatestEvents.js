@@ -55,9 +55,17 @@ function LatestEvents() {
     getLocation()
       .then((position) => {
         setUserPosition(position?.city);
+        console.log(position?.city)
       })
       .catch((err) => {
-        return err;
+      
+        axios
+        .get(viewEventApi + "/" + `search?limit=4`)
+        .then(function (response) {
+          setFilterDate(response.data?.data);
+        });
+
+        console.log('some issue with location rendering')
       });
   }, []);
 
@@ -106,9 +114,10 @@ function LatestEvents() {
       axios
         .get(viewEventApi + "/" + `search?city=${userPosition}&limit=4`)
         .then(function (response) {
-          setFilterDate(response.data.data);
+          setFilterDate(response.data?.data);
         });
     }
+    
   }, [userPosition]);
 
   return (
@@ -119,7 +128,7 @@ function LatestEvents() {
           filter.map((ele, index) => {
             return (
               <Card
-                style={{ width: 240 }}
+               
                 cover={
                   <img
                     alt='example'

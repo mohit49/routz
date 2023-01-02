@@ -62,7 +62,10 @@ function Header() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className='justify-content-end flex-grow-1 pe-3'>
-                  <Nav.Link href='#action1'>Home</Nav.Link>
+                <LinkContainer to="/">
+                <Nav.Link>Home</Nav.Link>
+                    </LinkContainer>
+                 
                   <Nav.Link href='#action1'>Search Biker</Nav.Link>
                   <Nav.Link href='#action2'>Find Event</Nav.Link>
                   <Nav.Link href='#action2'>Find Show Room</Nav.Link>

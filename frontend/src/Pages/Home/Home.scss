@@ -8,7 +8,11 @@
   background: #ffffff;
   align-items: center;
   padding: 0;
-  
+  @media only screen and (max-width: 600px) {
+    &{
+        border-radius: 0;
+    }
+  }
 .slider-con-inner {
     display: flex !important;
     align-items: center ;
@@ -53,6 +57,11 @@
     border-radius: 5px;
     width: 100%;
     overflow: hidden;
+    @media only screen and (max-width: 600px) {
+      &{
+         border-radius: 0;
+    }
+  }
     img {
       width: 100%;
     }
@@ -67,8 +76,17 @@
 .bgChange {
   background: #ffffff;
   margin: 0;
-  padding: 50px 0px;
+  padding: 50px 0px !important;
 }
 .simpleSection {
   padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 600px) {
+    &{
+      flex-direction: column-reverse;
+      margin-top: 0;
+      padding: 0 !important;
+    }
+  }
 }

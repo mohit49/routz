@@ -1,67 +1,77 @@
 .content-area-latest-ride {
-    h3 {
-        font-size: 22px;
-        color: #6C8098;
-        font-weight: lighter;
+  h3 {
+    font-size: 22px;
+    color: #6c8098;
+    font-weight: lighter;
+  }
+  .ant-card-cover {
+    img {
+      height: 120px;
+      width: auto;
     }
-    .ant-card-cover {
-        img {
-            height: 120px;
-            width: auto;
+  }
+  .ant-card-body {
+    padding: 15px;
+  }
+  .card-contaner {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    .ant-card {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin: 10px;
+      display: flex;
+      width: 240px;
+      flex-direction: column;
+      justify-content: flex-start;
+      @media only screen and (max-width: 600px) {
+        & {
+          display: table;
+          width: 180px;
         }
-    }
-    .ant-card-body {
-        padding: 15px;
-    }
-    .card-contaner {
-        margin-top: 30px;
-        display: flex;
-        flex-direction: row;
-        .ant-card {
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            overflow: hidden;
-            border-radius: 8px;
-            margin: 10px;
-            display: flex;
-    flex-direction: column;
-    justify-content:flex-start;
-            .subHead {
-                margin-top: 5px;
-                margin-bottom: 0;
-            }
-            .duration {
-                margin: 0;
-                
+      }
+      .subHead {
+        margin-top: 5px;
+        margin-bottom: 0;
+      }
+      .duration {
+        margin: 0;
+      }
+      .city {
+        font-weight: 400;
+        margin: 0;
+      }
 
-            }
-            .city {
-                font-weight: 400;
-                margin: 0;
-            }
-            
-            .organizer {
-                margin: 0;
-                margin-bottom: 0;
-                font-weight: 400;
-            }
-            .duration {
-                font-style: italic;
-                font-size: 14px;
-                margin-top: 5px;
-            }
-            h4 {
-                margin: 0;
-                font-size: 16px;
-                font-weight: bold;
-                margin-bottom: 5px;
-            }
-            .buttonCard {
-                margin-top: 10px;
-            }
-        }
-        .sliderAdd {
-            width: 240px;
-            margin: 10px;
-        }
+      .organizer {
+        margin: 0;
+        margin-bottom: 0;
+        font-weight: 400;
+      }
+      .duration {
+        font-style: italic;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+      h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .buttonCard {
+        margin-top: 10px;
+      }
     }
+    .sliderAdd {
+      width: 240px;
+      margin: 10px;
+    }
+    @media only screen and (max-width: 600px) {
+      & {
+        overflow-x: auto;
+      }
+    }
+  }
 }
