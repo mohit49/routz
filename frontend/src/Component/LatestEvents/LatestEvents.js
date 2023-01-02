@@ -23,7 +23,7 @@ const viewEventApi =
 function LatestEvents() {
   const [userPosition, setUserPosition] = useState();
   const [eventduration, seteventduration] = useState();
-  const [filter, setFilterDate] = useState();
+  const [filter, setFilterDate] = useState(false);
   const getLocation = GetLocation();
 
   const getDay = (data) => {
