@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // DB Import
 const Register = require("../../scemas/registration");
-const CreateEvents = require("../../scemas/createevent");
+const Createevents = require("../../scemas/createevent");
 const authenticateJWT = require("../../middleware/auth");
 var multer  = require('multer')
 var fs = require('fs');
@@ -38,7 +38,7 @@ router.post("/createevent", authenticateJWT, upload.single('image'),  async (req
 console.log(req.body.eventduration)
   const username = await Register.findOne({ _id: req.userId }, { password: 0 });
   console.log(username)
-  const CreateEvent = new CreateEvents({
+  const CreateEvent = new Createevents({
     createrid: username._id,
     creatorname: username.name,
     eventtitle: createEventData.title,

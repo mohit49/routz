@@ -142,7 +142,7 @@ function LatestEvents() {
                 }>
                 <h4>{ele.eventtitle}</h4>
 
-                <p className='city'>{ele.city.name}</p>
+                <p className='city'>{ele?.city?.name}</p>
                 <p className='organizer'>{ele.creatorcompany}</p>
                 <hr />
                 <p className='duration'>

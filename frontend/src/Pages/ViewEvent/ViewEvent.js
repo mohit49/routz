@@ -119,7 +119,7 @@ function ViewEvent() {
         </div>
        
         <div className='items'> <div className="box-badge"> <span>  <UserIcon class='h-6 w-6 text-blue-500' /></span><span><p>City</p>
-        <h4> {eventData?.city ? eventData.city.name : 'unknown'}</h4></span>
+        <h4> {eventData?.city ? eventData?.city?.name : 'unknown'}</h4></span>
         </div></div>
         <div className='items'>  <div className="box-badge"><span>  <CalendarIcon class='h-6 w-6 text-blue-500' /></span><span><p>Start Date</p>
         <h4> {eventDuration?.from}</h4></span>
