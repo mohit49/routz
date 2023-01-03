@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, lazy} from 'react'
 import { Carousel } from 'antd';
+
 import Button from 'react-bootstrap/Button';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 import '../Slider/slider.scss'

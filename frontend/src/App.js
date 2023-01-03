@@ -8,16 +8,19 @@ import {
   useLocation,
   Outlet,
 } from "react-router-dom";
+import '../src/App.scss';
 import Spinner from 'react-bootstrap/Spinner';
 import Header from "../src/includes/Header/Header";
 import { motion } from "framer-motion";
-const Home = React.lazy(() => import("./Pages/Home/Home"));
-const Login = React.lazy(() => import("./Pages/Login/Login"));
-const Register = React.lazy(() => import("./Pages/Register/Register"));
-const Profile = React.lazy(() => import("./Pages/Profile/Profile"));
-const CreateEvent = React.lazy(() => import("./Pages/CreateEvent/CreateEvent"));
-const ViewEvent = React.lazy(() => import("./Pages/ViewEvent/ViewEvent"));
 
+import Login from "./Pages/Login/Login";
+
+import Profile from "./Pages/Profile/Profile"
+ 
+import ViewEvent from "./Pages/ViewEvent/ViewEvent";
+const Home = React.lazy(() => import("./Pages/Home/Home"));
+const Register = React.lazy(() => import("./Pages/Register/Register"));
+const CreateEvent = React.lazy(() => import("./Pages/CreateEvent/CreateEvent"));
 export const Data = createContext();
 
 const PageLayout = ({ children }) => children;

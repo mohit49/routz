@@ -106,7 +106,7 @@ function Header() {
                                 }
                               />
                             </span>{" "}
-                            Hi! {loginData.name}
+                            Hi! {loginData?.name}
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu>

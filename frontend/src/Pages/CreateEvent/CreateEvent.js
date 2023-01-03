@@ -218,8 +218,8 @@ function CreateEvent() {
     
        
           <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
+            labelcol={{ span: 4 }}
+            wrappercol={{ span: 14 }}
             layout='horizontal'
             onSubmit={submitForm}>
             <Form.Group className='mb-3' controlId='formBasicEmail'>
