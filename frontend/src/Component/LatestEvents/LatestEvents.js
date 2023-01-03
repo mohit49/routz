@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import "../LatestEvents/LatestEvents.scss";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -17,6 +17,7 @@ import cardCoverAdd3 from "../../assets/images/add3.jpg";
 import { Avatar, Card } from "antd";
 import { LinkContainer } from "react-router-bootstrap";
 import GetLocation from "../../Middleware/GetLocation";
+import Spinner from 'react-bootstrap/Spinner';
 import axios from "axios";
 const viewEventApi =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
@@ -24,6 +25,7 @@ function LatestEvents() {
   const [userPosition, setUserPosition] = useState();
   const [eventduration, seteventduration] = useState();
   const [filter, setFilterDate] = useState(false);
+  const [loader, setLoader] = useState(true);
   const getLocation = GetLocation();
 
   const getDay = (data) => {
@@ -52,10 +54,28 @@ function LatestEvents() {
   };
 
   useEffect(() => {
-    getLocation()
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition,showError);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    function showError() {
+      axios
+      .get(viewEventApi + "/" + `search?limit=4`)
+      .then(function (response) {
+        setFilterDate(response.data?.data);
+      });
+      console.log("User denied Location")
+      setLoader(false)
+    }
+
+    function showPosition() {
+      getLocation()
       .then((position) => {
         setUserPosition(position?.city);
         console.log(position?.city)
+        setLoader(false)
       })
       .catch((err) => {
       
@@ -63,10 +83,13 @@ function LatestEvents() {
         .get(viewEventApi + "/" + `search?limit=4`)
         .then(function (response) {
           setFilterDate(response.data?.data);
+          setLoader(false)
         });
 
         console.log('some issue with location rendering')
       });
+    }
+
   }, []);
 
   const { Meta } = Card;
@@ -121,6 +144,9 @@ function LatestEvents() {
   }, [userPosition]);
 
   return (
+    <>
+    {loader && <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}/>}
+    {!loader &&
     <Container className='content-area-latest-ride'>
       <h3>View Latest Bike Riding Event in you area</h3>
       <div className='card-contaner'>
@@ -186,6 +212,8 @@ function LatestEvents() {
         </div>
       </div>
     </Container>
+    }
+    </>
   );
 }
 
