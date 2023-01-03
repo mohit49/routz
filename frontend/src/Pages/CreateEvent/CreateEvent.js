@@ -248,12 +248,13 @@ function CreateEvent() {
                 {refetchcity && (
                   <Form.Group className='mb-3' controlId='evenbtDuration'>
                     <Form.Label>Enter City : </Form.Label>
-                    <CountryStateCity
+                    <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><CountryStateCity
                       type='city'
                       query='IN'
                       query2={state?.isoCode}
                       setValues={onchangeCity}
-                    />
+                    /></Suspense>
+                    
                   </Form.Group>
                 )}
 
