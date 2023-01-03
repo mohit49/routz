@@ -51,7 +51,7 @@ function Profile() {
           setCountry(response?.data?.data?.location?.country);
           setCity(response?.data?.data?.location?.city);
           setState(response?.data?.data?.location?.state);
-          setProfileData(response.data.data);
+
          
           
         }

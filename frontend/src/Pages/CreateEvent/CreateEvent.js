@@ -1,24 +1,23 @@
 import React, { useState, useContext, useEffect } from "react";
-import Container from "react-bootstrap/Container";
+
 import "../CreateEvent/CreateEvent.scss";
-import { PlusOutlined } from "@ant-design/icons";
+
 import Button from "react-bootstrap/Button";
 import ImgCrop from "antd-img-crop";
 import { Upload } from "antd";
-import { Data } from "../../App";
+
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Spinner } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { Input, DatePicker } from "antd";
-import { PhotoIcon } from "@heroicons/react/24/solid";
+import { Data } from "../../App";
 import axios from "axios";
 import Banner3 from "../../assets/images/headingbanner.jpg";
 import dayjs from "dayjs";
-import { Select } from 'antd';
-import ResultGrid from "../../Component/ResultGrid/ResultGrid";
-import CountryStateCity from "../../Middleware/CountryStateCity/CountryStateCity";
 
+const ResultGrid = React.lazy(() => import("../../Component/ResultGrid/ResultGrid"));
+const CountryStateCity = React.lazy(() => import("../../Middleware/CountryStateCity/CountryStateCity"));
 const createEventAPI =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_EVENT_API;
   const imageUpload =
