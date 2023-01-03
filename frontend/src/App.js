@@ -47,7 +47,7 @@ const AnimationLayout = () => {
   const { pathname } = useLocation();
   return (
     <PageLayout>
-      <Suspense>
+     
         <motion.div
           key={pathname}
           initial='initial'
@@ -56,7 +56,7 @@ const AnimationLayout = () => {
           transition={pageTransition}>
           <Outlet />
         </motion.div>
-      </Suspense>
+    
     </PageLayout>
   );
 };
@@ -76,6 +76,7 @@ export function App() {
         <Header />
 
         <Routes>
+        <Suspense fallback={<div className="spinner-con"><Spinner animation="grow" variant="primary" /></div>}>
           <Route element={<AnimationLayout />}>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
@@ -87,6 +88,7 @@ export function App() {
               <Route path=':eventName' element={<ViewEvent />} />
             </Route>
           </Route>
+          </Suspense>
         </Routes>
       </Router>
     </Data.Provider>
