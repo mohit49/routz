@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, Suspense } from "react";
 
 import "../CreateEvent/CreateEvent.scss";
 
@@ -239,22 +239,35 @@ function CreateEvent() {
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='evenbtDuration'>
                   <Form.Label>Enter State : </Form.Label>
-                  <CountryStateCity
-                    type='state'
-                    query='IN'
-                    setValues={onchangeState}
-                  />
+                  <Suspense
+                    fallback={
+                      <div className='spinner-con'>
+                        <Spinner animation='border' variant='primary' />
+                      </div>
+                    }>
+                    <CountryStateCity
+                      type='state'
+                      query='IN'
+                      setValues={onchangeState}
+                    />
+                  </Suspense>
                 </Form.Group>
                 {refetchcity && (
                   <Form.Group className='mb-3' controlId='evenbtDuration'>
                     <Form.Label>Enter City : </Form.Label>
-                    <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><CountryStateCity
-                      type='city'
-                      query='IN'
-                      query2={state?.isoCode}
-                      setValues={onchangeCity}
-                    /></Suspense>
-                    
+                    <Suspense
+                      fallback={
+                        <div className='spinner-con'>
+                          <Spinner animation='border' variant='primary' />
+                        </div>
+                      }>
+                      <CountryStateCity
+                        type='city'
+                        query='IN'
+                        query2={state?.isoCode}
+                        setValues={onchangeCity}
+                      />
+                    </Suspense>
                   </Form.Group>
                 )}
 
