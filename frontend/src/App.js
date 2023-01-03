@@ -76,19 +76,19 @@ export function App() {
         <Header />
 
         <Routes>
-        <Suspense fallback={<div className="spinner-con"><Spinner animation="grow" variant="primary" /></div>}>
+     
           <Route element={<AnimationLayout />}>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/create-events' element={<CreateEvent />} />
+            <Route path='/' element={<Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><Home /></Suspense>} />
+            <Route path='/login' element={<Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><Login /></Suspense>} />
+            <Route path='/profile' element={<Suspense fallback={<div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><Profile /></Suspense>} />
+            <Route path='/register' element={<Suspense fallback={<div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><Register /></Suspense>} />
+            <Route path='/create-events' element={<Suspense fallback={<div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><CreateEvent /></Suspense>} />
 
             <Route path='/event'>
-              <Route path=':eventName' element={<ViewEvent />} />
+              <Route path=':eventName' element={<Suspense fallback={<div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}><ViewEvent /></Suspense>} />
             </Route>
           </Route>
-          </Suspense>
+     
         </Routes>
       </Router>
     </Data.Provider>
