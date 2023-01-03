@@ -10,10 +10,10 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Spinner } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { Input, DatePicker } from "antd";
+import {  DatePicker } from "antd";
 import { Data } from "../../App";
 import axios from "axios";
-import Banner3 from "../../assets/images/headingbanner.jpg";
+
 import dayjs from "dayjs";
 
 const ResultGrid = React.lazy(() => import("../../Component/ResultGrid/ResultGrid"));
@@ -177,154 +177,7 @@ function CreateEvent() {
     <>
   
   
-  <div className="create-event-page">
-
-      <div className='mainBanner'  style={{background: `url(${Banner3})`}}>
-     <div className='innerContent'>
-          <h2>Create Events</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-          </p>
-        </div>
-    
-      </div>
-      <div className="creator-info" >
-       <p>
-          Event Creator <b>{profileData?.name}</b> from{" "}
-          <b>{profileData?.companyinfo}</b>
-        </p>
-       </div>
-
-  {(loading && !eventStatus) && (
-     <div className='event-form'>
-     <div className='mn-continer'>
-          <Spinner
-            as='span'
-            animation='grow'
-            size='xs'
-            role='status'
-            aria-hidden='true'
-          />
-          </div></div>
-        )}
-  {(!loading && !eventStatus) && (
-      <div className='event-form'>
-        <div className='mn-continer'>
-      
-        
-        <br />
-    
-       
-          <Form
-            labelcol={{ span: 4 }}
-            wrappercol={{ span: 14 }}
-            layout='horizontal'
-            onSubmit={submitForm}>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Enter Event Name : </Form.Label>
-              <Input
-                value={eventTitle}
-                onChange={(e) => setEventTitle(e.target.value)}
-                placeholder='Enter Title Of the Event'
-              />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='formBasicEmail'>
-              <Form.Label>Enter Sub Heading : </Form.Label>
-              <Input
-                value={eventSubheading}
-                onChange={(e) => setEventSubheading(e.target.value)}
-                placeholder='Enter Event Sub Heading'
-              />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='evenbtDuration'>
-              <Form.Label>Enter Event Duration : </Form.Label>
-              <RangePicker presets={rangePresets} onChange={onRangeChange} />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='evenbtDuration'>
-              <Form.Label>Enter  State : </Form.Label>
-              <CountryStateCity type='state' query='IN'  setValues={onchangeState}/>
-              </Form.Group>
-              {refetchcity &&   <Form.Group className='mb-3' controlId='evenbtDuration'>
-              <Form.Label>Enter City : </Form.Label>
-              <CountryStateCity type='city' query='IN' query2={state?.isoCode} setValues={onchangeCity}/>
-            </Form.Group>}
-
-
-          
-
-            <Form.Group className='mb-3' controlId='evenbtDiscription'>
-              <Form.Label>Enter Event Description</Form.Label>
-           <CKEditor
-                editor={ClassicEditor}
-                data='<p>Add event discription here</p>'
-                config={{
-                  ckfinder: {
-                    // Upload the images to the server using the CKFinder QuickUpload command
-                    // You have to change this address to your server that has the ckfinder php connector
-                    uploadUrl:
-                      `${imageUpload}?command=QuickUpload&type=Images&responseType=json`
-                  },
-                  headers: {
-                    "X-CSRF-TOKEN": "CSRF-Token",
-                    Authorization: "Bearer <JSON Web Token>"
-                  }
-                }}
-                onReady={(editor) => {
-                  // You can store the "editor" and use when it is needed.
-                  console.log("Editor is ready to use!", editor);
-                }}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setEventDiscription(data);
-                }}
-                onBlur={(event, editor) => {
-                  console.log("Blur.", editor);
-                }}
-                onFocus={(event, editor) => {
-                  console.log("Focus.", editor);
-                }}
-                
-              />
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='evenbtCoverPic'>
-              <Form.Label>Upload Event Cover Picture</Form.Label>
-              <ImgCrop
-                shape='rect'
-                aspect={21 / 8}
-                rotate
-                quality={1}
-                grid={true}>
-                <Upload
-                 name="avatar"
-                 listType="picture-card"
-                  fileList={eventCoverPic}
-                  onChange={onChangeEventPic}
-                  showUploadList={true}
-                  action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                 
-                  onPreview={onPreview}>
-                  {eventCoverPic.length < 5 && "+ Upload"}
-                </Upload>
-              </ImgCrop>
-            </Form.Group>
-            <Form.Group className='mb-3' controlId='evenbtThumbnails'>
-              <Button variant='primary' type='submit' size='md'>
-                Create Event
-              </Button>
-            </Form.Group>
-          </Form>
-     </div>
-
-      </div>
-  )}
-
-            {(!loading && eventStatus) && (
-               <div className='mn-continer'>
-      <ResultGrid status='success' href1={eventLink} title={`Your Event ${eventTitle} is Sucessfully Created`} subTitle={`Click On Blow Link to visit you event`}/>
-      </div>
-         )}
-</div>
+dummy
        
        
 
