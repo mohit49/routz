@@ -8,7 +8,7 @@ import {
   useLocation,
   Outlet,
 } from "react-router-dom";
-
+import Spinner from 'react-bootstrap/Spinner';
 import Header from "../src/includes/Header/Header";
 import { motion } from "framer-motion";
 const Home = React.lazy(() => import("./Pages/Home/Home"));
@@ -44,7 +44,7 @@ const AnimationLayout = () => {
   const { pathname } = useLocation();
   return (
     <PageLayout>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense>
         <motion.div
           key={pathname}
           initial='initial'
