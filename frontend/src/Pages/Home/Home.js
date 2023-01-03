@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Data } from "../../App";
 import "../Home/Home.scss";
 import Container from "react-bootstrap/Container";
-
+import Slider from "../../uiElements/Slider/Slider";
 import LatestEvents from "../../Component/LatestEvents/LatestEvents";
 import Banner1  from "../../assets/images/banner1.jpg";
 import Banner2  from "../../assets/images/banner2.jpg";
@@ -15,7 +15,7 @@ import Banner1_mob  from "../../assets/images/banner1_mob.jpg";
 import Banner2_mob  from "../../assets/images/banner2_mob.jpg";
 import Banner3_mob  from "../../assets/images/banner3_mob.jpg";
 import SearchBar from "../../Component/SearchBar/SearchBar";
-const Slider = React.lazy(() => import('../../uiElements/Slider/Slider'));
+
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Home() {

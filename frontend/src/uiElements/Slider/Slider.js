@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import { Carousel } from 'antd';
 import Button from 'react-bootstrap/Button';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import '../Slider/slider.scss'
 function Slider({effect,items, autoPlay, dotPosition , className}) {
 
   
   
   return (
-    <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}  lazyLoad="anticipated">
+    <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}>
    {Object.values(items).map((itemsVal, index)=>{
-  
+
     return <div key={index} className={itemsVal.className}>
         <div className='contentContainer'>
             <h2>{itemsVal.sliderHeading}</h2>
