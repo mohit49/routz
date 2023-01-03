@@ -7,7 +7,7 @@ function Slider({effect,items, autoPlay, dotPosition , className}) {
   
   
   return (
-    <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}>
+    <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}  lazyLoad="anticipated">
    {Object.values(items).map((itemsVal, index)=>{
   
     return <div key={index} className={itemsVal.className}>

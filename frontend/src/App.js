@@ -1,15 +1,18 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, Suspense  } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Link, Routes, Route, useLocation , Outlet} from "react-router-dom";
 
 import Header from "./includes/Header/Header";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Register/Register";
-import Profile from "./Pages/Profile/Profile";
-import CreateEvent from "./Pages/CreateEvent/CreateEvent";
-import Home from "./Pages/Home/Home";
+
+
 import ViewEvent from "./Pages/ViewEvent/ViewEvent";
 import { motion } from "framer-motion";
+const Home = React.lazy(() => import('./Pages/Home/Home'));
+const CreateEvent = React.lazy(() => import('./Pages/CreateEvent/CreateEvent'));
+const Profile = React.lazy(() => import('./Pages/Profile/Profile'));
+
+const Login = React.lazy(() => import('./Pages/Login/Login'));
+const Register = React.lazy(() => import('./Pages/Register/Register'));
 export const Data = createContext();
 
 const PageLayout = ({ children }) => children;
@@ -63,7 +66,7 @@ export function App() {
     <Data.Provider value={webStore}>
       <Router>
         <Header />
-
+        <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<AnimationLayout />}>
             <Route path='/'  element={<Home />} />
@@ -77,6 +80,7 @@ export function App() {
             </Route>
           </Route>
         </Routes>
+        </Suspense>
       </Router>
     </Data.Provider>
   );
