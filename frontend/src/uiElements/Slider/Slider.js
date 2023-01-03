@@ -9,7 +9,7 @@ function Slider({effect,items, autoPlay, dotPosition , className}) {
   return (
     <Carousel effect={effect} autoplay={autoPlay} dotPosition={dotPosition} className={className}>
    {Object.values(items).map((itemsVal, index)=>{
-    console.log(itemsVal)
+  
     return <div key={index} className={itemsVal.className}>
         <div className='contentContainer'>
             <h2>{itemsVal.sliderHeading}</h2>

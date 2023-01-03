@@ -66,7 +66,7 @@ export function App() {
 
         <Routes>
           <Route element={<AnimationLayout />}>
-            <Route path='/' element={<Home />} />
+            <Route path='/'  element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/register' element={<Register />} />

@@ -127,7 +127,7 @@ function LatestEvents() {
         {filter &&
           filter.map((ele, index) => {
             return (
-              <Card
+              <Card key={index}
                
                 cover={
                   <img
