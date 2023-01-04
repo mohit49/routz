@@ -1,4 +1,5 @@
 .main-search-container {
+  position: relative;
   width: 100%;
   margin: 0 auto;
   margin-top: 40px;
@@ -6,6 +7,7 @@
   padding: 5px;
   border-radius: 5px;
   width: 990px;
+  z-index: 2;
 
   display: flex;
   justify-content: space-between;
@@ -78,6 +80,48 @@
     @media only screen and (max-width: 600px) {
       & {
         display: none;
+      }
+    }
+  }
+}
+.search-suggestions {
+  width: 990px;
+  position: absolute;
+  left: 0;
+  top: 105%;
+  min-height: 200px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 10px;
+  .biker-search {
+    width: 100%;
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    p{
+      margin-bottom: 5px;
+      color: #0d6efd;
+    }
+    ul {
+      padding: 0;
+      li {
+        list-style: none;
+        p{
+          margin: 0;
+          color: #333333;
+          &.name {
+            text-transform: capitalize;
+            font-weight: bold;
+          }
+          &.username {
+            text-transform: capitalize;
+            font-size: 13px;
+          }
+        }
       }
     }
   }

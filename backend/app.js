@@ -61,8 +61,12 @@ const unfollow = require("./modules/follow/unfollow");
 app.post("/unfollow", unfollow);
 const getProfile = require("./modules/editprofile/fetchprofile");
 app.get("/profile", getProfile);
+const viewProfile = require("./modules/editprofile/viewProfile");
+app.get("/profile/:username", viewProfile);
 const uploadpostImage = require("./modules/uploadImage/uploadImage");
 app.post("/uploadpostImage", uploadpostImage);
+const searchBar = require("./modules/search-bar/search-bar");
+app.get("/search-bar", searchBar);
 http.listen(3004, function () {
   console.log("listening on *:4000");
 });

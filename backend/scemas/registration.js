@@ -15,7 +15,7 @@ const users = new mongoose.Schema({
     },
     companyname : {
         type:String,
-        required:true
+        
     },
     phone : {
         type:String,

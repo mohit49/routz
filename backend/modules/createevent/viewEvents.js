@@ -8,26 +8,45 @@ const Createevent = require("../../scemas/createevent");
 const authenticateJWT = require("../../middleware/auth");
 
 router.get("/viewevent/search", async (req, res) => {
-  console.log("ssss");
   const city = req.query?.city;
   const limit = req.query?.limit;
   const creatorId = req.query?.creatorId;
   const indexNo = req.query?.index;
-  var dataQuery;
-  if (!city && !creatorId) {
-    dataQuery = await Createevent.find().limit(limit).skip(indexNo);
-  } else {
-    dataQuery = await Createevent.find({
-      creatorid: creatorId || "",
-      "city.name": city || "",
-    })
-      .limit(limit)
-      .skip(indexNo);
-  }
-  res.status(200).json({
-    sucessStatus: true,
-    data: dataQuery,
-  });
-});
+  const query = req.query?.query || "";
 
+  var dataQuery;
+if (!city && !creatorId && !query) {
+  dataQuery = await Createevent.find().limit(limit).skip(indexNo);
+} else {
+  Createevent.find(
+    {
+      $or: [
+        {
+          'creatorid': creatorId,
+        },
+        {
+          "city.name": city,
+        }
+      ],
+      'eventtitle': {
+        $regex: new RegExp(query),
+      }
+      
+    },
+    function (err, data) {
+      res.json(data);
+    }
+  )
+    .limit(limit)
+    .skip(indexNo);
+}
+});
 module.exports = router;
+
+
+
+
+
+
+
+
