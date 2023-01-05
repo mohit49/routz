@@ -61,13 +61,7 @@ function LatestEvents() {
     }
 
     function showError() {
-      axios
-      .get(viewEventApi + "/" + `search?limit=4`)
-      .then(function (response) {
-        setFilterDate(response.data);
-      });
-      console.log("User denied Location")
-      setLoader(false)
+      setUserPosition(false);
     }
 
     function showPosition() {
@@ -78,15 +72,8 @@ function LatestEvents() {
         setLoader(false)
       })
       .catch((err) => {
+        setUserPosition(false);
       
-        axios
-        .get(viewEventApi + "/" + `search?limit=4`)
-        .then(function (response) {
-          setFilterDate(response.data);
-          setLoader(false)
-        });
-
-        console.log('some issue with location rendering')
       });
     }
 
@@ -139,6 +126,16 @@ function LatestEvents() {
         .then(function (response) {
           setFilterDate(response.data);
         });
+    }
+    if(!userPosition && (typeof(userPosition) != "undefined")) {
+      axios
+      .get(viewEventApi + "/" + `search?limit=4`)
+      .then(function (response) {
+        setFilterDate(response.data);
+        setLoader(false)
+      });
+
+      console.log('some issue with location rendering')
     }
     
   }, [userPosition]);
