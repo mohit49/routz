@@ -17,6 +17,7 @@ router.get("/viewevent/search", async (req, res) => {
   var dataQuery;
 if (!city && !creatorId && !query) {
   dataQuery = await Createevent.find().limit(limit).skip(indexNo);
+  res.json(dataQuery);
 } else {
   Createevent.find(
     {
