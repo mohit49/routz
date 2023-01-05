@@ -64,7 +64,7 @@ function LatestEvents() {
       axios
       .get(viewEventApi + "/" + `search?limit=4`)
       .then(function (response) {
-        setFilterDate(response.data?.data);
+        setFilterDate(response.data);
       });
       console.log("User denied Location")
       setLoader(false)
@@ -82,7 +82,7 @@ function LatestEvents() {
         axios
         .get(viewEventApi + "/" + `search?limit=4`)
         .then(function (response) {
-          setFilterDate(response.data?.data);
+          setFilterDate(response.data);
           setLoader(false)
         });
 
@@ -137,7 +137,7 @@ function LatestEvents() {
       axios
         .get(viewEventApi + "/" + `search?city=${userPosition}&limit=4`)
         .then(function (response) {
-          setFilterDate(response.data?.data);
+          setFilterDate(response.data);
         });
     }
     
