@@ -11,7 +11,7 @@ router.get("/search-bar", async (req, res) => {
   const searchtype = req.query?.searchtype;
   const limit = req.query?.limit;
   const queryIndex = 0;
-  const query = req.query?.query || "";
+  const query = req.query?.query.toLowerCase() || "";
   console.log(searchtype + limit + query);
   var searchArray = { resultBikers: {}, resultEvents: {} };
   var profileSearch = await RegisterData.find({
@@ -19,9 +19,9 @@ router.get("/search-bar", async (req, res) => {
     $and: [
       {
         $or: [
-          { name: { $regex: new RegExp(query) } },
-          { username: { $regex: new RegExp(query) } },
-          { phone: { $regex: new RegExp(query) } },
+          { name: { $regex: new RegExp(query, 'i') } },
+          { username: { $regex: new RegExp(query, 'i') } },
+          { phone: { $regex: new RegExp(query, 'i') } },
         ],
       },
      

@@ -73,7 +73,7 @@ router.post("/register", async (req, res) => {
         }
       } else {
         const registerUsers = new Register({
-          name: req.body.name,
+          name: req.body.name.toLowerCase(),
           username: req.body.username.toLowerCase(),
           email: req.body.email,
           phone: req.body.phone,
@@ -82,7 +82,7 @@ router.post("/register", async (req, res) => {
           password: req.body.password,
         });
         const updateprofileData = new UpdateprofileData({
-          name: req.body.name,
+          name: req.body.name.toLowerCase(),
           username: req.body.username.toLowerCase(),
           companyinfo: req.body.companyname,
         });
