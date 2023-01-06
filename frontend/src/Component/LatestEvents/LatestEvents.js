@@ -1,7 +1,8 @@
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState, Suspense, useContext } from "react";
 import "../LatestEvents/LatestEvents.scss";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import { Data } from "../../App";
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -17,11 +18,12 @@ import cardCoverAdd3 from "../../assets/images/add3.jpg";
 import { Avatar, Card } from "antd";
 import { LinkContainer } from "react-router-bootstrap";
 import GetLocation from "../../Middleware/GetLocation";
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 const viewEventApi =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
 function LatestEvents() {
+  const { letestEventData, setLatestEventData } = useContext(Data);
   const [userPosition, setUserPosition] = useState();
   const [eventduration, seteventduration] = useState();
   const [filter, setFilterDate] = useState(false);
@@ -55,7 +57,7 @@ function LatestEvents() {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition,showError);
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -66,17 +68,15 @@ function LatestEvents() {
 
     function showPosition() {
       getLocation()
-      .then((position) => {
-        setUserPosition(position?.city);
-        console.log(position?.city)
-        setLoader(false)
-      })
-      .catch((err) => {
-        setUserPosition(false);
-      
-      });
+        .then((position) => {
+          setUserPosition(position?.city);
+          console.log(position?.city);
+          setLoader(false);
+        })
+        .catch((err) => {
+          setUserPosition(false);
+        });
     }
-
   }, []);
 
   const { Meta } = Card;
@@ -120,96 +120,104 @@ function LatestEvents() {
   };
 
   useEffect(() => {
-    if (userPosition?.length > 0) {
-      axios
-        .get(viewEventApi + "/" + `search?city=${userPosition}&limit=4`)
-        .then(function (response) {
-          setFilterDate(response.data);
-        });
-    }
-    if(!userPosition && (typeof(userPosition) != "undefined")) {
-      axios
-      .get(viewEventApi + "/" + `search?limit=4`)
-      .then(function (response) {
-        setFilterDate(response.data);
-        setLoader(false)
-      });
+    if (!letestEventData) {
+      if (userPosition?.length > 0) {
+        axios
+          .get(viewEventApi + "/" + `search?city=${userPosition}&limit=4`)
+          .then(function (response) {
+            setLatestEventData(response.data);
+          });
+      }
+      if (!userPosition && typeof userPosition != "undefined") {
+        axios
+          .get(viewEventApi + "/" + `search?limit=4`)
+          .then(function (response) {
+            setLatestEventData(response.data);
+            setLoader(false);
+          });
 
-      console.log('some issue with location rendering')
+        console.log("some issue with location rendering");
+      }
     }
-    
-  }, [userPosition]);
+  }, [userPosition, letestEventData]);
 
   return (
     <>
-    {loader && <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"  /></div>}/>}
-    {!loader &&
-    <Container className='content-area-latest-ride'>
-      <h3>View Latest Bike Riding Event in you area</h3>
-      <div className='card-contaner'>
-        {filter &&
-          filter.map((ele, index) => {
-            return (
-              <Card key={index}
-               
-                cover={
-                  <img
-                    alt='example'
-                    src={
-                      process.env.REACT_BASE_API_URL +
-                      ele.eventcoverpic.destination +
-                      "/" +
-                      ele.eventcoverpic.filename
-                    }
-                  />
-                }>
-                <h4>{ele.eventtitle}</h4>
+      <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"/></div>}>
+   
+        <Container className='content-area-latest-ride'>
+          <h3>View Latest Bike Riding Event in you area</h3>
+          <div className='card-contaner'>
+            {letestEventData &&
+              letestEventData.map((ele, index) => {
+                return (
+                  <Card
+                    key={index}
+                    cover={
+                      <img
+                        alt='example'
+                        src={
+                          process.env.REACT_BASE_API_URL +
+                          ele.eventcoverpic.destination +
+                          "/" +
+                          ele.eventcoverpic.filename
+                        }
+                      />
+                    }>
+                    <h4>{ele.eventtitle}</h4>
 
-                <p className='city'>{ele?.city?.name}</p>
-                <p className='organizer'>{ele.creatorcompany}</p>
-                <hr />
-                <p className='duration'>
-                  <b>From</b>{" "}
-                  {getDay(JSON.parse(ele.eventduration)?.From) +
-                    " " +
-                    new Date(JSON.parse(ele.eventduration)?.From).getDate() +
-                    " " +
-                    getMonth(JSON.parse(ele.eventduration)?.From) +
-                    " " +
-                    new Date(
-                      JSON.parse(ele.eventduration)?.From
-                    ).getFullYear()}{" "}
-                  <b>to</b>{" "}
-                  {getDay(JSON.parse(ele.eventduration)?.to) +
-                    " " +
-                    new Date(JSON.parse(ele.eventduration)?.to).getDate() +
-                    " " +
-                    getMonth(JSON.parse(ele.eventduration)?.to) +
-                    " " +
-                    new Date(JSON.parse(ele.eventduration)?.to).getFullYear()}
-                </p>
-                <LinkContainer to={`event/${ele._id}`}>
-                  <Button variant='primary' size='md' className='buttonCard'>
-                    View Now
-                  </Button>
-                </LinkContainer>
-              </Card>
-            );
-          })}
+                    <p className='city'>{ele?.city?.name}</p>
+                    <p className='organizer'>{ele.creatorcompany}</p>
+                    <hr />
+                    <p className='duration'>
+                      <b>From</b>{" "}
+                      {getDay(JSON.parse(ele.eventduration)?.From) +
+                        " " +
+                        new Date(
+                          JSON.parse(ele.eventduration)?.From
+                        ).getDate() +
+                        " " +
+                        getMonth(JSON.parse(ele.eventduration)?.From) +
+                        " " +
+                        new Date(
+                          JSON.parse(ele.eventduration)?.From
+                        ).getFullYear()}{" "}
+                      <b>to</b>{" "}
+                      {getDay(JSON.parse(ele.eventduration)?.to) +
+                        " " +
+                        new Date(JSON.parse(ele.eventduration)?.to).getDate() +
+                        " " +
+                        getMonth(JSON.parse(ele.eventduration)?.to) +
+                        " " +
+                        new Date(
+                          JSON.parse(ele.eventduration)?.to
+                        ).getFullYear()}
+                    </p>
+                    <LinkContainer to={`event/${ele._id}`}>
+                      <Button
+                        variant='primary'
+                        size='md'
+                        className='buttonCard'>
+                        View Now
+                      </Button>
+                    </LinkContainer>
+                  </Card>
+                );
+              })}
 
-        <div className='sliderAdd'>
-          <Slider
-            effect='fade'
-            autoPlay={true}
-            items={sliderItem}
-            dotPosition='bottom'
-            buttonClass='primary'
-            className='slider-home'
-          />
-        </div>
-      </div>
-    </Container>
-    }
+            <div className='sliderAdd'>
+              <Slider
+                effect='fade'
+                autoPlay={true}
+                items={sliderItem}
+                dotPosition='bottom'
+                buttonClass='primary'
+                className='slider-home'
+              />
+            </div>
+          </div>
+        </Container>
+    </Suspense>
     </>
   );
 }

@@ -62,13 +62,15 @@ const AnimationLayout = () => {
 };
 export function App() {
   const [loginState, setLoginState] = useState(false);
-
+  const [letestEventData, setLatestEventData] = useState(false);
   const [profileData, setProfileData] = useState();
   const webStore = {
     setLoginState,
     loginState,
     setProfileData,
     profileData,
+    letestEventData,
+    setLatestEventData
   };
   return (
     <Data.Provider value={webStore}>
