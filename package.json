@@ -39,7 +39,8 @@
     "start:local": "npm run build:local && pm2 start  src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "pm2 start src/server/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "stop": "pm2 stop  src/server/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
