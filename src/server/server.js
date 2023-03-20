@@ -47,16 +47,16 @@ app.use(cookieParser());
 // tell the app to use the above rules
 app.use(router)
 
-app.use(express.static(__dirname + '/images'));
+app.use(express.static('images'));
+app.use('/static', express.static('server-build'))
 
-app.use(express.static('server-build'));
 
 /**
  * Api require Modules Name
  * @type {string}
  */
 app.use(express.static(__dirname + '/images'));
-
+console.log('sss' + __dirname)
 app.use('/images', express.static(path.join(__dirname, 'images')))
 const registerPage = require("./modules/registration/registration");
 app.post("/api/register", registerPage);
@@ -104,6 +104,7 @@ const searchBar = require("./modules/search-bar/search-bar");
 app.get("/api/search-bar", searchBar);
 
 app.use('^/*',(req, res) => {
+  var host = req.get('host');
   const app = ReactDOMServer.renderToString(  <StaticRouter location={req.url}>
     <App />
   </StaticRouter>);
@@ -117,14 +118,14 @@ app.use('^/*',(req, res) => {
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
       ${helmet.link.toString()}
-      <link rel="stylesheet" href="main.css"/>
+      <link rel="stylesheet" href="//${host + '/static/main.css'}"/>
     </head>
     <body ${helmet.bodyAttributes.toString()}>
       <div id="root">
         ${app}
       </div>
       </body>
-      <script src="index.min.js"></script>
+      <script src="//${host + '/static/index.min.js'}"></script>
   </html>
 `;
   fs.readFile(indexFile, 'utf8', (err, data) => {
