@@ -16,6 +16,8 @@ import { ModalBox } from "../../uiElements/modal/modal";
 import ProfileData from "../../includes/ProfileData/ProfileData";
 import EditInfo from "../../Middleware/Forms/EditInfo";
 import CreatePost from "../../Component/CreatePost/CreatePost";
+import {Helmet} from "react-helmet";
+import Feeds from "../../Component/Feeds/Feeds";
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Profile() {
@@ -71,7 +73,11 @@ function Profile() {
   return (
     
     <Container>
-    
+          <Helmet>
+    <title>Social Networks For bikers :: Profile Page</title>
+    <meta name="description" content="Social Networks For bikers"/>
+  <meta name="keywords" content="HTML, CSS, JavaScript, Home"/>
+    </Helmet>
     {loading  && <div className="loading-con"><Spinner style={{color: "#0d6efd"}}
                   as="span"
                   animation="grow"
@@ -128,6 +134,7 @@ function Profile() {
           </Col>
           <Col md={7}>
           <CreatePost profileData={profileData}/>
+          <Feeds profileData={profileData}/>
           </Col>
           <Col>
             <Card className="shadow-sm  mb-2 bg-white rounded" border="light">

@@ -1,4 +1,10 @@
+
+
 import React, { useState, useContext, useEffect, Suspense } from "react";
+
+
+
+
 
 import "../CreateEvent/CreateEvent.scss";
 
@@ -6,9 +12,7 @@ import Button from "react-bootstrap/Button";
 import ImgCrop from "antd-img-crop";
 import { Input, Upload } from "antd";
 
-import { CKEditor } from "@ckeditor/ckeditor5-react";
 
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Spinner } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { DatePicker } from "antd";
@@ -29,6 +33,19 @@ const imageUpload =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_IMAGE_UPLOAD;
 
 function CreateEvent() {
+  let CKEditor;
+let ClassicEditor;
+let Context;
+let CKEditorContext;
+
+useEffect(() => {
+  CKEditor = require("@ckeditor/ckeditor5-react");
+  CKEditorContext = require('@ckeditor/ckeditor5-react');
+
+  Context = require('@ckeditor/ckeditor5-core/src/context');
+
+
+}, []);
   const [eventTitle, setEventTitle] = useState();
   const [state, setState] = useState();
   const [city, setCity] = useState();
@@ -273,44 +290,27 @@ function CreateEvent() {
 
                 <Form.Group className='mb-3' controlId='evenbtDiscription'>
                   <Form.Label>Enter Event Description</Form.Label>
+                 
+                  <CKEditorContext context={ Context }>
                   <CKEditor
-                    editor={ClassicEditor}
-                    data='<p>Add event discription here</p>'
-                    config={{
-                      ckfinder: {
-                        // Upload the images to the server using the CKFinder QuickUpload command
-                        // You have to change this address to your server that has the ckfinder php connector
-                        uploadUrl: `${imageUpload}?command=QuickUpload&type=Images&responseType=json`,
-                      },
-                      headers: {
-                        "X-CSRF-TOKEN": "CSRF-Token",
-                        Authorization: "Bearer <JSON Web Token>",
-                      },
-                    }}
-                    onReady={(editor) => {
-                      // You can store the "editor" and use when it is needed.
-                      console.log("Editor is ready to use!", editor);
-                    }}
-                    onChange={(event, editor) => {
-                      const data = editor.getData();
-                      setEventDiscription(data);
-                    }}
-                    onBlur={(event, editor) => {
-                      console.log("Blur.", editor);
-                    }}
-                    onFocus={(event, editor) => {
-                      console.log("Focus.", editor);
-                    }}
-                  />
+                        editor={ ClassicEditor }
+                        data="<p>Hello from the first editor working with the context!</p>"
+                        onReady={ editor => {
+                            // You can store the "editor" and use when it is needed.
+                            console.log( 'Editor1 is ready to use!', editor );
+                        } }
+                    />
+                  </CKEditorContext>
+              
                 </Form.Group>
                 <Form.Group className='mb-3' controlId='evenbtCoverPic'>
                   <Form.Label>Upload Event Cover Picture</Form.Label>
                   <ImgCrop
-                    shape='rect'
+                    cropShape='rect'
                     aspect={21 / 8}
-                    rotate
+                    rotationSlider
                     quality={1}
-                    grid={true}>
+                    showGrid={true}>
                     <Upload
                       name='avatar'
                       listType='picture-card'

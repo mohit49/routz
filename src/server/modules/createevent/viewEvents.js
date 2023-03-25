@@ -17,19 +17,12 @@ router.get("/api/viewevent/search", async (req, res) => {
   var dataQuery;
 if (!city && !creatorId && !query) {
 
-  Createevent.find({},
-    function (err, data) {
-      if(data) {
-      res.json(data);
-      } else {
-      
-      }
-    }
-  );
+  const dataEvent = Createevent.find({});
+  res.json(dataEvent);
 
 } else {
 
-  Createevent.find(
+ const dataEvent = await Createevent.find(
     {
       $or: [
         {
@@ -43,14 +36,13 @@ if (!city && !creatorId && !query) {
         $regex: new RegExp(query),
       }
       
-    },
-    function (err, data) {
-      res.json(data);
     }
   )
     .limit(limit)
     .skip(indexNo);
+    res.json(dataEvent);
 }
+
 });
 module.exports = router;
 

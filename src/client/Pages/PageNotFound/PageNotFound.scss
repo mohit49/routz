@@ -1,0 +1,11 @@
+.page-not-found {
+    width: 100%;
+    text-align: center;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+        font-size: 18px;
+    }
+}

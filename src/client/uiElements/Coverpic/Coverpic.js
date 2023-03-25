@@ -116,7 +116,7 @@ function Coverpic({ city, state, country }) {
         className='coverPic shadow-sm p-0'
         style={{
           backgroundImage: `url('${
-            process.env.REACT_BASE_API_URL +
+            process.env.REACT_BASE_API_IMAGES +
             profileData?.coverpic?.destination +
             "/" +
             profileData?.coverpic?.filename
@@ -152,7 +152,7 @@ function Coverpic({ city, state, country }) {
               {profileData?.profilepic && (
                 <img
                   src={
-                    process.env.REACT_BASE_API_URL +
+                    process.env.REACT_BASE_API_IMAGES +
                     profileData?.profilepic?.destination +
                     "/" +
                     profileData?.profilepic?.filename

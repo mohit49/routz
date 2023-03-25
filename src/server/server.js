@@ -49,15 +49,14 @@ app.use(router)
 
 app.use(express.static('images'));
 app.use('/static', express.static('server-build'))
+app.use('/static/images', express.static('images'))
 
 
 /**
  * Api require Modules Name
  * @type {string}
  */
-app.use(express.static(__dirname + '/images'));
-console.log('sss' + __dirname)
-app.use('/images', express.static(path.join(__dirname, 'images')))
+
 const registerPage = require("./modules/registration/registration");
 app.post("/api/register", registerPage);
 
@@ -103,13 +102,13 @@ app.post("/api/addPosts", addPosts);
 const searchBar = require("./modules/search-bar/search-bar");
 app.get("/api/search-bar", searchBar);
 
-app.use('^/*',(req, res) => {
+app.get('*',(req, res) => {
   var host = req.get('host');
   const app = ReactDOMServer.renderToString(  <StaticRouter location={req.url}>
     <App />
   </StaticRouter>);
    const helmet = Helmet.renderStatic();
-  
+  console.log( helmet.title.toString())
   const indexFile = path.resolve('public/index.html');
   const html = `
   <!DOCTYPE html>

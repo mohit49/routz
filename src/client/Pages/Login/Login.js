@@ -11,6 +11,7 @@ import { Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { Data } from "../../App";
 import Banner3 from "../../assets/images/login_banner.jpg";
+import {Helmet} from "react-helmet";
 function Login() {
   let navigate = useNavigate();
   const loginAPI =
@@ -51,6 +52,12 @@ function Login() {
   };
 
   return (
+    <>
+        <Helmet>
+    <title>Social Networks For bikers :: Login</title>
+    <meta name="description" content="Social Networks For bikers"/>
+  <meta name="keywords" content="HTML, CSS, JavaScript, Home"/>
+    </Helmet>
     <div className="login_con shadow-lg  bg-white">
       <Col md={7} className="login_banner" style={{background: `url(${Banner3})`}}>
         <h1>Meet on Road w</h1>
@@ -124,6 +131,7 @@ function Login() {
         )}
       </Col>
     </div>
+    </>
   );
 }
 

@@ -77962,6 +77962,19 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   align-items: center;
   justify-content: center;
 }
+/*!********************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/Feeds/Feeds.scss ***!
+  \********************************************************************************************************************************/
+.feeds-section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 15px;
+  padding: 10px;
+}
+.feeds-section h4 {
+  font-size: 16px;
+}
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/ProfileView/ProfileView.scss ***!
   \****************************************************************************************************************************************/
@@ -79406,4 +79419,147 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   .login-form .ant-select-single {
     width: 100%;
   }
+}
+/*!****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/CreateEvent/CreateEvent.scss ***!
+  \****************************************************************************************************************************************/
+.create-event-page {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.create-event-page .mainBanner {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+  height: 200px;
+  background-size: cover !important;
+  overflow: hidden;
+  position: relative;
+}
+.create-event-page .mainBanner img {
+  width: 100%;
+}
+.create-event-page .mainBanner .innerContent {
+  position: absolute;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  top: 20%;
+  padding: 10px;
+}
+.create-event-page .mainBanner .innerContent h2 {
+  color: #ffffff;
+  font-weight: lighter;
+}
+.create-event-page .mainBanner .innerContent p {
+  font-size: 15px;
+}
+.create-event-page .creator-info {
+  width: 100%;
+  padding: 10px;
+  background: #0d6efd;
+  color: #ffffff;
+  display: flex;
+  font-size: 25px;
+  align-items: center;
+}
+.create-event-page .creator-info p {
+  margin: 0;
+}
+.create-event-page .event-form {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+  background: #ffffff;
+  padding: 15px;
+  border: radius 0;
+  margin: 0;
+  min-height: 350px;
+}
+.create-event-page .event-form .ant-picker {
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+.create-event-page .event-form .ant-select {
+  width: 100%;
+}
+.create-event-page .event-form .ant-select .ant-select-selector {
+  border-radius: 5px;
+  height: 45px;
+}
+.create-event-page .event-form .ant-select .ant-select-selector .ant-select-selection-item {
+  display: flex;
+  align-items: center;
+}
+.create-event-page .event-form .ant-form-item-control-input-content .ant-upload-list-item {
+  border: 1px #ccc solid !important;
+}
+.create-event-page .event-form .form-label {
+  font-size: 16px;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.create-event-page .event-form .ck-toolbar_grouping {
+  border-top-right-radius: 5px !important;
+  border-top-left-radius: 5px !important;
+}
+.create-event-page .event-form .ck-content.ck-editor__editable {
+  border-bottom-right-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+}
+.create-event-page .event-form .ant-upload-list-picture .ant-upload-list-item-error, .create-event-page .event-form .ant-upload-list-picture-card .ant-upload-list-item-error {
+  border-color: #0d6efd;
+}
+.create-event-page .event-form .ant-upload-list-item-error .ant-upload-list-item-name {
+  color: #0d6efd;
+}
+.create-event-page .event-form .ant-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+.create-event-page .event-form .ck-content.ck-editor__editable {
+  min-height: 500px;
+}
+.create-event-page .event-form .ant-upload-picture-card-wrapper {
+  margin-top: 10px;
+}
+.create-event-page .event-form .spinner-grow {
+  left: 50% !important;
+  height: 50px;
+  width: 50px;
+  margin-left: -25px;
+  position: absolute;
+  top: 50%;
+}
+@media (min-width: 1366px) {
+  .create-event-page .event-form .mn-continer {
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+  }
+  .create-event-page .event-form .creator-info {
+    padding: 20px 50px;
+  }
+}
+.create-event-page .ant-result {
+  background: #ffffff;
+  border-radius: 5px;
+  margin-top: 0;
+}
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/PageNotFound/PageNotFound.scss ***!
+  \******************************************************************************************************************************************/
+.page-not-found {
+  width: 100%;
+  text-align: center;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.page-not-found p {
+  font-size: 18px;
 }

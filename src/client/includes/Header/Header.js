@@ -125,7 +125,7 @@ function Header() {
                             <span className='profile-pic'>
                               <img
                                 src={
-                                  process.env.REACT_BASE_API_URL +
+                                  process.env.REACT_BASE_API_IMAGES +
                                   loginData?.profilepic?.destination +
                                   "/" +
                                   loginData?.profilepic?.filename
@@ -136,9 +136,11 @@ function Header() {
                           </Dropdown.Toggle>
 
                           <Dropdown.Menu>
-                            <NavDropdown.Item href='#action3'>
-                              Menu
-                            </NavDropdown.Item>
+                          <NavLink
+                              to='/profile'
+                              className='dropdown-item'>
+                              My Profile
+                            </NavLink>
                             <NavDropdown.Item href='#action4'>
                               Another action
                             </NavDropdown.Item>

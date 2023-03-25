@@ -25,7 +25,8 @@ import ViewEvent from "./Pages/ViewEvent/ViewEvent";
 import Home from "./Pages/Home/Home";
 
 import Register from "./Pages/Register/Register";
-//import CreateEvent from "./Pages/CreateEvent/CreateEvent";
+import CreateEvent from "./Pages/CreateEvent/CreateEvent";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 export const Data = createContext();
 const PageLayout = ({ children }) => children;
 const pageVariants = {
@@ -95,7 +96,7 @@ export function App() {
       <Header/>
  <Routes>
         
-            <Route path='*' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
            
@@ -106,7 +107,10 @@ export function App() {
             <Route path='/event'>
               <Route path=':eventName' element={<ViewEvent />} />
             </Route>
-        
+            <Route path='/create-event' element={<CreateEvent />} >
+           
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
             </Routes>
         <Footer/>
        
