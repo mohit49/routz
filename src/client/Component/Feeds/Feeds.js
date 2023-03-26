@@ -3,7 +3,7 @@ import React, { useState,useEffect, useContext  } from "react";
 import { Data } from "../../App";
 import axios from "axios";
 import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
-import '../Feeds/Feeds.scss';
+import '../Feeds/feeds.scss';
 const fetchposts =  process.env.REACT_BASE_API_URL +  process.env.REACT_APP_POSTS;
 const settings = {
   dots: false,
