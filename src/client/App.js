@@ -89,6 +89,7 @@ export function App() {
  <Data.Provider value={webStore}>
  <React.StrictMode>
   <Helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Social Networks For bikers</title>
     <meta name="description" content="Social Networks For bikers"/>
   <meta name="keywords" content="HTML, CSS, JavaScript"/>
