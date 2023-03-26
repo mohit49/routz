@@ -16,6 +16,7 @@ function Coverpic({ city, state, country }) {
   const [fileListProfilePic, setFileListProfilePic] = useState([]);
   const [fileListCoverPic, setFileListCoverPic] = useState([]);
   const [images, setImages] = useState([]);
+  const [req, reqSent] = useState(false);
 
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
@@ -30,7 +31,33 @@ function Coverpic({ city, state, country }) {
     };
 
     const src = file.url || (await getSrcFromFile(file));
+ 
+    if (newFileList.length > 0 && !req) {
+      var formData = new FormData();
 
+      formData.append("userName", profileData._id);
+      let imageNames = [];
+      if (newFileList) {
+        newFileList.forEach((ele, index) => {
+          if (ele.originFileObj) {
+            formData.append(
+              "image",
+              ele.originFileObj,
+              profileData._id + "." + ele.originFileObj.name.split(".")[1]
+            );
+            return false;
+          }
+        });
+      }
+   
+      Axios.post(EditProfileApi, formData, { withCredentials: true }).then(
+        (response) => {
+          if (response.statusText === "OK") {
+            setProfileData(response.data.data);
+          }
+        }
+      );
+    }
     setFileListProfilePic(newFileList);
   };
 
@@ -45,49 +72,16 @@ function Coverpic({ city, state, country }) {
 
     const src = file.url || (await getSrcFromFile(file));
 
-    setFileListCoverPic(newFileList);
-  };
-
-  useEffect(() => {
+  
     var currentTime = Date.now();
-    if (fileListProfilePic.length > 0) {
-      var formData = new FormData();
-
-      formData.append("userName", profileData._id);
-      let imageNames = [];
-      if (fileListProfilePic) {
-        fileListProfilePic.forEach((ele, index) => {
-          if (ele.originFileObj) {
-            formData.append(
-              "image",
-              ele.originFileObj,
-              profileData._id + "." + ele.originFileObj.name.split(".")[1]
-            );
-            return false;
-          }
-        });
-      }
-
-      Axios.post(EditProfileApi, formData, { withCredentials: true }).then(
-        (response) => {
-          if (response.statusText === "OK") {
-            setProfileData(response.data.data);
-          }
-        }
-      );
-    }
-  }, [fileListProfilePic]);
-
-  useEffect(() => {
-    var currentTime = Date.now();
-    if (fileListCoverPic.length > 0) {
+    if (newFileList.length > 0) {
       var formData2 = new FormData();
 
       formData2.append("userName", profileData._id);
       formData2.append("coverPic", true);
       let imageNames = [];
-      if (fileListCoverPic) {
-        fileListCoverPic.forEach((ele, index) => {
+      if (newFileList) {
+        newFileList.forEach((ele, index) => {
           if (ele.originFileObj) {
             formData2.append(
               "image",
@@ -97,9 +91,10 @@ function Coverpic({ city, state, country }) {
             return false;
           }
         });
+       
       }
 
-      var coverPic = true;
+   
       Axios.post(EditProfileApi, formData2, { withCredentials: true }).then(
         (response) => {
           if (response.statusText === "OK") {
@@ -107,8 +102,10 @@ function Coverpic({ city, state, country }) {
           }
         }
       );
+      setFileListCoverPic(newFileList);
     }
-  }, [fileListCoverPic]);
+  };
+
 
   return (
     <>

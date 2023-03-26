@@ -77963,14 +77963,14 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   justify-content: center;
 }
 /*!********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/Feeds/Feeds.scss ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/Feeds/feeds.scss ***!
   \********************************************************************************************************************************/
 .feeds-section {
   width: 100%;
   height: auto;
   display: flex;
-  margin-top: 15px;
   padding: 10px;
+  margin-top: 15px;
   flex-direction: column;
 }
 .feeds-section h4 {
