@@ -4,8 +4,30 @@
     display: flex;
     margin-top: 15px;
     padding: 10px;
+    flex-direction: column;
     h4 {
         font-size: 16px;
 
+    }
+    .feed-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-radius: 5px;
+        background: #ffffff;
+        margin-bottom: 10px;
+        .item-con-posts {
+            .item-img {
+                width: 100%;
+                img {
+                    width: 100%;
+                }
+            }
+            .post-contnet {
+                position: absolute;
+                display: none;
+            }
+        }
     }
 }

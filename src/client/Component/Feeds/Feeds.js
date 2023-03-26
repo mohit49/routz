@@ -2,7 +2,48 @@ import React, { useState,useEffect, useContext  } from "react";
 import '../Feeds/Feeds.scss';
 import { Data } from "../../App";
 import axios from "axios";
+import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
 const fetchposts =  process.env.REACT_BASE_API_URL +  process.env.REACT_APP_POSTS;
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  swipeToSlide: true,
+  draggable:true,
+  responsive: [
+      {
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 1,
+         
+        }
+      },
+      {
+          breakpoint: 1290,
+          settings: {
+            slidesToShow: 1,
+           
+          }
+        },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+};
 function Feeds({profileData}) {
     const [error, setError] = useState(false);
     const [loader, setLoader] = useState(false);
@@ -28,14 +69,13 @@ function Feeds({profileData}) {
   return (
 
     <div className="feeds-section">
-        <h4>Latest Feeds</h4>
-      
+        <h4>your posts</h4>
+        {data && data.map((ele,key)=>
+        <div key={key} className="feed-container-list">
         <div className="feed-container">
-        {data && data.map((ele,key)=> <div key={key} className="feed-container-list">
-data
-</div>
-)}
-        </div>
+          <SlicksliderPosts data={ele} insideImage={true} settings={settings} />
+          </div></div>)
+        }
     </div>
   )
 }

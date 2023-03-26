@@ -77971,9 +77971,29 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   display: flex;
   margin-top: 15px;
   padding: 10px;
+  flex-direction: column;
 }
 .feeds-section h4 {
   font-size: 16px;
+}
+.feeds-section .feed-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 5px;
+  background: #ffffff;
+  margin-bottom: 10px;
+}
+.feeds-section .feed-container .item-con-posts .item-img {
+  width: 100%;
+}
+.feeds-section .feed-container .item-con-posts .item-img img {
+  width: 100%;
+}
+.feeds-section .feed-container .item-con-posts .post-contnet {
+  position: absolute;
+  display: none;
 }
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/ProfileView/ProfileView.scss ***!
