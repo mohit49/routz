@@ -12,3 +12,22 @@
     align-items: center;
     justify-content: center;
 }
+@media (max-width: 640px) {
+    .container-mob {
+        width: 100%;
+        padding: 0;
+        .coverPic {
+            margin-top: 0;
+            border-radius: 0;
+        }
+        .mtop {
+            margin-top: 0;
+            .card-body {
+                padding: 0;
+            }
+        }
+        .postContainer {
+            border-radius: 0;
+        }
+    }
+}

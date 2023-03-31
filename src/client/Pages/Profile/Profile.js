@@ -72,7 +72,7 @@ function Profile() {
   })
   return (
     
-    <Container>
+    <Container fluid="md" className='container-mob'>
           <Helmet>
     <title>Social Networks For bikers :: Profile Page</title>
     <meta name="description" content="Social Networks For bikers"/>

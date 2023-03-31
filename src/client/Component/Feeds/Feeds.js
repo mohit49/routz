@@ -4,10 +4,16 @@ import { Data } from "../../App";
 import axios from "axios";
 import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
 import '../Feeds/feeds.scss';
+import { MapPinIcon } from "@heroicons/react/24/solid";
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+
+TimeAgo.addDefaultLocale(en);
+const timeAgo = new TimeAgo('en-US')
 const fetchposts =  process.env.REACT_BASE_API_URL +  process.env.REACT_APP_POSTS;
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -68,12 +74,18 @@ function Feeds({profileData}) {
         }
       },[profileData?.username]);
   return (
-
+    
     <div className="feeds-section">
-        <h4>your posts</h4>
+      
         {data && data.map((ele,key)=>
         <div key={key} className="feed-container-list">
         <div className="feed-container">
+          <div className="postContent">
+            <div className="name-location"><p>{ele.authorinfo.name}</p> <p><MapPinIcon/> {ele.location || "Delhi"}</p></div>
+           
+           
+            <p>{timeAgo.format(new Date(ele.timestamp))}</p>
+          </div>
           <SlicksliderPosts data={ele} insideImage={true} settings={settings} />
           </div></div>)
         }

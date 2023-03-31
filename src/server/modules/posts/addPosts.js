@@ -44,7 +44,7 @@ router.post(
         authorid: req.userId,
         authorinfo: userDetails,
         posttitle: req.body.postTitle,
-        timestamp : datetime,
+        timestamp : currentdate,
         postdiscription:req.body.postData
       });
       const postData = await uploadPosts.save();

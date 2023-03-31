@@ -77664,6 +77664,26 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 640px) {
+  .container-mob {
+    width: 100%;
+    padding: 0;
+  }
+  .container-mob .coverPic {
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .container-mob .mtop {
+    margin-top: 0;
+  }
+  .container-mob .mtop .card-body {
+    padding: 0;
+  }
+  .container-mob .postContainer {
+    border-radius: 0;
+  }
+}
 /*!***************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/uiElements/Coverpic/Coverpic.scss ***!
   \***************************************************************************************************************************************/
@@ -77975,6 +77995,30 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 }
 .feeds-section h4 {
   font-size: 16px;
+}
+.feeds-section .postContent {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.feeds-section .postContent p {
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+.feeds-section .postContent .name-location {
+  display: flex;
+  flex-direction: row;
+}
+.feeds-section .postContent .name-location p {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3px;
+}
+.feeds-section .postContent .name-location p svg {
+  width: 20px;
 }
 .feeds-section .feed-container {
   width: 100%;

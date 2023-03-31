@@ -89,7 +89,8 @@ module.exports =  {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+   
   },
   plugins: [new CleanWebpackPlugin([outputDirectory]), new MiniCssExtractPlugin() , new Dotenv({path :`${isProduction ? '.env.production' : '.env.development' }`}),
   new HtmlWebpackPlugin({
