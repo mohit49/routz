@@ -104,6 +104,8 @@ const uploadpostImage = require("./modules/uploadImage/uploadImage");
 app.post("/api/uploadpostImage", uploadpostImage);
 const addPosts = require("./modules/posts/addPosts");
 app.post("/api/addPosts", addPosts);
+const deletePost = require("./modules/posts/deletePost");
+app.delete("/api/deletePost", deletePost);
 
 const searchBar = require("./modules/search-bar/search-bar");
 app.get("/api/search-bar", searchBar);
