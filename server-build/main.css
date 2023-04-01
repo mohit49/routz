@@ -78026,11 +78026,15 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   flex-direction: column;
   align-items: center;
   height: 30px;
+  width: 20px;
   margin-right: 5px;
   cursor: pointer;
   justify-content: space-between;
   height: 23px;
   align-self: center;
+}
+.feeds-section .postContent .right-con svg {
+  color: #000000;
 }
 .feeds-section .postContent .right-con #dropdown-menu-post {
   display: flex;

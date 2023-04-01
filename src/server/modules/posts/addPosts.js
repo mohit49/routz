@@ -20,18 +20,14 @@ const fileStorageEngine = multer.diskStorage({
   },
 });
 const upload = multer({ storage: fileStorageEngine });
-var currentdate = new Date(); 
-var datetime =  currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
+
+
 router.post(
   "/api/addPosts",
   authenticateJWT,
   upload.any("uploadImages"),
   async (req, res, next) => {
+    var currentdate = new Date(); 
     if (req.files?.length > 0) {
       const userDetails = await Register.findOne(
         { _id: req.userId },
@@ -63,7 +59,7 @@ router.post(
         authorid: req.userId,
         authorinfo: userDetails,
         posttitle: req.body.postTitle,
-        timestamp : datetime,
+        timestamp : currentdate,
         postdiscription:req.body.postData
       });
       const postData = await uploadPosts.save();
