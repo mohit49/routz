@@ -5,7 +5,7 @@ import axios from "axios";
 import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
 import "../Feeds/feeds.scss";
 import { MapPinIcon, MdOutlineDeleteOutline } from "@heroicons/react/24/solid";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { TrashIcon , HeartIcon , ChatBubbleLeftRightIcon , ShareIcon     } from "@heroicons/react/24/outline";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en";
 import Button from "react-bootstrap/Button";
@@ -137,30 +137,17 @@ function Feeds({ profileData }) {
               </div>
               <div className="postContent">
                 <div className="left-con">
-                  <div className="name-location">
-                    <p>{ele.authorinfo.name}</p>{" "}
+                  <div className="name-location chat-likes">
+                 
                     <p>
-                      <MapPinIcon /> {ele.location || "Delhi"}
+                      <HeartIcon /> <span>15</span>
                     </p>
+                    <p><ChatBubbleLeftRightIcon/> <span>20</span></p>
                   </div>
-                  <p>{timeAgo.format(new Date(ele.timestamp))}</p>
+                
                 </div>
-                <div className="right-con">
-                  <Dropdown>
-                    <Dropdown.Toggle id="dropdown-menu-post">
-                      <span></span>
-                      <span></span>
-                      <span></span>{" "}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item href="#/action-1">
-                        Share Post
-                      </Dropdown.Item>
-                      <Dropdown.Item onClick={() => setShowPost(ele._id)}>
-                        Delete Post
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                <div className="right-con bottom-share" >
+                  <ShareIcon /> <span>Share</span>
                 </div>
               </div>
             </div>

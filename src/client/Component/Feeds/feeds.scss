@@ -33,6 +33,21 @@
           width: 20px;
         }
       }
+      &.chat-likes {
+        p {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          svg {
+            font-size: 20px;
+          }
+          span {
+            font-size: 16px;
+            margin-left: 3px;
+          }
+        }
+      }
     }
     .right-con {
       display: flex;
@@ -48,23 +63,30 @@
       svg {
         color: #000000;
       }
-      
-      #dropdown-menu-post {
 
-            display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    padding: 0;
-    height: 30px;
-    background: none;
-    border: none;
-    span {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #333333;
-    }
+      #dropdown-menu-post {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 0;
+        height: 30px;
+        background: none;
+        border: none;
+        span {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #333333;
+        }
+      }
+      &.bottom-share {
+        flex-direction: row;
+        width: 60px;
+
+        svg {
+          width: 20px;
+        }
       }
     }
   }
@@ -105,11 +127,11 @@
         left: 0;
         top: 0;
         z-index: 1;
-        background: rgba(255,255,255,.95);
-        p{
+        background: rgba(255, 255, 255, 0.95);
+        p {
           font-size: 16px;
         }
-        .posts-btn{
+        .posts-btn {
           display: flex;
           justify-content: space-between;
           flex-direction: column;

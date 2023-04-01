@@ -78021,6 +78021,19 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 .feeds-section .postContent .name-location p svg {
   width: 20px;
 }
+.feeds-section .postContent .name-location.chat-likes p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.feeds-section .postContent .name-location.chat-likes p svg {
+  font-size: 20px;
+}
+.feeds-section .postContent .name-location.chat-likes p span {
+  font-size: 16px;
+  margin-left: 3px;
+}
 .feeds-section .postContent .right-con {
   display: flex;
   flex-direction: column;
@@ -78051,6 +78064,13 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   height: 5px;
   border-radius: 50%;
   background: #333333;
+}
+.feeds-section .postContent .right-con.bottom-share {
+  flex-direction: row;
+  width: 60px;
+}
+.feeds-section .postContent .right-con.bottom-share svg {
+  width: 20px;
 }
 .feeds-section .feed-container {
   width: 100%;
