@@ -4,70 +4,25 @@ import { Data } from "../../App";
 import axios from "axios";
 import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
 import "../Feeds/feeds.scss";
-import { MapPinIcon, MdOutlineDeleteOutline } from "@heroicons/react/24/solid";
-import { TrashIcon , HeartIcon , ChatBubbleLeftRightIcon , ShareIcon     } from "@heroicons/react/24/outline";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
-TimeAgo.addDefaultLocale(en);
-const timeAgo = new TimeAgo("en-US");
+import PostCard from "../PostCard/PostCard";
 const fetchposts = process.env.REACT_BASE_API_URL + process.env.REACT_APP_POSTS;
-const deletePostUrl =
-  process.env.REACT_BASE_API_URL + process.env.REACT_APP_DELETE_POST;
 
-const settings = {
-  dots: true,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  swipeToSlide: true,
-  draggable: true,
-  responsive: [
-    {
-      breakpoint: 1800,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
-    {
-      breakpoint: 1290,
-      settings: {
-        slidesToShow: 1,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 2,
-      },
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
+
+
 function Feeds({ profileData }) {
+  const [refetchPost, setRefetchPOst] = useState(false);
   const countRef = useRef(0);
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
   const [data, setData] = useState(false);
-  const [showPost, setShowPost] = useState("");
-  const [refetchPost, setRefetchPOst] = useState(false);
+
   useEffect(() => {
     if (profileData?.username?.length > 0) {
       setLoader(true);
       axios
         .get(
           fetchposts +
-            `/?limit=15&index=0&type=photos&query=${profileData.username}`
+            `/?limit=15&index=0&query=${profileData.username}`
         )
         .then(function (response) {
           if (response.data.sucessStatus) {
@@ -81,76 +36,14 @@ function Feeds({ profileData }) {
         });
     }
   }, [profileData?.username, refetchPost]);
-  const deletePost = (id) => {
-    axios.delete(deletePostUrl + "/?postId=" + id).then(function (response) {
-      if (response.data.sucessStatus) {
-        setRefetchPOst(!refetchPost);
-      }
-    });
-  };
+
   return (
     <div className="feeds-section">
       {data &&
         data.map((ele, key) => (
           <div key={key} className="feed-container-list">
-            <div className="feed-container">
-              <div className="postContent">
-                <div className="left-con">
-                  <div className="name-location">
-                    <p>{ele.authorinfo.name}</p>{" "}
-                    <p>
-                      <MapPinIcon /> {ele.location || "Delhi"}
-                    </p>
-                  </div>
-                  <p>{timeAgo.format(new Date(ele.timestamp))}</p>
-                </div>
-                <div className="right-con" onClick={() => setShowPost(ele._id)}>
-                  <TrashIcon />
-                </div>
-              </div>
-              <div className="post-section">
-                {ele._id == showPost && (
-                  <div className="pop-box-post">
-                    <p>Are you Sure you want to delete this post</p>
-                    <div className="posts-btn">
-                      <Button
-                        onClick={() => setShowPost("")}
-                        variant="outline-primary"
-                      >
-                        Cancle
-                      </Button>
-                      <Button
-                        variant="primary"
-                        onClick={() => deletePost(ele._id)}
-                      >
-                        Yes Delete Post
-                      </Button>
-                    </div>
-                  </div>
-                )}
 
-                <SlicksliderPosts
-                  data={ele}
-                  insideImage={true}
-                  settings={settings}
-                />
-              </div>
-              <div className="postContent">
-                <div className="left-con">
-                  <div className="name-location chat-likes">
-                 
-                    <p>
-                      <HeartIcon /> <span>15</span>
-                    </p>
-                    <p><ChatBubbleLeftRightIcon/> <span>20</span></p>
-                  </div>
-                
-                </div>
-                <div className="right-con bottom-share" >
-                  <ShareIcon /> <span>Share</span>
-                </div>
-              </div>
-            </div>
+          <PostCard ele = {ele}  profileData={profileData}/>
           </div>
         ))}
     </div>

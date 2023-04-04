@@ -48,7 +48,7 @@ function Ridersupdate() {
 
   return (
     <div className='riders-update'>
-    <Container>
+    <Container className='container-mob' fluid="md">
         <h3><span>Top Showrooms in your area</span> <Link>View All</Link></h3>
 <div className='card-container-showrooms'>
     <div className='card-container-showrooms-ul'>

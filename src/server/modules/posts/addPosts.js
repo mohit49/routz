@@ -6,6 +6,7 @@ const UploadPosts = require("../../scemas/uploadPosts.js");
 var multer = require("multer");
 var fs = require("fs");
 const Register = require("../../scemas/registration");
+const profileInfo = require("../../scemas/profileinfo.js");
 const authenticateJWT = require("../../middleware/auth");
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -34,6 +35,8 @@ router.post(
         { password: 0 }
       );
   
+    
+  
       const uploadPosts = new UploadPosts({
         postpics: req.files,
         postType: req.body.postType,
@@ -41,7 +44,8 @@ router.post(
         authorinfo: userDetails,
         posttitle: req.body.postTitle,
         timestamp : currentdate,
-        postdiscription:req.body.postData
+        postdiscription:req.body.postData,
+      
       });
       const postData = await uploadPosts.save();
       res.status(200).json({
@@ -60,7 +64,8 @@ router.post(
         authorinfo: userDetails,
         posttitle: req.body.postTitle,
         timestamp : currentdate,
-        postdiscription:req.body.postData
+        postdiscription:req.body.postData,
+  
       });
       const postData = await uploadPosts.save();
       res.status(200).json({

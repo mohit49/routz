@@ -123,7 +123,7 @@ function LatestEvents() {
     <>
       <Suspense fallback={ <div className="spinner-con"><Spinner animation="border" variant="primary"/></div>}>
    
-        <Container className='content-area-latest-ride'>
+        <Container className='content-area-latest-ride container-mob' fluid="md" >
           <h3>Latest Event</h3>
           <div className='card-contaner'>
             {letestEventData &&

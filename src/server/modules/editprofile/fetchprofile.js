@@ -14,6 +14,7 @@ router.get("/api/profile", authenticateJWT, async (req, res) => {
   res.status(200).json({
     sucessStatus: true,
     data: userExist,
+    regData : username,
   });
 });
 

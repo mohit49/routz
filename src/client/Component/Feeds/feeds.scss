@@ -14,7 +14,16 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px 10px 15px 10px;
+    border-bottom: #e6ecf1 solid 1px;
+    &.top-sec {
+      padding-bottom: 5px;
+      .left-con {
+        .name-location {
+          flex-direction: column;
+        }
+      }
+    }
     p {
       margin-bottom: 3px;
       font-weight: 600;
@@ -28,9 +37,20 @@
         font-size: 14px;
         display: flex;
         flex-direction: row;
+        align-items: center;
         margin-bottom: 3px;
         svg {
           width: 20px;
+        }
+        .pro-pic {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 5px;
+          overflow: hidden;
+          img {
+            width: 100%;
+          }
         }
       }
       &.chat-likes {
@@ -138,6 +158,17 @@
           button {
             margin-bottom: 10px;
           }
+        }
+      }
+      .post-discription {
+        width: 100%;
+        display: flex;
+
+        flex-direction: column;
+        align-items: start;
+        padding: 10px 10px 10px 10px;
+        h4 {
+          font-size: 16px;
         }
       }
     }

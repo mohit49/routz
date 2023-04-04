@@ -43,7 +43,7 @@ if ((!userPosition?.city && typeof userPosition?.city != "undefined") || userPos
   return (
     <section className='section-from-riders'>
 
-      <Container><h3><span>View Riders Near you</span> <a href="/">View All</a></h3>
+      <Container className='container-mob' fluid="md"><h3><span>View Riders Near you</span> <a href="/">View All</a></h3>
 {loader && <div className='demoCon-biker'><CardSleleton/></div>}
 {!loader && <div className='actual-biker-content'>
   {

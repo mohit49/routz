@@ -27,6 +27,9 @@ const info = new mongoose.Schema({
   },
   postpics: {
     type: Object,
+  },
+  postlikes: {
+    type: Object,
   }
  
 });

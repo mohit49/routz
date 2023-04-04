@@ -14,11 +14,14 @@ router.get("/api/posts", async (req, res) => {
   const query = req.query?.query?.toLowerCase() || "";
   
   console.log(req.query?.query);
+  if(postType) {
   var profileSearch = await Postsfetch.find({
-    postType: postType,
+    postType : postType,
+ 
     $and: [
       {
         $or: [
+         
           { postdiscription: { $regex: new RegExp(query, 'i') } },
           { 'authorinfo.name': { $regex: new RegExp(query, 'i') } },
           { 'authorinfo.username': { $regex: new RegExp(query, 'i') } }
@@ -29,12 +32,35 @@ router.get("/api/posts", async (req, res) => {
   })
     .limit(limit)
     .skip(queryIndex);
+    res.status(200).json({
+      sucessStatus: true,
+      data: profileSearch,
+    });
 
-  
-  res.status(200).json({
-    sucessStatus: true,
-    data: profileSearch,
-  });
+} else {
+  var profileSearch = await Postsfetch.find({
+    
+ 
+    $and: [
+      {
+        $or: [
+         
+          { postdiscription: { $regex: new RegExp(query, 'i') } },
+          { 'authorinfo.name': { $regex: new RegExp(query, 'i') } },
+          { 'authorinfo.username': { $regex: new RegExp(query, 'i') } }
+        ],
+      },
+     
+    ],
+  })
+    .limit(limit)
+    .skip(queryIndex);
+    res.status(200).json({
+      sucessStatus: true,
+      data: profileSearch,
+    });
+}
+
 });
 
 module.exports = router;

@@ -69,7 +69,7 @@ const sliderItem = {
     <meta name="description" content="Social Networks For bikers"/>
   <meta name="keywords" content="HTML, CSS, JavaScript, Home"/>
     </Helmet>
-    <Container className="simpleSection">
+    <Container className="simpleSection container-mob" fluid="md" >
       <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
 <SearchBar/>
     </Container>

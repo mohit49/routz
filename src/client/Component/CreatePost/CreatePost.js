@@ -68,13 +68,13 @@ function CreatePost(profileData) {
           ),
           children: `Upload Your Photos`,
         },
-        {
-          key: 'videos',
-          label: (
-            <span> <VideoCameraIcon /> Videos </span>
-          ),
-          children: `Content of Tab Pane 3`,
-        },
+       // {
+         // key: 'videos',
+          //label: (
+            //<span> <VideoCameraIcon /> Videos </span>
+          //),
+          //children: `Content of Tab Pane 3`,
+       // },
       ];
 
     const submitPost = (()=>{
@@ -163,7 +163,7 @@ function CreatePost(profileData) {
   </div> }
 
     <Tabs defaultActiveKey="1" items={items} onChange={onChangeText} />
-    <div className='btm-contnr'><ImgCrop rotate>
+    <div className='btm-contnr'><ImgCrop rotate quality='1'>
       <Upload
         
         listType="picture-card"

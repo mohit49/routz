@@ -106,6 +106,8 @@ const addPosts = require("./modules/posts/addPosts");
 app.post("/api/addPosts", addPosts);
 const deletePost = require("./modules/posts/deletePost");
 app.delete("/api/deletePost", deletePost);
+const postLike = require("./modules/postlike/postlike");
+app.post("/api/postLike", postLike);
 
 const searchBar = require("./modules/search-bar/search-bar");
 app.get("/api/search-bar", searchBar);

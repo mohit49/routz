@@ -65,8 +65,8 @@ function Header() {
         } else {
           console.log(response.data.data);
           setLoginState(true);
-          setLoginData(response.data.data);
-          setProfileData(response.data.data);
+          setLoginData({...response.data.data , regData : {...response.data.regData}});
+          setProfileData({...response.data.data , regData : {...response.data.regData}});
           setLoading(false);
         }
       })

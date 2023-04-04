@@ -78000,7 +78000,14 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  padding: 15px 10px 15px 10px;
+  border-bottom: #e6ecf1 solid 1px;
+}
+.feeds-section .postContent.top-sec {
+  padding-bottom: 5px;
+}
+.feeds-section .postContent.top-sec .left-con .name-location {
+  flex-direction: column;
 }
 .feeds-section .postContent p {
   margin-bottom: 3px;
@@ -78016,10 +78023,21 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   font-size: 14px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin-bottom: 3px;
 }
 .feeds-section .postContent .name-location p svg {
   width: 20px;
+}
+.feeds-section .postContent .name-location p .pro-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
+  overflow: hidden;
+}
+.feeds-section .postContent .name-location p .pro-pic img {
+  width: 100%;
 }
 .feeds-section .postContent .name-location.chat-likes p {
   display: flex;
@@ -78120,6 +78138,16 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 }
 .feeds-section .feed-container .post-section .pop-box-post .posts-btn button {
   margin-bottom: 10px;
+}
+.feeds-section .feed-container .post-section .post-discription {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 10px 10px 10px 10px;
+}
+.feeds-section .feed-container .post-section .post-discription h4 {
+  font-size: 16px;
 }
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/ProfileView/ProfileView.scss ***!
