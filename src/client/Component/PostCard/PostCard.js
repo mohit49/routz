@@ -83,7 +83,7 @@ function PostCard({ ele, profileData }) {
     });
   };
   useEffect(() => {
-    if (likeList?.includes(profileData.regData._id)) {
+    if (likeList?.includes(profileData?.regData?._id)) {
       setLikePostH(true);
     } else {
       setLikePostH(false);
@@ -96,7 +96,7 @@ function PostCard({ ele, profileData }) {
       .get(profileFetch + "/" + username)
       .then(function (response) {
         if (response.data.sucessStatus) {
-            setuserProfilePic(response.data.data.profilepic);
+            setuserProfilePic(response.data.data?.profilepic);
         }
       })
       .catch(function (error) {

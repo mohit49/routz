@@ -25,7 +25,7 @@ function ProfileView() {
       .then(function (response) {
         console.log(response.data.sucessStatus +'dddd')
         if(response.data.sucessStatus) {
-          setUserData(response.data.data);
+          setUserData({...response.data.data , regData : {...response.data.regData}});
           setLoader(false)
           setError(false)
         } else {
@@ -44,7 +44,7 @@ function ProfileView() {
 
   return (
 
-    <Container className="mn-container">
+    <Container className="mn-container container-mob" fluid="md">
       {(loader && !error) && <Spinner animation="border" variant="primary"  />}
      
     {(!loader && !error) &&  <CoverView userData={userData}  /> }

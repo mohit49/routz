@@ -43,7 +43,7 @@ function Feeds({ profileData }) {
         data.map((ele, key) => (
           <div key={key} className="feed-container-list">
 
-          <PostCard ele = {ele}  profileData={profileData}/>
+         {typeof profileData !== "undefined"  && <PostCard ele = {ele}  profileData={profileData}/> }
           </div>
         ))}
     </div>

@@ -18,14 +18,11 @@ router.get("/api/profile/:username", async (req, res) => {
       { username: resUserName?.username },
       { password: 0 }
     );
-    let employee = {
-      ...userExist._doc,
-      ...resUserName._doc
-  };
 
     res.status(200).json({
       sucessStatus: true,
-      data: employee,
+      data: userExist,
+      regData : resUserName,
     });
   } else {
     res.status(200).json({

@@ -75,7 +75,7 @@ function Ridersupdate() {
                
                 <hr />
               
-                <LinkContainer to={`showrooms/${ele._id}`}>
+                <LinkContainer to={`showrooms/${ele.username}`}>
                   <Button
                     variant='primary'
                     size='md'

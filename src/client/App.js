@@ -105,6 +105,7 @@ export function App() {
             
             </Route>
             <Route path='/profile/:userId' element={<ProfileView />} />
+            <Route path='/showrooms/:userId' element={<ProfileView />} />
             <Route path='/event'>
               <Route path=':eventName' element={<ViewEvent />} />
             </Route>

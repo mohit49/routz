@@ -1,7 +1,7 @@
 import React from 'react'
 import Banner3 from "../../../assets/images/login_banner.jpg";
 import { MapPinIcon } from "@heroicons/react/24/solid";
-
+import Feeds from '../../../Component/Feeds/Feeds';
 function RightContainer({userData}) {
   return (
     <div className='right-cover'  >
@@ -19,20 +19,8 @@ function RightContainer({userData}) {
       </div>
       <div className='rt-main-container'>
         <div className='center-con'>
-          <div className='latestVisits'>
-            <h4>Latest Visits</h4>
-            <ul>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-              <li><div className='thumbsSpan'><div className='img-con'><img src={Banner3}/></div></div></li>
-           
-             
-            
-            </ul>
-          </div>
+         
+        {typeof userData !== "undefined" &&  <Feeds profileData={userData}/> }
         </div>
       <div className="right-con">
       {userData?.intro &&  <div className='about-sec'>
