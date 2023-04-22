@@ -136,9 +136,9 @@ function LatestEvents() {
                         alt='example'
                         src={
                           process.env.REACT_BASE_API_IMAGES +
-                          ele.eventcoverpic.destination +
+                          ele.eventcoverpic?.destination +
                           "/" +
-                          ele.eventcoverpic.filename
+                          ele.eventcoverpic?.filename
                         }
                       />
                     }>
@@ -149,26 +149,26 @@ function LatestEvents() {
                     <hr />
                     <p className='duration'>
                       <b>From</b>{" "}
-                      {getDay(JSON.parse(ele.eventduration)?.From) +
+                      {ele?.eventduration && getDay(JSON.parse(ele?.eventduration)?.From) +
                         " " +
                         new Date(
-                          JSON.parse(ele.eventduration)?.From
+                          JSON.parse(ele?.eventduration)?.From
                         ).getDate() +
                         " " +
-                        getMonth(JSON.parse(ele.eventduration)?.From) +
+                        getMonth(JSON.parse(ele?.eventduration)?.From) +
                         " " +
                         new Date(
-                          JSON.parse(ele.eventduration)?.From
+                          JSON.parse(ele?.eventduration)?.From
                         ).getFullYear()}{" "}
                       <b>to</b>{" "}
-                      {getDay(JSON.parse(ele.eventduration)?.to) +
+                      { ele?.eventduration && getDay(JSON.parse(ele?.eventduration)?.to) +
                         " " +
-                        new Date(JSON.parse(ele.eventduration)?.to).getDate() +
+                        new Date(JSON.parse(ele?.eventduration)?.to).getDate() +
                         " " +
-                        getMonth(JSON.parse(ele.eventduration)?.to) +
+                        getMonth(JSON.parse(ele?.eventduration)?.to) +
                         " " +
                         new Date(
-                          JSON.parse(ele.eventduration)?.to
+                          JSON.parse(ele?.eventduration)?.to
                         ).getFullYear()}
                     </p>
                     <LinkContainer to={`event/${ele._id}`}>

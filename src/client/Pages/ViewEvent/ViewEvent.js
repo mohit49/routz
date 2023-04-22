@@ -103,7 +103,7 @@ function ViewEvent() {
          </div>
          <div className="bannerInfo">
           <div className="banner-con">
-          <p>Register Now</p>
+         
           <h1>{eventData?.eventtitle}</h1>
           <p>{eventData?.eventSubheading}</p>
           <Button href="#">Apply Now</Button>

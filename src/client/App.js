@@ -111,7 +111,7 @@ export function App() {
             <Route path='/event'>
               <Route path=':eventName' element={<ViewEvent />} />
             </Route>
-            <Route path='/create-event' element={<CreateEvent />} >
+            <Route path='/create-events' element={<CreateEvent />} >
            
             </Route>
             <Route path="*" element={<PageNotFound />} />
