@@ -13,6 +13,7 @@ import { Link, useNavigate, NavLink, useLocation } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import Spinner from "react-bootstrap/Spinner";
 import "../Header/header.scss";
+
 import GetLocation from "../../Middleware/GetLocation"
 function Header() {
   const getLocation = GetLocation();
@@ -24,6 +25,24 @@ function Header() {
     useContext(Data);
   const [loading, setLoading] = useState(true);
   const [loginData, setLoginData] = useState();
+
+
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // "document.documentElement.scrollTo" is the magic for React Router Dom v6
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant", // Optional if you want to skip the scrolling animation
+    });
+  }, [pathname]);
+
+
+
+
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -74,10 +93,12 @@ function Header() {
         console.log(error);
       });
   }, [loginState]);
+
+
   return (
     <>
       {["sm"].map((expand) => (
-        <Navbar
+        <Navbar className="header-site"
           key={expand}
           expand={expand}
           bg='dark'

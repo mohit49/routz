@@ -1,15 +1,20 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import "./CoverView.scss";
 import Banner3 from "../../../assets/images/login_banner.jpg";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import  profilepic from '../../../assets/images/propic.jpg'
+import  profilepic from '../../../assets/images/propic.jpg';
+
 function CoverView({userData}) {
+
+ 
   return (
-    <>
+   <>
     <div className="mobile-cover-pic"  style={{background:`url(${process.env.REACT_BASE_API_IMAGES + userData.coverpic?.destination +'/'+ userData.coverpic?.filename}), #3e505e ` }}></div>
 
       <div className="left-contaner">
+  
+     
         <div className="picture-section">
           <div className="pro-pic">
 <img src={`${userData.profilepic?.filename ? process.env.REACT_BASE_API_IMAGES + userData.profilepic.destination +'/'+ userData.profilepic.filename : profilepic}`}/>          </div>
@@ -51,6 +56,8 @@ function CoverView({userData}) {
 
       
         </div>
+       
+       
       </div>
     </>
   );

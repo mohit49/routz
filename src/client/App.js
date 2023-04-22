@@ -27,6 +27,7 @@ import Home from "./Pages/Home/Home";
 import Register from "./Pages/Register/Register";
 import CreateEvent from "./Pages/CreateEvent/CreateEvent";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+
 export const Data = createContext();
 const PageLayout = ({ children }) => children;
 const pageVariants = {
@@ -95,6 +96,7 @@ export function App() {
   <meta name="keywords" content="HTML, CSS, JavaScript"/>
   </Helmet>
       <Header/>
+ 
  <Routes>
         
             <Route path='/' element={<Home />} />

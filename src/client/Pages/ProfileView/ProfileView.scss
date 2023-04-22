@@ -9,6 +9,7 @@
 .mn-container {
   padding: 0;
   min-height: 500px;
+  margin-top: 90px;
 
   .spinner-border {
     align-self: center;
@@ -93,7 +94,7 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
   .right-con {
     width: 100%;
     display: flex;
-    padding: 0 10px;
+    padding: 15px;
   }
   .center-con {
     width: 100%;
@@ -147,7 +148,7 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
     display: none;
   }
   .right-cover {
-    width: 80%;
+    width: 75%;
     padding: 0 5px;
     .cover-pic-dexktop {
       height: 250px;
@@ -165,13 +166,13 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
       }
     }
     .right-con {
-      width: 25%;
+      width: 35%;
       display: flex;
       padding: 0 10px;
       flex-direction: column;
 
       .about-sec {
-        background: #f5f5f5;
+        background: #ffffff;
         padding: 15px;
 
         border-radius: 10px;
@@ -184,7 +185,7 @@ background: linear-gradient(to right, #f5af19, #f12711); /* W3C, IE 10+/ Edge, F
       }
     }
     .center-con {
-      width: 75%;
+      width: 65%;
       display: flex;
     }
   }

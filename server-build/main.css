@@ -10785,6 +10785,7 @@ html, body {
   width: 100%;
   padding: 0;
   margin: 0;
+  height: auto !important;
   overflow-x: hidden;
   background-color: #E6ECF1 !important;
 }
@@ -77502,6 +77503,12 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   align-items: center;
 }
 
+.header-site {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
 .profile-pic {
   width: 30px;
   overflow: hidden;
@@ -77526,6 +77533,8 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 .page-footer {
   background: #212529;
   padding-top: 15px;
+  position: relative;
+  z-index: 1;
 }
 .page-footer .container {
   padding: 10px 0px;
@@ -77663,6 +77672,10 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.martopfx {
+  margin-top: 80px;
 }
 
 @media (max-width: 640px) {
@@ -78165,6 +78178,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 .mn-container {
   padding: 0;
   min-height: 500px;
+  margin-top: 90px;
 }
 .mn-container .spinner-border {
   align-self: center;
@@ -78247,7 +78261,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 .rt-main-container .right-con {
   width: 100%;
   display: flex;
-  padding: 0 10px;
+  padding: 15px;
 }
 .rt-main-container .center-con {
   width: 100%;
@@ -78301,7 +78315,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
     display: none;
   }
   .right-cover {
-    width: 80%;
+    width: 75%;
     padding: 0 5px;
   }
   .right-cover .cover-pic-dexktop {
@@ -78318,13 +78332,13 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
     overflow: hidden;
   }
   .rt-main-container .right-con {
-    width: 25%;
+    width: 35%;
     display: flex;
     padding: 0 10px;
     flex-direction: column;
   }
   .rt-main-container .right-con .about-sec {
-    background: #f5f5f5;
+    background: #ffffff;
     padding: 15px;
     border-radius: 10px;
   }
@@ -78335,7 +78349,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
     font-size: 13px;
   }
   .rt-main-container .center-con {
-    width: 75%;
+    width: 65%;
     display: flex;
   }
   .cover-pic-dexktop {
@@ -78349,8 +78363,9 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0;
+  margin: 50px 0px;
   padding: 0 !important;
+  align-items: flex-start;
 }
 
 .left-contaner {
@@ -78373,8 +78388,8 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   width: 100%;
 }
 .left-contaner .pro-pic {
-  width: 170px;
-  height: 170px;
+  width: 220px;
+  height: 220px;
   border-radius: 5%;
   background: #333333;
   overflow: hidden;
@@ -78447,12 +78462,12 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    margin-top: 30px;
+    margin-top: 90px;
   }
   .left-contaner {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 25%;
     align-items: flex-start;
     text-align: left;
     margin-top: 0px;
@@ -78460,6 +78475,16 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   .left-contaner .picture-section {
     align-items: flex-start;
     padding: 15px;
+    position: fixed;
+    top: 75px;
+    width: 21%;
+  }
+  .left-contaner .picture-section.is-sticky {
+    position: fixed;
+    top: 80px;
+    width: 20%;
+    z-index: 0;
+    animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
   }
   .left-contaner .about {
     padding: 15px 0px;
@@ -78748,6 +78773,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   padding: 50px 0px;
   display: flex;
   flex-direction: column;
+  margin-top: 50px;
 }
 @media only screen and (max-width: 600px) {
   .simpleSection {
