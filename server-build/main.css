@@ -78778,7 +78778,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 @media only screen and (max-width: 600px) {
   .simpleSection {
     flex-direction: column-reverse;
-    margin-top: 0;
+    margin-top: 60px;
     padding: 0 !important;
   }
 }
@@ -79455,21 +79455,19 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   margin-top: 20px;
 }
 .section-from-riders .actual-biker-content {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 30px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
 }
 .section-from-riders .actual-biker-content .ant-card-bordered {
-  width: 250px;
-  display: flex;
+  width: 220px;
+  display: inline-block;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 0 5px;
+  text-align: center;
   background-color: #E6ECF1 !important;
 }
 .section-from-riders .actual-biker-content .ant-card-bordered .ant-card-cover {
@@ -79478,7 +79476,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   height: 150px;
   overflow: hidden;
   border-radius: 50%;
-  margin-top: 20px;
+  margin: 20px auto 0px auto;
 }
 .section-from-riders .actual-biker-content .ant-card-bordered .ant-card-cover img {
   width: 100%;

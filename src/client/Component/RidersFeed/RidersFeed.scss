@@ -48,20 +48,19 @@
         
     }
     .actual-biker-content {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        margin-top: 30px;
-        flex-wrap: nowrap;
-        overflow-x: auto;
+        overflow-x: scroll;
         overflow-y: hidden;
+        white-space: nowrap;
+        margin-top: 20px;
+        width:100%;
         .ant-card-bordered {
-            width: 250px;
-            display: flex;
+            width: 220px;
+            display: inline-block;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             margin: 0 5px;
+            text-align: center;
             background-color: #E6ECF1 !important;
             .ant-card-cover {
                 width: 150px;
@@ -69,7 +68,7 @@
                 height: 150px;
                 overflow: hidden;
                 border-radius: 50%;
-                margin-top: 20px;
+                margin: 20px auto 0px auto;
                 img {
                     width: 100%;
                 }
