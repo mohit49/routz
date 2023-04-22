@@ -81,7 +81,7 @@ function ViewEvent() {
   }, [oneApiCall]);
 
   return (
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 simpleSection">
       {loading && (
         <div className='loading-con'>
           <Spinner

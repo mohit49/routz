@@ -78778,7 +78778,7 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 @media only screen and (max-width: 600px) {
   .simpleSection {
     flex-direction: column-reverse;
-    margin-top: 60px;
+    margin-top: 57px;
     padding: 0 !important;
   }
 }
