@@ -17,9 +17,11 @@ import cardCoverAdd2 from "../../assets/images/add2.jpg";
 import cardCoverAdd3 from "../../assets/images/add3.jpg";
 import { Avatar, Card } from "antd";
 import { LinkContainer } from "react-router-bootstrap";
-
+import CardSleleton from "../Skeletons/CardSleleton";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const viewEventApi =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_VIEW_EVENT_API;
 function LatestEvents() {
@@ -126,14 +128,17 @@ function LatestEvents() {
         <Container className='content-area-latest-ride container-mob' fluid="md" >
           <h3>Latest Event</h3>
           <div className='card-contaner'>
+            {!letestEventData && <div className='demoCon-biker'><CardSleleton/></div>}
             {letestEventData &&
               letestEventData.map((ele, index) => {
                 return (
-                  <Card
+                  <div className="custom-card"
                     key={index}
-                    cover={
-                      <img
+                   >
+                    <div className="card-img">
+                     <LazyLoadImage className="card-img"
                         alt='example'
+                        effect="blur"
                         src={
                           process.env.REACT_BASE_API_IMAGES +
                           ele.eventcoverpic?.destination +
@@ -141,7 +146,8 @@ function LatestEvents() {
                           ele.eventcoverpic?.filename
                         }
                       />
-                    }>
+                      </div>
+                      <div className="card-body">
                     <h4>{ele.eventtitle}</h4>
 
                     <p className='city'>{ele?.city?.name}</p>
@@ -179,10 +185,10 @@ function LatestEvents() {
                         View Now
                       </Button>
                     </LinkContainer>
-                  </Card>
+                    </div>
+                  </div>
                 );
               })}
-
             <div className='sliderAdd'>
               <Slider
                 effect='fade'

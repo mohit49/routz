@@ -3,6 +3,16 @@
 * {
     box-sizing: border-box;
 }
+.lazy-load-image-background {
+    &.blur{
+        filter: blur(5px);
+    }
+    &.lazy-load-image-loaded {
+        &.blur{
+            filter: blur(0px);
+        }
+    }
+}
 .loderPage {
     position: relative;
     margin: 0 auto;

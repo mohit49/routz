@@ -5,12 +5,14 @@ const Dotenv = require("dotenv-webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const outputDirectory = 'server-build';
 const isProduction = process.argv[process.argv.indexOf('--mode') + 1] === 'production';
 
 module.exports =  {
   entry: [ './src/client/index.js'],
   target: ["web", 'es5'],
+
 
   output: {
     path: path.join(__dirname, outputDirectory),
@@ -96,11 +98,22 @@ module.exports =  {
   new HtmlWebpackPlugin({
     template: './public/index.html',
     favicon: './public/favicon.ico'
-  })  ],
+  })],
    performance: {
         hints: false,
         maxEntrypointSize: 512000,
         maxAssetSize: 512000
-    }
+    },
+    optimization: {
+      minimize: true,
+      minimizer: [ new UglifyJsPlugin({ 
+         uglifyOptions: {
+          output: {
+            comments: false,
+            
+          }
+        }
+       })],
+    },
   
 };

@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import Slickslider from "../../uiElements/Slickslider/Slickslider";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const fetchposts =  process.env.REACT_BASE_API_URL +  process.env.REACT_APP_POSTS;
 function Latestposts() {
   const [error, setError] = useState(false);

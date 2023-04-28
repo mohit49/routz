@@ -5,6 +5,7 @@ import axios from "axios";
 import SlicksliderPosts from "../../uiElements/Slickslider/SlicksliderPosts";
 import "../Feeds/feeds.scss";
 import PostCard from "../PostCard/PostCard";
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const fetchposts = process.env.REACT_BASE_API_URL + process.env.REACT_APP_POSTS;
 
 
@@ -38,6 +39,7 @@ function Feeds({ profileData }) {
   }, [profileData?.username, refetchPost]);
 
   return (
+    <LazyLoadComponent>
     <div className="feeds-section">
       {data &&
         data.map((ele, key) => (
@@ -47,6 +49,7 @@ function Feeds({ profileData }) {
           </div>
         ))}
     </div>
+    </LazyLoadComponent>
   );
 }
 

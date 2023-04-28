@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Carousel } from "antd";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const SlicksliderPosts = ({ settings, data }) => {
   const onChange = (currentSlide) => {
     console.log(currentSlide);
@@ -17,7 +17,7 @@ const SlicksliderPosts = ({ settings, data }) => {
     <Carousel {...settings} afterChange={onChange}>
       {data && data?.postpics.map((ele,ind)=>
         <div className="post-item">
-        <img src={process.env.REACT_BASE_API_IMAGES  + ele.destination+'/'+ ele?.filename}/>
+        <LazyLoadImage  effect="blur" src={process.env.REACT_BASE_API_IMAGES  + ele.destination+'/'+ ele?.filename}/>
         </div>
       )
     }

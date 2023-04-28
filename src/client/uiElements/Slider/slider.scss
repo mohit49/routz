@@ -6,6 +6,14 @@
     -webkit-touch-callout:none;
     -webkit-tap-highlight-color:transparent;
     box-shadow: none;
+    .imageSlider {
+        .lazy-load-image-background {
+          width: 100%;
+          img {
+            width: 100%;
+          }  
+        }
+    }
 }
 .ant-carousel .slick-slider .slick-track,.ant-carousel .slick-slider .slick-list{
     transform:translate3d(0,0,0);

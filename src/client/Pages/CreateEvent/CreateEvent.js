@@ -13,6 +13,7 @@ import { Data } from "../../App";
 import axios from "axios";
 import Banner3 from "../../assets/images/headingbanner.jpg";
 import dayjs from "dayjs";
+import TextCreator from "../../uiElements/TextCreator/TextCreator";
 
 const ResultGrid = React.lazy(() =>
   import("../../Component/ResultGrid/ResultGrid")
@@ -283,15 +284,8 @@ function CreateEvent() {
                 )}
 
                 <Form.Group className="mb-3" controlId="evenbtDiscription">
-                  <Form.Label>Enter Event Description</Form.Label>
-
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    value={eventDiscription}
-                    onChange={(e) => setEventDiscription(e.target.value)}
-                  />
-                  <Button>Add Next Paragraph</Button>
+                 
+                  <TextCreator/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="evenbtCoverPic">
                   <Form.Label>Upload Event Cover Picture</Form.Label>

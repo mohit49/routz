@@ -5,6 +5,7 @@ import axios from "axios";
 import { Avatar, Card } from "antd";
 import { LinkContainer } from "react-router-bootstrap";
 import  profilepic from '../../assets/images/propic.jpg'
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const fetchUsersBikers =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_SEARCH_BAR;
   import { Data } from "../../App";

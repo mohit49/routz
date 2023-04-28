@@ -10776,6 +10776,13 @@ textarea.form-control-lg {
   box-sizing: border-box;
 }
 
+.lazy-load-image-background.blur {
+  filter: blur(5px);
+}
+.lazy-load-image-background.lazy-load-image-loaded.blur {
+  filter: blur(0px);
+}
+
 .loderPage {
   position: relative;
   margin: 0 auto;
@@ -78768,12 +78775,31 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
     background-color: #ffffff !important;
   }
 }
+.bgChange.event-sec {
+  min-height: 400px;
+}
 
 .simpleSection {
   padding: 50px 0px;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+  min-height: 600px;
+}
+@media only screen and (max-width: 600px) {
+  .simpleSection {
+    height: auto;
+  }
+}
+.simpleSection .ant-carousel {
+  min-height: 400px;
+}
+.simpleSection .ant-carousel .slider-con-inner {
+  min-height: 400px;
+  background: #ffffff;
+}
+.simpleSection .ant-carousel .slick-dots-bottom button {
+  text-indent: -999px;
 }
 @media only screen and (max-width: 600px) {
   .simpleSection {
@@ -78794,6 +78820,12 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
   box-shadow: none;
+}
+.ant-carousel .slick-slider .imageSlider .lazy-load-image-background {
+  width: 100%;
+}
+.ant-carousel .slick-slider .imageSlider .lazy-load-image-background img {
+  width: 100%;
 }
 
 .ant-carousel .slick-slider .slick-track, .ant-carousel .slick-slider .slick-list {
@@ -79063,74 +79095,52 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 .content-area-latest-ride {
   padding: 40px 0px;
   background: none;
+  min-height: 400px;
+}
+.content-area-latest-ride .demoCon-biker {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+.content-area-latest-ride .demoCon-biker .cardContiner .ant-skeleton {
+  display: flex;
+  flex-direction: column;
+}
+.content-area-latest-ride .demoCon-biker .cardContiner .ant-skeleton .ant-skeleton-header {
+  width: 100%;
+}
+.content-area-latest-ride .demoCon-biker .cardContiner .ant-skeleton .ant-skeleton-header .ant-skeleton-avatar {
+  width: 100%;
+  border-radius: 0;
+  height: 140px;
 }
 .content-area-latest-ride h3 {
   font-size: 18px;
+  margin-bottom: 10px;
   padding: 0px 10px;
-}
-.content-area-latest-ride .ant-card-cover img {
-  height: 120px;
-  width: auto;
-}
-.content-area-latest-ride .ant-card-body {
-  padding: 15px;
 }
 .content-area-latest-ride .card-contaner {
   margin-top: 10px;
   display: flex;
   flex-direction: row;
 }
-.content-area-latest-ride .card-contaner .ant-card {
-  box-shadow: none;
+.content-area-latest-ride .card-contaner .custom-card {
+  width: 20%;
+  margin: 5px;
+  background: #e6ecf1;
   overflow: hidden;
-  border-radius: 8px;
-  margin: 10px;
-  display: flex;
-  width: 240px;
-  flex-direction: column;
-  justify-content: flex-start;
+  border-radius: 5px;
+  overflow: hidden;
 }
-.content-area-latest-ride .card-contaner .ant-card hr {
-  margin: 5px 0px;
+.content-area-latest-ride .card-contaner .custom-card .card-img {
+  width: auto;
+  height: 150px;
 }
-@media only screen and (max-width: 600px) {
-  .content-area-latest-ride .card-contaner .ant-card {
-    flex-shrink: 0;
-    width: 210px;
-  }
-  .content-area-latest-ride .card-contaner .ant-card .ant-card-body {
-    padding: 10px;
-  }
+.content-area-latest-ride .card-contaner .custom-card .card-body {
+  padding: 10px;
 }
-.content-area-latest-ride .card-contaner .ant-card .subHead {
-  margin-top: 5px;
-  margin-bottom: 0;
-}
-.content-area-latest-ride .card-contaner .ant-card .duration {
-  margin: 0;
-}
-.content-area-latest-ride .card-contaner .ant-card .city {
-  font-weight: 400;
-  margin: 0;
-}
-.content-area-latest-ride .card-contaner .ant-card .organizer {
-  margin: 0;
-  margin-bottom: 0;
-  font-weight: 400;
-}
-.content-area-latest-ride .card-contaner .ant-card .duration {
-  font-style: italic;
-  font-size: 14px;
-  margin-top: 5px;
-}
-.content-area-latest-ride .card-contaner .ant-card h4 {
-  margin: 0;
+.content-area-latest-ride .card-contaner .custom-card .card-body h4 {
   font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.content-area-latest-ride .card-contaner .ant-card .buttonCard {
-  margin-top: 10px;
 }
 .content-area-latest-ride .card-contaner .sliderAdd {
   width: 240px;
@@ -79140,6 +79150,13 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
   .content-area-latest-ride .card-contaner {
     overflow-x: auto;
   }
+}
+/*!*******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/Skeletons/CardSleleton.scss ***!
+  \*******************************************************************************************************************************************/
+.cardContiner {
+  width: 230px;
+  padding: 10px;
 }
 /*!****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/SearchBar/SearchBar.scss ***!
@@ -79491,13 +79508,6 @@ textarea.ant-pagination .ant-pagination-options-quick-jumper input {
 }
 .section-from-riders .actual-biker-content .ant-card-bordered .ant-card-body .email {
   font-style: italic;
-}
-/*!*******************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Component/Skeletons/CardSleleton.scss ***!
-  \*******************************************************************************************************************************************/
-.cardContiner {
-  width: 230px;
-  padding: 10px;
 }
 /*!**********************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/Pages/Register/Register.scss ***!

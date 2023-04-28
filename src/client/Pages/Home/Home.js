@@ -19,6 +19,7 @@ import Latestposts from "../../Component/Latestposts/Latestposts";
 import Ridersupdate from "../../Component/Ridersupdate/Ridersupdate";
 import RidersFeed from "../../Component/RidersFeed/RidersFeed";
 import {Helmet} from "react-helmet";
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Home() {
@@ -70,16 +71,22 @@ const sliderItem = {
   <meta name="keywords" content="HTML, CSS, JavaScript, Home"/>
     </Helmet>
     <Container className="simpleSection container-mob" fluid="md" >
-      <Slider effect='fade' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
+      <Slider effect='fade' sliderName='homeSlider' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
 <SearchBar/>
     </Container>
-     <Container className="bgChange" fluid>
+   
+     <Container className="bgChange event-sec" fluid>
+     <LazyLoadComponent>
    <LatestEvents/>
+   </LazyLoadComponent>
    </Container>
    
+   <LazyLoadComponent>
    <Latestposts/>
-  
+  </LazyLoadComponent>
+  <LazyLoadComponent>
    <Ridersupdate/>
+   </LazyLoadComponent>
 <RidersFeed/>
  
    </>
