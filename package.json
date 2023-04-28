@@ -45,7 +45,7 @@
     "webpack-merge": "^5.8.0"
   },
   "scripts": {
-    "build": "export NODE_OPTIONS=--max_old_space_size=8192 && webpack --mode production",
+    "build": "webpack --mode production",
     "build:local": "webpack --mode development --devtool inline-source-map --hot",
     "start": "npm run build && pm2 start src/server/index.js",
     "start:local": "npm run build:local && node src/server/index.js",

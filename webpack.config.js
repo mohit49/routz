@@ -13,7 +13,6 @@ module.exports =  {
   entry: [ './src/client/index.js'],
   target: ["web", 'es5'],
 
-
   output: {
     path: path.join(__dirname, outputDirectory),
     filename: 'index.min.js'
@@ -106,14 +105,7 @@ module.exports =  {
     },
     optimization: {
       minimize: true,
-      minimizer: [ new UglifyJsPlugin({ 
-         uglifyOptions: {
-          output: {
-            comments: false,
-            
-          }
-        }
-       })],
+   
     },
   
 };
