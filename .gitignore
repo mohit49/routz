@@ -4,4 +4,3 @@ dist
 *.log
 yarn.lock
 server-build
-images
