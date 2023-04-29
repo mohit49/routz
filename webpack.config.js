@@ -104,8 +104,20 @@ module.exports =  {
         maxAssetSize: 512000
     },
     optimization: {
-      minimize: true,
-   
+       minimize: true,
+      minimizer: [new UglifyJsPlugin({
+        uglifyOptions: {
+          warnings: false,
+          parse: {},
+          compress: {},
+          mangle: true, // Note `mangle.properties` is `false` by default.
+          output: null,
+          toplevel: false,
+          nameCache: null,
+          extractComments: true,
+          ie8: false,
+          keep_fnames: false,}
+      })],
     },
   
 };

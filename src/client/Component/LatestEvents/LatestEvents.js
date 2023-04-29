@@ -128,7 +128,7 @@ function LatestEvents() {
         <Container className='content-area-latest-ride container-mob' fluid="md" >
           <h3>Latest Event</h3>
           <div className='card-contaner'>
-            {!letestEventData && <div className='demoCon-biker'><CardSleleton/></div>}
+            {!letestEventData && <div className='demoCon-biker'><CardSleleton cardNo='4'/></div>}
             {letestEventData &&
               letestEventData.map((ele, index) => {
                 return (
@@ -182,7 +182,7 @@ function LatestEvents() {
                         variant='primary'
                         size='md'
                         className='buttonCard'>
-                        View Now
+                        Register Now
                       </Button>
                     </LinkContainer>
                     </div>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { Avatar, Card } from "antd";
 import { LinkContainer } from "react-router-bootstrap";
 import  profilepic from '../../assets/images/propic.jpg'
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 const fetchUsersBikers =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_SEARCH_BAR;
   import { Data } from "../../App";
@@ -55,8 +55,9 @@ data.map((ele, index) => {
                     key={index}
                     cover={
 
-                      <img
+                      <LazyLoadImage
                         alt='example'
+                        effect="blur"
                         src={
                           ele.more[0].profilepic?.filename ? process.env.REACT_BASE_API_IMAGES +
                           ele.more[0].profilepic?.destination +

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { Data } from "../../App";
+import Bgimg from '../../assets/images/web-main.jpg'
 import "../Home/Home.scss";
 import Container from "react-bootstrap/Container";
 import Slider from "../../uiElements/Slider/Slider";
@@ -70,10 +71,15 @@ const sliderItem = {
     <meta name="description" content="Social Networks For bikers"/>
   <meta name="keywords" content="HTML, CSS, JavaScript, Home"/>
     </Helmet>
+    <div className="home-banner"  style={{ 
+      backgroundImage: `url(${Bgimg})` 
+    }}>
     <Container className="simpleSection container-mob" fluid="md" >
-      <Slider effect='fade' sliderName='homeSlider' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
+      {//<Slider effect='fade' sliderName='homeSlider' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
+}
 <SearchBar/>
     </Container>
+    </div>
    
      <Container className="bgChange event-sec" fluid>
      <LazyLoadComponent>

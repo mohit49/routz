@@ -1,53 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../Skeletons/CardSleleton.scss'
 import { Skeleton } from 'antd';
 
 
-function CardSleleton() {
+function CardSleleton({cardNo}) {
+  const [renderCount, setRenderCount] = useState();
   return (
     <>
-     <div className='cardContiner'>
-    <Skeleton active 
-    avatar
-    paragraph={{
-      rows: 4,
-    }}
-  />
-  </div>
-   <div className='cardContiner'>
-   <Skeleton active 
-   avatar
-   paragraph={{
-     rows: 4,
-   }}
- />
- </div>
-  <div className='cardContiner'>
-  <Skeleton active 
-  avatar
-  paragraph={{
-    rows: 4,
-  }}
-/>
-</div>
- <div className='cardContiner'>
- <Skeleton active 
- avatar
- paragraph={{
-   rows: 4,
- }}
- 
-/>
-</div>
-<div className='cardContiner'>
- <Skeleton active 
- avatar
- paragraph={{
-   rows: 4,
- }}
- 
-/>
-</div>
+{Array.apply(null, { length: cardNo ? cardNo: 5 }).map((e, i) => (
+     <div className='cardContiner' key={i}>
+     <Skeleton active 
+     avatar
+     paragraph={{
+       rows: 4,
+     }}
+   />
+   </div>
+))}
+
+
+
 </>
   )
 }
