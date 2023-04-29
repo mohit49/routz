@@ -24,6 +24,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
 function Home() {
+  const [riderData , setRiderData] = useState(false);
   const { loginState, setLoginState, profileData, setProfileData } =
     useContext(Data);
 const sliderItem = {
@@ -91,7 +92,8 @@ const sliderItem = {
    <Latestposts/>
   </LazyLoadComponent>
   <LazyLoadComponent>
-   <Ridersupdate/>
+
+   {!riderData && <Ridersupdate riderData={setRiderData}/> }
    </LazyLoadComponent>
 <RidersFeed/>
  

@@ -11,7 +11,7 @@ import { LinkContainer } from "react-router-bootstrap";
 const { Meta } = Card;
 const ShowroomsApi =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_SHOWROOMS;
-function Ridersupdate() {
+function Ridersupdate({riderData}) {
   const [cityShowRooms, setCityShowRooms] = useState();
   const [loader, setLoader] = useState();
   const [error, setError] = useState();
@@ -22,29 +22,16 @@ function Ridersupdate() {
       axios
         .get(ShowroomsApi + "/?limit=15&index=0&city=" + userPosition?.city)
         .then(function (response) {
-          if (response.data.sucessStatus) {
+          if (response.data.sucessStatus && response.data.length > 0) {
             setError(false);
             setLoader(false);
             setCityShowRooms(response.data.data);
           } else {
+            riderData(true);
             setError(true);
             setLoader(false);
           }
         });
-    } else if (
-      !(typeof userPosition === "undefined") &&
-      userPosition == false
-    ) {
-      axios.get(ShowroomsApi + "/?limit=15&index=0").then(function (response) {
-        if (response.data.sucessStatus) {
-          setError(false);
-          setLoader(false);
-          setCityShowRooms(response.data.data);
-        } else {
-          setError(true);
-          setLoader(false);
-        }
-      });
     }
   }, [userPosition?.city]);
 

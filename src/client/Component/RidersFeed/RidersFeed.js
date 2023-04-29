@@ -28,7 +28,7 @@ useEffect(()=>{
    
   });
 }
-if ((!userPosition?.city && typeof userPosition?.city != "undefined") || userPosition == false) {
+if (typeof userPosition?.city != "undefined" || userPosition == false) {
 
   axios
   .get(fetchUsersBikers + "/" + `?searchtype=biker&limit=5`)
@@ -45,17 +45,16 @@ if ((!userPosition?.city && typeof userPosition?.city != "undefined") || userPos
     <section className='section-from-riders'>
 
       <Container className='container-mob' fluid="md"><h3><span>View Riders Near you</span> <a href="/">View All</a></h3>
-{loader && <div className='demoCon-biker'><CardSleleton/></div>}
+{loader && <div className='demoCon-biker'><CardSleleton cardNo='5'/></div>}
 {!loader && <div className='actual-biker-content'>
   {
 data.map((ele, index) => {
   console.log(ele)
                 return (
-                  <Card
-                    key={index}
-                    cover={
-
-                      <LazyLoadImage
+                  <div className="custom-card"
+                    key={index}>
+                       <div className="card-img">
+                       <LazyLoadImage
                         alt='example'
                         effect="blur"
                         src={
@@ -65,10 +64,11 @@ data.map((ele, index) => {
                           ele.more[0].profilepic?.filename : profilepic
                         }
                       />
-                    }>
-                    <h4>{ele.eventtitle}</h4>
+                      </div>
+                      <div className="card-body">
+                    <h4 className='name'><b>{ele?.name}</b></h4>
 
-                    <p className='name'><b>{ele?.name}</b></p>
+                 
                     <p className='email'>Email : {ele.email}</p>
                     <p className='kms-completed'>Distance Coverd : {ele?.more[0].kms} KMS</p>
                     <p className='kms-completed'><b>Bike Own : {ele?.more[0].bikeinfo}</b></p>
@@ -83,7 +83,8 @@ data.map((ele, index) => {
                         View Profile
                       </Button>
                     </LinkContainer>
-                  </Card>
+                    </div>
+                  </div>
                 );
               })
             }
