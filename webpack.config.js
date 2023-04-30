@@ -105,6 +105,7 @@ module.exports =  {
     },
     optimization: {
        minimize: isProduction ? true : false,
+       
       minimizer: [new UglifyJsPlugin()],
     },
   
