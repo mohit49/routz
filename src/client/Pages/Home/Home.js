@@ -20,6 +20,7 @@ import Latestposts from "../../Component/Latestposts/Latestposts";
 import Ridersupdate from "../../Component/Ridersupdate/Ridersupdate";
 import RidersFeed from "../../Component/RidersFeed/RidersFeed";
 import {Helmet} from "react-helmet";
+import About from "../../Component/About/About";
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
@@ -91,6 +92,7 @@ const sliderItem = {
    <LazyLoadComponent>
    <Latestposts/>
   </LazyLoadComponent>
+  <About/>
   <LazyLoadComponent>
 
    {!riderData && <Ridersupdate riderData={setRiderData}/> }
