@@ -13,6 +13,7 @@ const isProduction =
 module.exports = {
   entry: ["./src/client/index.js"],
   target: ["web", "es5"],
+  
 
   output: {
     path: path.join(__dirname, outputDirectory),
@@ -114,5 +115,5 @@ module.exports = {
   },
   optimization: {
     minimize: isProduction ? true : false,
-  },
+  }
 };
