@@ -2,102 +2,116 @@
   width: 100%;
   background: #333333;
   background-size: cover;
+  position: relative;
   background-repeat: no-repeat;
+  overflow: hidden;
+
+  .staticimage {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    .lazy-load-image-background {
+      width: 100%;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    
+  }
 }
 .ant-carousel {
-.slider-home {
+  .slider-home {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 10px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  background: #ffffff;
-  align-items: center;
-  padding: 0;
-  
-  position: relative;
-  @media only screen and (max-width: 600px) {
-    &{
-        border-radius: 0;
-    }
-  }
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    align-items: center;
+    padding: 0;
 
-   
-.slider-con-inner {
-    display: flex !important;
-    align-items: center ;
-    .contentContainer {
+    position: relative;
+    @media only screen and (max-width: 600px) {
+      & {
+        border-radius: 0;
+      }
+    }
+
+    .slider-con-inner {
+      display: flex !important;
+      align-items: center;
+      .contentContainer {
         position: absolute;
         width: 100%;
         z-index: 1;
         margin: 0px 0px 0px 30px;
         h2 {
-            color: #ffffff;
-            font-size: 50px;
+          color: #ffffff;
+          font-size: 50px;
 
-            @media only screen and (max-width: 600px) {
-                &{
-                    font-size: 30px;
-                }
-              }
-        }
-        p {
-            font-size: 16px;
-            color: #ffffff;
-          width: 500px;
-            @media only screen and (max-width: 600px) {
-                &{
-                    font-size: 13px;
-                    width: 100%;
-                }
-              }
-        }
-        @media only screen and (max-width: 600px) {
-            &{
-                margin: 0;
-                left: 0;
-                padding: 10px;
-               width: 100%;
+          @media only screen and (max-width: 600px) {
+            & {
+              font-size: 30px;
             }
           }
-       
+        }
+        p {
+          font-size: 16px;
+          color: #ffffff;
+          width: 500px;
+          @media only screen and (max-width: 600px) {
+            & {
+              font-size: 13px;
+              width: 100%;
+            }
+          }
+        }
+        @media only screen and (max-width: 600px) {
+          & {
+            margin: 0;
+            left: 0;
+            padding: 10px;
+            width: 100%;
+          }
+        }
       }
-}
+    }
 
-  .imageSlider {
-    border-radius: 5px;
-    width: 100%;
-    overflow: hidden;
-    @media only screen and (max-width: 600px) {
-      &{
-         border-radius: 0;
-    }
-  }
-    img {
+    .imageSlider {
+      border-radius: 5px;
       width: 100%;
+      overflow: hidden;
+      @media only screen and (max-width: 600px) {
+        & {
+          border-radius: 0;
+        }
+      }
+      img {
+        width: 100%;
+      }
     }
-  }
 
     .slick-dots {
       margin-bottom: 10px;
     }
-  
-}
-
+  }
 }
 .bgChange {
   background: #ffffff;
   margin: 0;
   padding: 0px 0px !important;
   .ant-card-body {
-    background-color: #E6ECF1 !important;
+    background-color: #e6ecf1 !important;
   }
   @media only screen and (max-width: 600px) {
     & {
-      background-color: #E6ECF1 !important;
+      background-color: #e6ecf1 !important;
       .ant-card-body {
-      background-color: #ffffff !important;
-    }
+        background-color: #ffffff !important;
+      }
     }
   }
   &.event-sec {
@@ -110,9 +124,11 @@
   flex-direction: column;
   margin-top: 50px;
   min-height: 450px;
+  position: relative;
+  z-index: 1;
   justify-content: center;
   .banner-heading {
-    margin:20px auto;
+    margin: 20px auto;
     text-align: center;
     width: 100%;
     h1 {
@@ -120,8 +136,8 @@
     }
   }
   @media only screen and (max-width: 600px) {
-    &{
-     height: auto;
+    & {
+      height: auto;
     }
   }
   .ant-carousel {
@@ -132,12 +148,12 @@
     }
     .slick-dots-bottom {
       button {
-        text-indent: -999px;;
+        text-indent: -999px;
       }
     }
   }
   @media only screen and (max-width: 600px) {
-    &{
+    & {
       flex-direction: column-reverse;
       margin-top: 57px;
       padding: 0 !important;
