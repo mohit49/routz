@@ -80,11 +80,7 @@ function Home() {
           {
             //<Slider effect='fade' sliderName='homeSlider' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
           }
-          <div className="banner-heading">
-          <LazyLoadComponent>
-            <h1>Searching For a Bike Ride to Ladhak ? </h1>
-            </LazyLoadComponent>
-          </div>
+          
           <SearchBar />
         </Container>
         <div className="staticimage">
