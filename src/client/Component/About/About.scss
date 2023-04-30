@@ -1,0 +1,21 @@
+.about-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 50px 0px;
+  background: #ffffff;
+  .container {
+    width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    h2 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}

@@ -21,6 +21,7 @@ import Ridersupdate from "../../Component/Ridersupdate/Ridersupdate";
 import RidersFeed from "../../Component/RidersFeed/RidersFeed";
 import {Helmet} from "react-helmet";
 import About from "../../Component/About/About";
+import Announcement from "../../Component/Announcement/Announcement";
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 const profileFetch =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_PROFILE_FETCH;
@@ -79,6 +80,9 @@ const sliderItem = {
     <Container className="simpleSection container-mob" fluid="md" >
       {//<Slider effect='fade' sliderName='homeSlider' autoPlay={true} items={sliderItem} dotPosition='bottom' buttonClass='primary' className='slider-home'/>
 }
+<div className="banner-heading">
+<h1>Searching For a Bike Ride to Ladhak ? </h1>
+</div>
 <SearchBar/>
     </Container>
     </div>
@@ -93,6 +97,7 @@ const sliderItem = {
    <Latestposts/>
   </LazyLoadComponent>
   <About/>
+  <Announcement/>
   <LazyLoadComponent>
 
    {!riderData && <Ridersupdate riderData={setRiderData}/> }

@@ -110,6 +110,15 @@
   flex-direction: column;
   margin-top: 50px;
   min-height: 450px;
+  justify-content: center;
+  .banner-heading {
+    margin:20px auto;
+    text-align: center;
+    width: 100%;
+    h1 {
+      color: #ffffff;
+    }
+  }
   @media only screen and (max-width: 600px) {
     &{
      height: auto;
