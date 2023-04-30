@@ -22,6 +22,7 @@ import RidersFeed from "../../Component/RidersFeed/RidersFeed";
 import { Helmet } from "react-helmet";
 import About from "../../Component/About/About";
 import Announcement from "../../Component/Announcement/Announcement";
+import NewLetterSubscription from "../../Component/NewsLetterSubscription/NewLetterSubscription";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const profileFetch =
@@ -94,7 +95,7 @@ function Home() {
           />
         </div>
       </div>
-
+      <Announcement />
       <Container className="bgChange event-sec" fluid>
         <LazyLoadComponent>
           <LatestEvents />
@@ -105,7 +106,7 @@ function Home() {
         <Latestposts />
       </LazyLoadComponent>
       <About />
-      <Announcement />
+     <NewLetterSubscription/>
       <LazyLoadComponent>
         {!riderData && <Ridersupdate riderData={setRiderData} />}
       </LazyLoadComponent>
