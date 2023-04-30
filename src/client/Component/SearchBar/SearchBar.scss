@@ -96,6 +96,12 @@
   border-radius: 10px;
   justify-content: center;
   padding: 10px;
+  .suggestion {
+    img {
+      width: 50px;
+      height: 50xp;
+    }
+  }
   .biker-search {
     width: 100%;
     display: flex;
@@ -109,18 +115,42 @@
       padding: 0;
       li {
         list-style: none;
-        p{
-          margin: 0;
-          color: #333333;
-          &.name {
-            text-transform: capitalize;
-            font-weight: bold;
-          }
-          &.username {
-            text-transform: capitalize;
-            font-size: 13px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          border-radius: 50%;
+          margin: 5px;
+        }
+        .searchDetails {
+          display: flex;
+          flex-direction: column;
+          margin: 5px;
+          p{
+            margin: 2px;
+            line-height: 14px;
+            color: #333333;
+            &.name {
+              text-transform: capitalize;
+              font-weight: bold;
+            }
+            &.username {
+              text-transform: capitalize;
+              font-size: 13px;
+            }
           }
         }
+        .sec-button {
+          width: auto;
+          background: none;
+          border: none;
+          display: flex;
+          text-align: left;
+          align-items: center;
+          padding: 0;
+          margin: 0;
+        }
+
       }
     }
   }

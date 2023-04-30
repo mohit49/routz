@@ -4,7 +4,7 @@
   background-size: cover;
   position: relative;
   background-repeat: no-repeat;
-  overflow: hidden;
+
 
   .staticimage {
     position: absolute;
@@ -127,7 +127,7 @@
   margin-top: 50px;
   min-height: 450px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   justify-content: center;
   .banner-heading {
     margin: 20px auto;

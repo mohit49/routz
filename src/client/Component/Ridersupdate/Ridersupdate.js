@@ -22,7 +22,7 @@ function Ridersupdate({riderData}) {
       axios
         .get(ShowroomsApi + "/?limit=15&index=0&city=" + userPosition?.city)
         .then(function (response) {
-          if (response.data.sucessStatus && response.data.length > 0) {
+          if (response.data.sucessStatus && response.data?.data.length > 0) {
             setError(false);
             setLoader(false);
             setCityShowRooms(response.data.data);
@@ -32,6 +32,20 @@ function Ridersupdate({riderData}) {
             setLoader(false);
           }
         });
+    } else {
+      axios
+      .get(ShowroomsApi + "/?limit=15&index=0")
+      .then(function (response) {
+        if (response.data.sucessStatus && response.data?.data.length > 0) {
+          setError(false);
+          setLoader(false);
+          setCityShowRooms(response.data.data);
+        } else {
+          riderData(true);
+          setError(true);
+          setLoader(false);
+        }
+      });
     }
   }, [userPosition?.city]);
 

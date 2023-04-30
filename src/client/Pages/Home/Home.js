@@ -108,7 +108,7 @@ function Home() {
       <About />
       <Announcement />
       <LazyLoadComponent>
-        {!riderData && <Ridersupdate riderData={setRiderData} />}
+        {riderData == false && <Ridersupdate riderData={setRiderData} />}
       </LazyLoadComponent>
       <RidersFeed />
     </>

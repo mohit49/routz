@@ -105,10 +105,21 @@ function LatestEvents() {
         axios
           .get(viewEventApi + "/" + `search?city=${userPosition?.city}&limit=4`)
           .then(function (response) {
+            if(response.data.length > 0) {
             setLatestEventData(response.data);
+            } else {
+              axios
+              .get(viewEventApi + "/" + `search?limit=4`)
+              .then(function (response) {
+                setLatestEventData(response.data);
+                setLoader(false);
+              });
+    
+            console.log("some issue with location rendering");
+            }
           });
       }
-      if (!userPosition?.city && typeof userPosition?.city != "undefined") {
+      else if(typeof(userPosition) !== 'undefined' && userPosition === false) {
         axios
           .get(viewEventApi + "/" + `search?limit=4`)
           .then(function (response) {
