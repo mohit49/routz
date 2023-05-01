@@ -95,7 +95,7 @@ function Home() {
           />
         </div>
       </div>
-      
+      <Announcement />
       <Container className="bgChange event-sec" fluid>
         <LazyLoadComponent>
           <LatestEvents />
@@ -106,7 +106,7 @@ function Home() {
         <Latestposts />
       </LazyLoadComponent>
       <About />
-      <Announcement />
+     
       <LazyLoadComponent>
         {riderData == false && <Ridersupdate riderData={setRiderData} />}
       </LazyLoadComponent>
