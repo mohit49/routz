@@ -162,8 +162,8 @@ function SearchBar() {
                           />
                         </div>
                             <div className="searchDetails">
-                              <p className="name">
-                                <b>{ele.eventtitle}</b>
+                              <p className="name" title={ele.eventtitle}>
+                              <WordLimit limit={40}>{ele.eventtitle}</WordLimit>
                               </p>
 
                               <p className="username">
