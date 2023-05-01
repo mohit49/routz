@@ -8,6 +8,7 @@ import { Radio } from "antd";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import profilepic from "../../assets/images/propic.jpg";
+import WordLimit from 'react-word-limit';
 const DEBOUNCE_THRESHOLD = 500;
 const createEventAPI =
   process.env.REACT_BASE_API_URL + process.env.REACT_APP_SEARCH_BAR;
