@@ -66,7 +66,7 @@ data.map((ele, index) => {
                       />
                       </div>
                       <div className="card-body">
-                    <h4 className='name'><b>{ele?.name}</b></h4>
+                    <h4 className='name' title={ele?.name}><b>{ele?.name}</b></h4>
 
                  
                     <p className='email'>Email : {ele.email}</p>

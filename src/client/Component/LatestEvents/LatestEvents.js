@@ -3,6 +3,7 @@ import "../LatestEvents/LatestEvents.scss";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { Data } from "../../App";
+import WordLimit from 'react-word-limit';
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -159,7 +160,7 @@ function LatestEvents() {
                       />
                       </div>
                       <div className="card-body">
-                    <h4>{ele.eventtitle}</h4>
+                    <h4 title={ele.eventtitle} ><WordLimit limit={60}>{ele.eventtitle}</WordLimit></h4>
 
                     <p className='city'>{ele?.city?.name}</p>
                     <p className='organizer'>{ele.creatorcompany}</p>
