@@ -101,6 +101,35 @@
       width: 50px;
       height: 50xp;
     }
+    &.eventsSearch {
+      display: flex;
+      flex-direction: row;
+      li {
+        width: 20%;
+        margin: 5px;
+        align-items: baseline;
+       
+        a {
+          background: #f5f5f5 !important;
+          display: flex;
+          flex-direction: column;
+          padding: 5px !important;
+          .search-img {
+            width: 100%;
+            img {
+              width: 100%;
+              border-radius: 0;
+              margin: 0;
+            }
+          }
+          .searchDetails {
+            width: 100%;
+          }
+        }
+      }
+      
+    }
+
   }
   .biker-search {
     width: 100%;
