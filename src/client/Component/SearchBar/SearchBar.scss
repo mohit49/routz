@@ -157,11 +157,12 @@
           margin: 5px;
           p{
             margin: 2px;
-            line-height: 14px;
+            line-height: 17px;
             color: #333333;
             &.name {
               text-transform: capitalize;
               font-weight: bold;
+              font-size: 13px;
             }
             &.username {
               text-transform: capitalize;

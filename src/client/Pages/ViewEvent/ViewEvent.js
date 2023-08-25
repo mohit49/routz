@@ -131,7 +131,15 @@ function ViewEvent() {
       </div>
       <div className="bottomeText">
       <Col>
-        <div className="box-badge textContent"   dangerouslySetInnerHTML={{__html: eventData?.eventdiscription}}> 
+        <div className="box-badge textContent">
+        {JSON.parse(eventData?.eventdiscription).map((ele,index)=>
+    <>
+          <section key={index}>
+           {ele.heading?.length > 0 && <h4>{ele.heading}</h4>}
+            <p>{ele.discription}</p>
+          </section>
+          </>
+        )}
         </div>
         </Col>
        

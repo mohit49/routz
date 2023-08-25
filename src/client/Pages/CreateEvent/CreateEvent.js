@@ -129,7 +129,7 @@ function CreateEvent() {
       formData.append("title", reqData.title);
       formData.append("eventduration", JSON.stringify(eventDuration));
       formData.append("eventsubheading", eventSubheading);
-      formData.append("eventDiscription", reqData.eventDiscription);
+      formData.append("eventDiscription", JSON.stringify(reqData.eventDiscription));
       formData.append("state", JSON.stringify(state));
       formData.append("city", JSON.stringify(city));
       let imageNames = [];
@@ -155,7 +155,7 @@ function CreateEvent() {
           : {
               title: eventTitle,
               eventduration: eventDuration,
-              eventDiscription: eventDiscription,
+              eventDiscription: JSON.stringify(eventDiscription),
               state: JSON.stringify(state),
               city: JSON.stringify(city),
             },
@@ -285,7 +285,7 @@ function CreateEvent() {
 
                 <Form.Group className="mb-3" controlId="evenbtDiscription">
                  
-                  <TextCreator/>
+                  <TextCreator setEventDiscription = {setEventDiscription}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="evenbtCoverPic">
                   <Form.Label>Upload Event Cover Picture</Form.Label>

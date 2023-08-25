@@ -20,7 +20,7 @@ const info = new mongoose.Schema({
     type: String,
   },
   eventdiscription: {
-    type: String,
+    type: Object,
   },
   eventSubheading:{
     type: String,
