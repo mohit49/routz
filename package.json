@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "src/server/index.js",
+  "proxy":"http://localhost:3004",
   "browser": {
     "fs": false,
     "path": false,

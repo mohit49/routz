@@ -97,12 +97,7 @@ function Profile() {
               {profileData &&
               <Card.Body>
                
-                <Card.Title>About</Card.Title>
-              
-                  <Card.Text
-                  dangerouslySetInnerHTML={{ __html: profileData?.intro }}
-                  ></Card.Text>
-                  <hr/>
+                
                   <Card.Text>
                   <p>
                   <strong>Bike Info :</strong> {profileData?.bikeinfo}
@@ -133,7 +128,22 @@ function Profile() {
             </Card>
           </Col>
           <Col md={7}>
-          <CreatePost profileData={profileData}/>
+          <Card
+              className="shadow-sm p-3 mb-3 bg-white rounded"
+              border="light"
+              style={{ width: "100%" }}
+            >
+          <Card.Body>
+          <Card.Title>My Introduction</Card.Title>
+              
+              <Card.Text
+              dangerouslySetInnerHTML={{ __html: profileData?.intro }}
+              ></Card.Text>
+              </Card.Body>
+              </Card>
+              <hr/>
+
+          <CreatePost profileData={profileData} />
           <Feeds profileData={profileData}/>
           </Col>
           <Col>

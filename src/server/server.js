@@ -37,12 +37,7 @@ app.use(express.json({ limit: "500mb" }));
 //app.use(express.urlencoded({limit: '50mb'}));
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "http://localhost:3004",
-    credentials: true,
-  })
-);
+
 
 // tell the app to use the above rules
 app.use(router)

@@ -56,7 +56,7 @@ router.post("/api/login", async (req, res) => {
           sameSite: "none",
           secure: false,
         }); // maxAge: 2 hours
-        res.header("Access-Control-Allow-Origin", "http://localhost:3004");
+        res.header("Access-Control-Allow-Origin", "http://localhost:3000");
         res.header("Access-Control-Allow-Credentials", true);
         res.header(
           "Access-Control-Allow-Headers",

@@ -52,7 +52,7 @@ function CreatePost(profileData) {
             <span> <PencilSquareIcon /> Post Story </span>
           ),
           children: (
-            <div className='postUpload-container'>
+            <div className='postUpload-container '>
              
                <Form.Control  id="title" type="text" value={postTitle} className='postTitle' onChange={(e)=> setPostTitle(e.target.value)}  placeholder='Post Title' />
                <Form.Control as="textarea" rows={3} value={postDetails} onChange={(e)=> setPostDetails(e.target.value)} placeholder='Write Your Story' />
@@ -145,7 +145,7 @@ function CreatePost(profileData) {
   setSucess(false);
  })
   return (
-    <div className='postContainer'>
+    <div className='postContainer shadow-sm p-3 mb-3 bg-white rounded'>
         <h4>Post About Your Latest Ride</h4>
 <div className='postDiv'>
 {sucess && <div className='loder_overlay sucessp'>
